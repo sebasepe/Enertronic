@@ -1,0 +1,35 @@
+<mat-card class="project-card">
+  <div class="card-header-bar" [style.background]="project.accentColor">
+    <mat-icon class="header-icon">{{ project.icon }}</mat-icon>
+    <span class="category-chip">
+      {{ langService.currentLang() === 'ES' ? project.categoryES : project.categoryEN }}
+    </span>
+  </div>
+
+  <mat-card-content class="card-body">
+    <h3 class="project-title">
+      {{ langService.currentLang() === 'ES' ? project.titleES : project.titleEN }}
+    </h3>
+
+    <div class="location-badge">
+      <mat-icon>place</mat-icon>
+      <span>{{ project.location }}</span>
+    </div>
+
+    <p class="project-desc">
+      {{ langService.currentLang() === 'ES' ? project.descriptionES : project.descriptionEN }}
+    </p>
+
+    <div class="metrics-chip" [style.color]="project.accentColor">
+      <mat-icon>trending_up</mat-icon>
+      <span>{{ langService.currentLang() === 'ES' ? project.metricsES : project.metricsEN }}</span>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions class="card-footer">
+    <button mat-button class="detail-btn">
+      <span>{{ langService.currentLang() === 'ES' ? 'Ver Detalles' : 'View Details' }}</span>
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

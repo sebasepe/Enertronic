@@ -1,0 +1,54 @@
+<section class="hero-banner-container">
+  <div class="slides-viewport">
+    @for (slide of slides; track slide.id; let i = $index) {
+      <div
+        class="hero-slide"
+        [class.active]="i === activeSlide()"
+      >
+        <!-- Banner Image -->
+        <img
+          [src]="slide.image"
+          [alt]="langService.currentLang() === 'ES' ? slide.titleES : slide.titleEN"
+          class="banner-img"
+          loading="eager"
+        />
+
+        <!-- Clickable Overlay Link to CTA Route -->
+        <a [routerLink]="slide.ctaRoute" class="slide-click-overlay" [attr.aria-label]="slide.titleES"></a>
+      </div>
+    }
+  </div>
+
+  <!-- Carousel Previous Control -->
+  <button
+    type="button"
+    class="carousel-nav-btn prev-btn"
+    (click)="prevSlide()"
+    aria-label="Diapositiva Anterior"
+  >
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+  <!-- Carousel Next Control -->
+  <button
+    type="button"
+    class="carousel-nav-btn next-btn"
+    (click)="nextSlide()"
+    aria-label="Diapositiva Siguiente"
+  >
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+
+  <!-- Pagination Dots -->
+  <div class="pagination-dots">
+    @for (slide of slides; track slide.id; let i = $index) {
+      <button
+        type="button"
+        class="dot-btn"
+        [class.active]="i === activeSlide()"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Ir a diapositiva ' + (i + 1)"
+      ></button>
+    }
+  </div>
+</section>

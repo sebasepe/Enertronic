@@ -1,0 +1,88 @@
+<mat-toolbar class="app-header-toolbar">
+  <div class="header-container">
+    <!-- Brand Logo Section -->
+    <a routerLink="/" class="brand-logo">
+      <img src="assets/logo.png" alt="ENERTRONIC Logo" class="brand-logo-img" />
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="desktop-nav">
+      @for (item of navItems; track item.route) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          {{ langService.currentLang() === 'ES' ? item.labelES : item.labelEN }}
+          <span class="nav-indicator"></span>
+        </a>
+      }
+    </nav>
+
+    <!-- Controls: Language Switcher & Dark Mode Toggle -->
+    <div class="header-controls">
+      <!-- Language Switcher -->
+      <div class="lang-switcher">
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="langService.currentLang() === 'ES'"
+          (click)="langService.setLanguage('ES')"
+        >
+          ES
+        </button>
+        <span class="lang-divider">|</span>
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="langService.currentLang() === 'EN'"
+          (click)="langService.setLanguage('EN')"
+        >
+          EN
+        </button>
+      </div>
+
+      <!-- Custom Dark / Light Theme Pill Toggle -->
+      <button
+        type="button"
+        class="theme-toggle-pill"
+        [class.dark-active]="themeService.isDarkMode()"
+        (click)="themeService.toggleTheme()"
+        [matTooltip]="themeService.isDarkMode() ? 'Modo Claro' : 'Modo Oscuro'"
+        aria-label="Cambiar tema"
+      >
+        <div class="pill-thumb">
+          <mat-icon class="thumb-icon">
+            {{ themeService.isDarkMode() ? 'dark_mode' : 'light_mode' }}
+          </mat-icon>
+        </div>
+        <mat-icon class="sun-icon">light_mode</mat-icon>
+        <mat-icon class="moon-icon">dark_mode</mat-icon>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button
+        mat-icon-button
+        class="mobile-menu-btn"
+        [matMenuTriggerFor]="mobileMenu"
+        aria-label="Menú principal"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<!-- Mobile Navigation Menu -->
+<mat-menu #mobileMenu="matMenu" class="mobile-nav-menu">
+  @for (item of navItems; track item.route) {
+    <a
+      mat-menu-item
+      [routerLink]="item.route"
+      routerLinkActive="mobile-active"
+    >
+      <mat-icon>chevron_right</mat-icon>
+      <span>{{ langService.currentLang() === 'ES' ? item.labelES : item.labelEN }}</span>
+    </a>
+  }
+</mat-menu>
