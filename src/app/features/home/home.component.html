@@ -22,32 +22,6 @@
     </div>
   </section>
 
-  <!-- Featured Projects Section ("NUESTROS PROYECTOS DESTACADOS") -->
-  <section class="projects-section">
-    <div class="section-header">
-      <div class="header-badge">
-        <mat-icon>star</mat-icon>
-        <span>PORTAFOLIO DE INGENIERÍA</span>
-      </div>
-      <h2 class="section-title">
-        {{ langService.currentLang() === 'ES' ? 'NUESTROS PROYECTOS DESTACADOS' : 'OUR FEATURED PROJECTS' }}
-      </h2>
-      <p class="section-subtitle">
-        {{
-          langService.currentLang() === 'ES'
-            ? 'Implementaciones de alto impacto tecnológico en sectores energéticos, de agua potable y Oil & Gas.'
-            : 'High-impact technological implementations in energy, water, and Oil & Gas sectors.'
-        }}
-      </p>
-    </div>
-
-    <div class="projects-grid">
-      @for (proj of featuredProjects; track proj.id) {
-        <app-project-card [project]="proj"></app-project-card>
-      }
-    </div>
-  </section>
-
   <!-- Industry Solutions Overview Section -->
   <section class="solutions-overview-section">
     <div class="overview-container">
