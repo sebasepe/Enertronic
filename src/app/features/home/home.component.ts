@@ -39,7 +39,7 @@ export class HomeComponent {
       accentColor: 'linear-gradient(135deg, #f97316, #ea580c)',
       metricsES: '99.98% Tiempo de Actividad SCADA',
       metricsEN: '99.98% SCADA Uptime',
-      location: 'Huila, Colombia',
+      location: 'Arequipa, Perú',
     },
     {
       id: 'proj-2',
@@ -53,7 +53,7 @@ export class HomeComponent {
       accentColor: 'linear-gradient(135deg, #0284c7, #0369a1)',
       metricsES: '-32% Pérdida de Agua Tratada',
       metricsEN: '-32% Treated Water Loss',
-      location: 'Antioquia, Colombia',
+      location: 'Cusco, Perú',
     },
     {
       id: 'proj-3',
@@ -67,7 +67,7 @@ export class HomeComponent {
       accentColor: 'linear-gradient(135deg, #e11d48, #be123c)',
       metricsES: '45+ Puntos de Control Remoto',
       metricsEN: '45+ Remote Control Points',
-      location: 'Llanos Orientales, Colombia',
+      location: 'Piura, Perú',
     },
     {
       id: 'proj-4',
@@ -81,7 +81,7 @@ export class HomeComponent {
       accentColor: 'linear-gradient(135deg, #8b5cf6, #6d28d9)',
       metricsES: '+15,000 Variables Procesadas/seg',
       metricsEN: '+15,000 Variables Processed/sec',
-      location: 'Bogotá D.C., Colombia',
+      location: 'Lima, Perú',
     },
   ];
 
