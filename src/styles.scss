@@ -70,3 +70,14 @@ body {
   background-color: var(--card-bg) !important;
   border: 1px solid var(--card-border) !important;
 }
+
+/* Theme Logo Switching */
+body.dark-theme {
+  .logo-light { display: none !important; }
+  .logo-dark { display: block !important; }
+}
+
+body.light-theme {
+  .logo-light { display: block !important; }
+  .logo-dark { display: none !important; }
+}
