@@ -8,16 +8,58 @@
 
     <!-- Desktop Navigation Links -->
     <nav class="desktop-nav">
-      @for (item of navItems; track item.route) {
-        <a
-          [routerLink]="item.route"
-          routerLinkActive="active-link"
-          class="nav-link"
-        >
-          {{ langService.currentLang() === 'ES' ? item.labelES : item.labelEN }}
+      <a routerLink="/home" routerLinkActive="active-link" class="nav-link">
+        {{ langService.currentLang() === 'ES' ? 'INICIO' : 'HOME' }}
+        <span class="nav-indicator"></span>
+      </a>
+
+      <a routerLink="/la-empresa" routerLinkActive="active-link" class="nav-link">
+        {{ langService.currentLang() === 'ES' ? 'LA EMPRESA' : 'COMPANY' }}
+        <span class="nav-indicator"></span>
+      </a>
+
+      <a routerLink="/productos" routerLinkActive="active-link" class="nav-link">
+        {{ langService.currentLang() === 'ES' ? 'PRODUCTOS' : 'PRODUCTS' }}
+        <span class="nav-indicator"></span>
+      </a>
+
+      <!-- Soluciones with Mega Menu Hover Dropdown -->
+      <div class="nav-item-dropdown">
+        <a routerLink="/soluciones" routerLinkActive="active-link" class="nav-link nav-dropdown-trigger">
+          <span>{{ langService.currentLang() === 'ES' ? 'SOLUCIONES' : 'SOLUTIONS' }}</span>
+          <mat-icon class="dropdown-chevron">expand_more</mat-icon>
           <span class="nav-indicator"></span>
         </a>
-      }
+
+        <!-- Mega Menu Dropdown Panel -->
+        <div class="mega-menu-panel">
+          <div class="mega-menu-content">
+            <div class="mega-menu-header">
+              <span class="mega-badge">{{ langService.currentLang() === 'ES' ? 'SOLUCIONES ENERTRONIC' : 'ENERTRONIC SOLUTIONS' }}</span>
+              <h4 class="mega-title">
+                {{ langService.currentLang() === 'ES' ? 'Selecciona una solución de telemetría' : 'Select a telemetry solution' }}
+              </h4>
+            </div>
+
+            <div class="mega-menu-grid">
+              @for (sol of solutionsList; track sol.shortTitleES) {
+                <a routerLink="/soluciones" class="mega-card">
+                  <div class="mega-icon-box">
+                    <mat-icon>{{ sol.icon }}</mat-icon>
+                  </div>
+                  <span class="mega-card-title">{{ langService.currentLang() === 'ES' ? sol.shortTitleES : sol.shortTitleEN }}</span>
+                  <mat-icon class="mega-arrow">arrow_forward</mat-icon>
+                </a>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a routerLink="/contactos" routerLinkActive="active-link" class="nav-link">
+        {{ langService.currentLang() === 'ES' ? 'CONTACTOS' : 'CONTACT' }}
+        <span class="nav-indicator"></span>
+      </a>
     </nav>
 
     <!-- Controls: Language Switcher & Dark Mode Toggle -->
