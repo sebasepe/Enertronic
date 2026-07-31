@@ -40,6 +40,7 @@ export class HeaderComponent {
     { labelES: 'LA EMPRESA', labelEN: 'COMPANY', route: '/la-empresa' },
     { labelES: 'PRODUCTOS', labelEN: 'PRODUCTS', route: '/productos' },
     { labelES: 'SOLUCIONES', labelEN: 'SOLUTIONS', route: '/soluciones' },
+    { labelES: 'BLOG', labelEN: 'BLOG', route: '/blog' },
     { labelES: 'CONTACTOS', labelEN: 'CONTACT', route: '/contactos' },
   ];
 

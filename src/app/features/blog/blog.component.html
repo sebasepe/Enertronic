@@ -1,0 +1,126 @@
+<div class="blog-page-container">
+  <!-- Page Header -->
+  <div class="blog-header">
+    <div class="header-badge">
+      <mat-icon>article</mat-icon>
+      <span>{{ langService.currentLang() === 'ES' ? 'ARTÍCULOS TÉCNICOS & NOTICIAS' : 'TECHNICAL ARTICLES & NEWS' }}</span>
+    </div>
+    <h1 class="header-title">
+      {{ langService.currentLang() === 'ES' ? 'BLOG DE INGENIERÍA Y TELEMETRÍA EN PERÚ' : 'ENGINEERING & TELEMETRY BLOG IN PERU' }}
+    </h1>
+    <p class="header-subtitle">
+      {{
+        langService.currentLang() === 'ES'
+          ? 'Explora guías, análisis de soluciones y tendencias en telemetría IoT, software SCADA y automatización industrial.'
+          : 'Explore guides, solution analysis, and trends in IoT telemetry, SCADA software, and industrial automation.'
+      }}
+    </p>
+  </div>
+
+  <!-- Category Filter Bar -->
+  <div class="category-filter-bar">
+    @for (cat of categories; track cat.id) {
+      <button
+        type="button"
+        class="filter-chip"
+        [class.active]="selectedCategory() === cat.id"
+        (click)="filterCategory(cat.id)"
+      >
+        <span>{{ langService.currentLang() === 'ES' ? cat.labelES : cat.labelEN }}</span>
+      </button>
+    }
+  </div>
+
+  <!-- Blog Posts Grid -->
+  <div class="blog-grid">
+    @for (post of filteredPosts; track post.id) {
+      <div class="blog-card">
+        <!-- Card Image Header -->
+        <div class="card-image-wrapper">
+          <img [src]="post.image" [alt]="post.titleES" class="card-img" />
+          <div class="category-badge">
+            {{ langService.currentLang() === 'ES' ? post.categoryES : post.categoryEN }}
+          </div>
+        </div>
+
+        <!-- Card Body Content -->
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="meta-item"><mat-icon>calendar_today</mat-icon> {{ post.date }}</span>
+            <span class="meta-item"><mat-icon>schedule</mat-icon> {{ post.readTime }}</span>
+          </div>
+
+          <h3 class="card-title">
+            {{ langService.currentLang() === 'ES' ? post.titleES : post.titleEN }}
+          </h3>
+
+          <p class="card-excerpt">
+            {{ langService.currentLang() === 'ES' ? post.excerptES : post.excerptEN }}
+          </p>
+
+          <div class="card-footer">
+            <button
+              type="button"
+              class="btn-ver-mas"
+              (click)="openArticle(post)"
+            >
+              <span>{{ langService.currentLang() === 'ES' ? 'VER MÁS' : 'READ MORE' }}</span>
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Newsletter / Contact Banner -->
+  <div class="blog-cta-banner">
+    <div class="cta-content">
+      <h2>{{ langService.currentLang() === 'ES' ? '¿Deseas asesoría técnica para tu proyecto en Perú?' : 'Need technical advice for your project in Peru?' }}</h2>
+      <p>{{ langService.currentLang() === 'ES' ? 'Nuestros ingenieros especialistas están listos para diseñar la arquitectura óptima de telemetría y SCADA.' : 'Our specialist engineers are ready to design the optimal telemetry and SCADA architecture.' }}</p>
+    </div>
+    <a routerLink="/contactos" class="cta-button">
+      <mat-icon>chat</mat-icon>
+      <span>{{ langService.currentLang() === 'ES' ? 'CONTACTAR A UN INGENIERO' : 'CONTACT AN ENGINEER' }}</span>
+    </a>
+  </div>
+</div>
+
+<!-- Modal / Dialog for Full Article View -->
+@if (selectedPost()) {
+  <div class="modal-backdrop" (click)="closeArticle()">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <button type="button" class="modal-close-btn" (click)="closeArticle()" aria-label="Cerrar modal">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <div class="modal-header">
+        <span class="modal-category">
+          {{ langService.currentLang() === 'ES' ? selectedPost()?.categoryES : selectedPost()?.categoryEN }}
+        </span>
+        <h2>{{ langService.currentLang() === 'ES' ? selectedPost()?.titleES : selectedPost()?.titleEN }}</h2>
+        <div class="modal-meta">
+          <span><mat-icon>person</mat-icon> {{ selectedPost()?.author }}</span>
+          <span><mat-icon>calendar_today</mat-icon> {{ selectedPost()?.date }}</span>
+        </div>
+      </div>
+
+      <div class="modal-image-container">
+        <img [src]="selectedPost()?.image" [alt]="selectedPost()?.titleES" />
+      </div>
+
+      <div class="modal-body-content">
+        @for (paragraph of (langService.currentLang() === 'ES' ? selectedPost()?.contentES : selectedPost()?.contentEN); track paragraph) {
+          <p>{{ paragraph }}</p>
+        }
+      </div>
+
+      <div class="modal-footer">
+        <a routerLink="/contactos" class="modal-contact-btn" (click)="closeArticle()">
+          <mat-icon>headset_mic</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? 'SOLICITAR COTIZACIÓN / ASESORÍA' : 'REQUEST QUOTE / ADVICE' }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+}

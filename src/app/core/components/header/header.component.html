@@ -56,6 +56,11 @@
         </div>
       </div>
 
+      <a routerLink="/blog" routerLinkActive="active-link" class="nav-link">
+        {{ langService.currentLang() === 'ES' ? 'BLOG' : 'BLOG' }}
+        <span class="nav-indicator"></span>
+      </a>
+
       <a routerLink="/contactos" routerLinkActive="active-link" class="nav-link">
         {{ langService.currentLang() === 'ES' ? 'CONTACTOS' : 'CONTACT' }}
         <span class="nav-indicator"></span>
