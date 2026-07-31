@@ -12,6 +12,11 @@
   padding: 1.25rem 1.5rem;
   margin-bottom: 3.5rem;
   background: rgba(255, 255, 255, 0.02);
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .top-bar-container {
@@ -169,6 +174,11 @@
     max-width: 360px;
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+
+    @media (max-width: 640px) {
+      height: 48px;
+      max-width: 260px;
+    }
   }
 
   .brand-description {

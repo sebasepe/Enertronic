@@ -93,3 +93,21 @@
     height: 20px;
   }
 }
+
+@media (max-width: 400px) {
+  .whatsapp-float-btn {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .btn-content {
+    padding: 8px 12px 8px 10px;
+    font-size: 0.82rem;
+    gap: 0.4rem;
+  }
+
+  .whatsapp-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
