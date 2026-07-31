@@ -112,19 +112,19 @@
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%) !important;
+  background: #ea580c !important;
   color: #ffffff !important;
-  font-weight: 800 !important;
-  letter-spacing: 1px;
-  padding: 0 2.25rem !important;
-  height: 48px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  padding: 0 2rem !important;
+  height: 46px !important;
   border-radius: 8px !important;
-  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.35) !important;
-  transition: all 0.25s ease !important;
+  box-shadow: none !important;
+  transition: background 0.2s ease, transform 0.15s ease !important;
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(234, 88, 12, 0.45) !important;
+    background: #c2410c !important;
+    transform: translateY(-1px);
   }
 }
 

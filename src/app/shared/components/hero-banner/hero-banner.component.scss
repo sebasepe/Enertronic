@@ -86,7 +86,7 @@
   &:hover {
     background: #0284c7;
     border-color: #0284c7;
-    transform: translateY(-50%) scale(1.08);
+    transform: translateY(-50%) scale(1.04);
   }
 
   &.prev-btn {
@@ -119,29 +119,29 @@
   transform: translateX(-50%);
   z-index: 10;
   display: flex;
-  gap: 0.6rem;
-  padding: 6px 14px;
-  border-radius: 20px;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 0.5rem;
+  padding: 5px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .dot-btn {
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.4);
   border: none;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s ease;
 
   &:hover {
     background: rgba(255, 255, 255, 0.8);
   }
 
   &.active {
-    width: 32px;
+    width: 24px;
     background: #0284c7;
   }
 }

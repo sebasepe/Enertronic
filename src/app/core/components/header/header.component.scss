@@ -116,11 +116,11 @@
 
   &.active-link {
     color: #0284c7;
-    font-weight: 800;
+    font-weight: 700;
 
     .nav-indicator {
       width: 100%;
-      background: linear-gradient(90deg, #ea580c, #0284c7);
+      background: #0284c7;
     }
   }
 }

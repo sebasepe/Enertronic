@@ -36,11 +36,12 @@ import { LanguageService } from '../../core/services/language.service';
     </div>
   `,
   styles: [`
-    .feature-page-container { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 3rem; }
-    .page-header { text-align: center; h1 { font-size: 2.5rem; font-weight: 900; color: var(--text-primary, #ffffff); } p { color: var(--text-secondary, #94a3b8); } .badge { background: rgba(234,88,12,0.15); color: #f97316; padding: 4px 12px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; } }
+    .feature-page-container { max-width: 1240px; margin: 2.5rem auto 5rem auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 3rem; }
+    .page-header { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.65rem; h1 { font-size: 2.2rem; font-weight: 800; color: var(--text-primary, #ffffff); margin: 0; } p { color: var(--text-secondary, #94a3b8); font-size: 1.02rem; max-width: 700px; margin: 0; line-height: 1.6; } .badge { background: rgba(2, 132, 199, 0.08); color: #0284c7; padding: 0.35rem 0.9rem; border-radius: 8px; font-weight: 700; font-size: 0.78rem; border: 1px solid rgba(2, 132, 199, 0.2); } }
     .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; @media (max-width: 900px) { grid-template-columns: 1fr; } }
-    .product-card { background: var(--card-bg, #1e293b) !important; border: 1px solid var(--card-border, rgba(255,255,255,0.08)) !important; border-radius: 16px !important; }
-    .card-icon-header { height: 100px; background: linear-gradient(135deg, #0284c7, #1e3a8a); display: flex; align-items: center; justify-content: center; color: #fff; mat-icon { font-size: 40px; width: 40px; height: 40px; } }
+    .product-card { background: var(--card-bg, #1e293b) !important; border: 1px solid var(--card-border, rgba(255,255,255,0.08)) !important; border-radius: 12px !important; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important; overflow: hidden; }
+    .product-card:hover { transform: translateY(-3px) !important; border-color: rgba(2, 132, 199, 0.35) !important; box-shadow: 0 12px 24px -4px rgba(0,0,0,0.25) !important; }
+    .card-icon-header { height: 110px; background: #0f172a; border-bottom: 1px solid var(--card-border, rgba(255,255,255,0.05)); display: flex; align-items: center; justify-content: center; color: #0284c7; mat-icon { font-size: 38px; width: 38px; height: 38px; } }
   `],
 })
 export class ProductsComponent {
