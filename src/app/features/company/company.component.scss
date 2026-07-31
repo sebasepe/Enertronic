@@ -1,0 +1,132 @@
+.company-page-container {
+  max-width: 1300px;
+  margin: 3rem auto 6rem auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.page-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  .badge {
+    background: rgba(2, 132, 199, 0.15);
+    color: #38bdf8;
+    padding: 6px 16px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border: 1px solid rgba(2, 132, 199, 0.25);
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--text-primary, #ffffff);
+    margin: 0;
+    letter-spacing: 1px;
+
+    @media (max-width: 600px) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    color: var(--text-secondary, #94a3b8);
+    font-size: 1.05rem;
+    max-width: 720px;
+    margin: 0;
+    line-height: 1.55;
+  }
+}
+
+.company-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.info-card {
+  background: var(--card-bg, #151d30);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  &.mission-card:hover {
+    border-color: #ea580c;
+  }
+
+  &.vision-card:hover {
+    border-color: #0284c7;
+  }
+}
+
+.card-top-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(234, 88, 12, 0.12);
+  border: 1px solid rgba(234, 88, 12, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ea580c;
+  flex-shrink: 0;
+
+  &.vision-icon-bg {
+    background: rgba(2, 132, 199, 0.12);
+    border-color: rgba(2, 132, 199, 0.3);
+    color: #38bdf8;
+  }
+
+  mat-icon {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ea580c;
+  margin: 0;
+
+  &.vision-title {
+    color: #38bdf8;
+  }
+}
+
+.card-text {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text-secondary, #94a3b8);
+  margin: 0;
+}

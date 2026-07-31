@@ -1,0 +1,49 @@
+<div class="company-page-container">
+  <div class="page-header">
+    <span class="badge">{{ langService.currentLang() === 'ES' ? 'NOSOTROS' : 'ABOUT US' }}</span>
+    <h1>{{ langService.currentLang() === 'ES' ? 'LA EMPRESA' : 'THE COMPANY' }}</h1>
+    <p>
+      {{
+        langService.currentLang() === 'ES'
+          ? 'Líderes en ingeniería de automatización, telemetría IoT, sistemas SCADA y control de procesos en Agua, Energía y Oil & Gas.'
+          : 'Leaders in automation engineering, IoT telemetry, SCADA systems, and process control in Water, Energy, and Oil & Gas.'
+      }}
+    </p>
+  </div>
+
+  <div class="company-cards-grid">
+    <!-- Misión Card -->
+    <div class="info-card mission-card">
+      <div class="card-top-icon">
+        <mat-icon>flag</mat-icon>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">{{ langService.currentLang() === 'ES' ? 'Misión' : 'Mission' }}</h2>
+        <p class="card-text">
+          {{
+            langService.currentLang() === 'ES'
+              ? 'En ENERTRONIC INGENIERÍA S.A.C., nuestra misión es brindar soluciones tecnológicas avanzadas y personalizadas que optimicen la eficiencia y la sostenibilidad de nuestros clientes. A través de la innovación constante, buscamos mejorar los procesos operativos en diversas industrias, garantizando resultados confiables, seguros y de alto rendimiento.'
+              : 'At ENERTRONIC INGENIERÍA S.A.C., our mission is to provide advanced and customized technological solutions that optimize our clients\' efficiency and sustainability. Through constant innovation, we seek to improve operational processes across various industries, guaranteeing reliable, safe, and high-performance results.'
+          }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Visión Card -->
+    <div class="info-card vision-card">
+      <div class="card-top-icon vision-icon-bg">
+        <mat-icon>visibility</mat-icon>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title vision-title">{{ langService.currentLang() === 'ES' ? 'Visión' : 'Vision' }}</h2>
+        <p class="card-text">
+          {{
+            langService.currentLang() === 'ES'
+              ? 'Aspiramos a ser la empresa líder en integración de sistemas tecnológicos en el mercado latinoamericano, reconocida por nuestra capacidad para entregar soluciones innovadoras, eficientes y sostenibles. Buscamos contribuir al desarrollo y la transformación digital de los sectores estratégicos de la economía, a través de un compromiso constante con la calidad y el avance tecnológico.'
+              : 'We aspire to be the leading technological systems integration company in the Latin American market, recognized for our ability to deliver innovative, efficient, and sustainable solutions. We seek to contribute to the development and digital transformation of strategic economic sectors through a constant commitment to quality and technological advancement.'
+          }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
