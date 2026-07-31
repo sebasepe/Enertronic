@@ -1,69 +1,98 @@
 <footer class="app-footer">
+  <!-- Top Contact Bar -->
+  <div class="footer-top-bar">
+    <div class="top-bar-container">
+      <div class="top-bar-item">
+        <mat-icon class="top-icon">phone_iphone</mat-icon>
+        <a href="tel:+51941700464" class="top-link">+51 941700464</a>
+      </div>
+      <div class="top-bar-divider"></div>
+      <div class="top-bar-item">
+        <mat-icon class="top-icon">location_on</mat-icon>
+        <span class="top-text">Calle Buganvilias Mz.C Lte.26 Ate-Lima-Perú</span>
+      </div>
+      <div class="top-bar-divider"></div>
+      <div class="top-bar-item">
+        <mat-icon class="top-icon">email</mat-icon>
+        <a href="mailto:ventas@enertronicperu.com" class="top-link">ventas&#64;enertronicperu.com</a>
+      </div>
+      <div class="top-bar-divider"></div>
+      <div class="top-bar-item">
+        <mat-icon class="top-icon">phone</mat-icon>
+        <a href="tel:+51941700464" class="top-link">+51 941700464</a>
+      </div>
+    </div>
+  </div>
+
   <div class="footer-container">
-    <!-- Brand Info -->
+    <!-- Brand / Nosotros -->
     <div class="footer-col brand-col">
       <div class="brand-logo">
         <img src="assets/logo.png" alt="ENERTRONIC Logo" class="footer-logo-img" />
       </div>
+      <h3>{{ langService.currentLang() === 'ES' ? 'Nosotros' : 'About Us' }}</h3>
       <p class="brand-description">
         {{
           langService.currentLang() === 'ES'
-            ? 'Líderes en ingeniería de automatización, telemetría IoT, sistemas SCADA y control de procesos críticos en Agua, Energía y Oil & Gas.'
-            : 'Leaders in automation engineering, IoT telemetry, SCADA systems, and critical process control in Water, Energy, and Oil & Gas.'
+            ? 'ENERTRONIC INGENIERÍA S.A.C. es una empresa peruana de ingeniería integradora de sistemas tecnológicas fundada en el año 2012. Inició sus operaciones a principios del año 2013 con un grupo de Ingenieros capacitados en fábrica por medio del programa de Formación en Fábrica en Automatización y Sistemas SCADA por la empresa TELVENT en las instalaciones de Sevilla - España.'
+            : 'ENERTRONIC INGENIERÍA S.A.C. is a Peruvian engineering company integrating technological systems founded in 2012. It began operations in early 2013 with a group of factory-trained engineers through the TELVENT Factory Training Program in Automation and SCADA Systems in Sevilla, Spain.'
         }}
       </p>
+    </div>
+
+    <!-- Servicios -->
+    <div class="footer-col">
+      <h3>{{ langService.currentLang() === 'ES' ? 'Servicios' : 'Services' }}</h3>
+      <ul>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Servicio de Medición de Caudales (Aforos)' : 'Flow Measurement Service (Gauging)' }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? "Programación de PLC's y HMI's" : "PLC & HMI Programming" }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Tableros de telemetría celular y satelital' : 'Cellular & satellite telemetry panels' }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Tableros de Instrumentación y control' : 'Instrumentation & control panels' }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Mantenimiento Plantas Industriales' : 'Industrial Plant Maintenance' }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Automatización de software SCADA' : 'SCADA software automation' }}</a></li>
+      </ul>
+    </div>
+
+    <!-- Soluciones -->
+    <div class="footer-col">
+      <h3>{{ langService.currentLang() === 'ES' ? 'SOLUCIONES' : 'SOLUTIONS' }}</h3>
+      <ul>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Celular 2G 3G 4G' : 'Cellular Telemetry Solution 2G 3G 4G' }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Satelital Iridium' : 'Iridium Satellite Telemetry Solution' }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Satelital STARLINK' : 'STARLINK Satellite Telemetry Solution' }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Radio Mesh 2.4GHz' : '2.4GHz Mesh Radio Telemetry Solution' }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría MQTT' : 'MQTT Telemetry Solution' }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Ethernet' : 'Ethernet Telemetry Solution' }}</a></li>
+      </ul>
+    </div>
+
+    <!-- Síguenos en -->
+    <div class="footer-col social-col">
+      <h3>{{ langService.currentLang() === 'ES' ? 'Síguenos en:' : 'Follow us on:' }}</h3>
       <div class="social-links">
-        <button mat-icon-button aria-label="LinkedIn"><mat-icon>share</mat-icon></button>
-        <button mat-icon-button aria-label="Email"><mat-icon>email</mat-icon></button>
-        <button mat-icon-button aria-label="Ubicación"><mat-icon>location_on</mat-icon></button>
-      </div>
-    </div>
-
-    <!-- Quick Navigation -->
-    <div class="footer-col">
-      <h3>{{ langService.currentLang() === 'ES' ? 'Navegación' : 'Navigation' }}</h3>
-      <ul>
-        <li><a routerLink="/home">{{ langService.currentLang() === 'ES' ? 'Inicio' : 'Home' }}</a></li>
-        <li><a routerLink="/la-empresa">{{ langService.currentLang() === 'ES' ? 'La Empresa' : 'Company' }}</a></li>
-        <li><a routerLink="/productos">{{ langService.currentLang() === 'ES' ? 'Productos' : 'Products' }}</a></li>
-        <li><a routerLink="/soluciones">{{ langService.currentLang() === 'ES' ? 'Soluciones' : 'Solutions' }}</a></li>
-        <li><a routerLink="/contactos">{{ langService.currentLang() === 'ES' ? 'Contactos' : 'Contact' }}</a></li>
-      </ul>
-    </div>
-
-    <!-- Sectors -->
-    <div class="footer-col">
-      <h3>{{ langService.currentLang() === 'ES' ? 'Sectores' : 'Sectors' }}</h3>
-      <ul>
-        <li><mat-icon class="li-icon">solar_power</mat-icon> {{ langService.currentLang() === 'ES' ? 'Energía Solar & Hidro' : 'Solar & Hydro Power' }}</li>
-        <li><mat-icon class="li-icon">water_drop</mat-icon> {{ langService.currentLang() === 'ES' ? 'Gestión de Agua & Acueductos' : 'Water & Aqueducts' }}</li>
-        <li><mat-icon class="li-icon">oil_barrel</mat-icon> {{ langService.currentLang() === 'ES' ? 'Oil & Gas Telemetría' : 'Oil & Gas Telemetry' }}</li>
-        <li><mat-icon class="li-icon">memory</mat-icon> {{ langService.currentLang() === 'ES' ? 'SCADA, RTU & IoT Industrial' : 'SCADA, RTU & Industrial IoT' }}</li>
-      </ul>
-    </div>
-
-    <!-- Contact Info -->
-    <div class="footer-col">
-      <h3>{{ langService.currentLang() === 'ES' ? 'Contacto Técnico' : 'Technical Support' }}</h3>
-      <div class="contact-item">
-        <mat-icon>location_on</mat-icon>
-        <span>Oficina Central & Centro de Control SCADA</span>
-      </div>
-      <div class="contact-item">
-        <mat-icon>phone</mat-icon>
-        <span>+57 (601) 800-ENER / (+57) 300 000 0000</span>
-      </div>
-      <div class="contact-item">
-        <mat-icon>email</mat-icon>
-        <span>ingenieria&#64;enertronic.com</span>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.79 5.6c1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 3h-2.33v6.8c4.56-.93 8-4.96 8-9.8z"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM9.75 15.02V8.98L15 12l-5.25 3.02z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
       </div>
     </div>
   </div>
 
   <div class="footer-bottom">
     <div class="footer-bottom-content">
-      <span>© {{ currentYear }} ENERTRONIC S.A.S. Todos los derechos reservados.</span>
-      <span class="tech-tag">Powered by Angular Material & Modern Telemetry Systems</span>
+      <span>Copyright © 2025 Enertronic Perú. All Rights Reserved.</span>
+      <span class="tech-tag">{{ langService.currentLang() === 'ES' ? 'Desarrollado por: Seo Consulting Perú' : 'Developed by: Seo Consulting Perú' }}</span>
     </div>
   </div>
 </footer>
