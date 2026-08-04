@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "nombre-app": {
+    "enertronic": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "nombre-app:build:production"
+              "buildTarget": "enertronic:build:production"
             },
             "development": {
-              "buildTarget": "nombre-app:build:development"
+              "buildTarget": "enertronic:build:development"
             }
           },
           "defaultConfiguration": "development"

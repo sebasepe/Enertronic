@@ -1,5 +1,5 @@
 {
-  "name": "nombre-app",
+  "name": "enertronic",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:nombre-app": "node dist/nombre-app/server/server.mjs"
+    "serve:ssr:enertronic": "node dist/enertronic/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@10.9.3",
