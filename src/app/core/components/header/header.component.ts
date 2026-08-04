@@ -38,7 +38,6 @@ export class HeaderComponent {
   public navItems = [
     { labelES: 'INICIO', labelEN: 'HOME', route: '/home' },
     { labelES: 'LA EMPRESA', labelEN: 'COMPANY', route: '/la-empresa' },
-    { labelES: 'PRODUCTOS', labelEN: 'PRODUCTS', route: '/productos' },
     { labelES: 'SOLUCIONES', labelEN: 'SOLUTIONS', route: '/soluciones' },
     { labelES: 'BLOG', labelEN: 'BLOG', route: '/blog' },
     { labelES: 'CONTACTOS', labelEN: 'CONTACT', route: '/contactos' },

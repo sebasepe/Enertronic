@@ -67,7 +67,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       subtitleEN: 'Reliable energy solutions powered by lithium battery technology driving your industry with greater autonomy.',
       ctaTextES: 'VER MÁS',
       ctaTextEN: 'LEARN MORE',
-      ctaRoute: '/productos',
+      ctaRoute: '/soluciones',
     },
     {
       id: 3,
