@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "postbuild": "node -e \"require('fs').copyFileSync('dist/enertronic/browser/index.csr.html', 'dist/enertronic/browser/index.html')\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:enertronic": "node dist/enertronic/server/server.mjs"
