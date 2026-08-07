@@ -109,7 +109,20 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.stopAutoPlay();
   }
 
+  public exitFullscreenIfActive(): void {
+    if (document.fullscreenElement || (document as any).webkitFullscreenElement || (document as any).msFullscreenElement) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if ((document as any).webkitExitFullscreen) {
+        (document as any).webkitExitFullscreen();
+      } else if ((document as any).msExitFullscreen) {
+        (document as any).msExitFullscreen();
+      }
+    }
+  }
+
   public onVideoEnded(): void {
+    this.exitFullscreenIfActive();
     const allVideos = document.querySelectorAll('video');
     allVideos.forEach((v) => {
       v.pause();
@@ -118,6 +131,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   }
 
   public goToSlide(index: number): void {
+    this.exitFullscreenIfActive();
     // Pausar cualquier video activo al cambiar de diapositiva
     const allVideos = document.querySelectorAll('video');
     allVideos.forEach((v) => {
