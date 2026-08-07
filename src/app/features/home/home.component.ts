@@ -24,12 +24,6 @@ import { LanguageService } from '../../core/services/language.service';
 export class HomeComponent {
   public langService = inject(LanguageService);
 
-  public stats = [
-    { value: '+150', labelES: 'Proyectos SCADA Desplegados', labelEN: 'SCADA Projects Deployed', icon: 'speed' },
-    { value: '99.9%', labelES: 'Disponibilidad Telemetría', labelEN: 'Telemetry Availability', icon: 'verified' },
-    { value: '+10 Años', labelES: 'Experiencia en Ingeniería', labelEN: 'Engineering Experience', icon: 'history_edu' },
-    { value: '+5M', labelES: 'Datos de Campo Procesados/Día', labelEN: 'Field Data Processed/Day', icon: 'analytics' },
-  ];
 
   public homeBlogPosts = [
     {

@@ -1,26 +1,17 @@
 <!-- Hero Slider Component (Full-bleed Edge-to-Edge) -->
 <app-hero-banner></app-hero-banner>
 
+<!-- Sectores e Integradores Autorizados Banner -->
+<section class="banner-sectores-section">
+  <img
+    src="assets/sectores-banner.png"
+    alt="Sectores Industriales e Integradores Autorizados Provix - Exemys"
+    class="sectores-banner-img"
+  />
+</section>
+
 <div class="home-page-wrapper">
 
-  <!-- Key Metrics / Highlights Section -->
-  <section class="stats-section">
-    <div class="stats-grid">
-      @for (stat of stats; track stat.labelES) {
-        <div class="stat-card">
-          <div class="stat-icon-wrapper">
-            <mat-icon>{{ stat.icon }}</mat-icon>
-          </div>
-          <div class="stat-info">
-            <span class="stat-value">{{ stat.value }}</span>
-            <span class="stat-label">
-              {{ langService.currentLang() === 'ES' ? stat.labelES : stat.labelEN }}
-            </span>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
 
   <!-- Industry Solutions Overview Section -->
   <section class="solutions-overview-section">
