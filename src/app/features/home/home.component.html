@@ -161,6 +161,60 @@
     </div>
   </section>
 
+  <!-- Clients Marquee Section ("TRABAJAMOS CON") -->
+  <section class="clients-marquee-section">
+    <div class="section-header text-center">
+      <div class="header-badge">
+        <mat-icon>business</mat-icon>
+        <span>{{ langService.currentLang() === 'ES' ? 'CLIENTES Y ALIADOS' : 'CLIENTS & PARTNERS' }}</span>
+      </div>
+      <h2 class="section-title">
+        {{ langService.currentLang() === 'ES' ? 'TRABAJAMOS CON' : 'WE WORK WITH' }}
+      </h2>
+      <p class="section-subtitle">
+        {{
+          langService.currentLang() === 'ES'
+            ? 'Empresas e instituciones de prestigio que confían en nuestras soluciones de telemetría y automatización industrial.'
+            : 'Prestigious companies and institutions that trust our telemetry and industrial automation solutions.'
+        }}
+      </p>
+    </div>
+
+    <!-- Infinite Continuous Marquee Track -->
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <!-- First Loop Set -->
+        @for (client of clientList; track client.id) {
+          <div class="client-marquee-card">
+            <div class="logo-box">
+              <img [src]="client.logo" [alt]="client.name" class="client-logo-img" />
+            </div>
+            <div class="client-details">
+              <span class="client-name">{{ client.name }}</span>
+              <span class="client-sector">
+                {{ langService.currentLang() === 'ES' ? client.sectorES : client.sectorEN }}
+              </span>
+            </div>
+          </div>
+        }
+        <!-- Duplicate Loop Set for Infinite Smooth Seamless Motion -->
+        @for (client of clientList; track 'dup-' + client.id) {
+          <div class="client-marquee-card">
+            <div class="logo-box">
+              <img [src]="client.logo" [alt]="client.name" class="client-logo-img" />
+            </div>
+            <div class="client-details">
+              <span class="client-name">{{ client.name }}</span>
+              <span class="client-sector">
+                {{ langService.currentLang() === 'ES' ? client.sectorES : client.sectorEN }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
   <!-- Blog Section -->
   <section class="home-blog-section">
     <div class="section-header text-center">

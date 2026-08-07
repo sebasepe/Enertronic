@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, signal, OnInit, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,6 +24,43 @@ import { LanguageService } from '../../core/services/language.service';
 export class HomeComponent {
   public langService = inject(LanguageService);
 
+  public clientList = [
+    {
+      id: 'sedapal',
+      name: 'SEDAPAL',
+      logo: 'assets/clients/sedapal.png',
+      sectorES: 'Saneamiento y Agua Potable',
+      sectorEN: 'Sanitation & Drinking Water',
+    },
+    {
+      id: 'morken',
+      name: 'MORKEN',
+      logo: 'assets/clients/morken.png',
+      sectorES: 'Oil & Gas e Infraestructura',
+      sectorEN: 'Oil & Gas & Infrastructure',
+    },
+    {
+      id: 'indra',
+      name: 'INDRA',
+      logo: 'assets/clients/indra.png',
+      sectorES: 'Tecnología e Ingeniería',
+      sectorEN: 'Technology & Engineering',
+    },
+    {
+      id: 'dini',
+      name: 'DINI',
+      logo: 'assets/clients/dini.png',
+      sectorES: 'Seguridad e Inteligencia',
+      sectorEN: 'Security & Intelligence',
+    },
+    {
+      id: 'senamhi',
+      name: 'SENAMHI',
+      logo: 'assets/clients/senamhi.png',
+      sectorES: 'Meteorología e Hidrología',
+      sectorEN: 'Meteorology & Hydrology',
+    },
+  ];
 
   public homeBlogPosts = [
     {
