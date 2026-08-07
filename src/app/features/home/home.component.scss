@@ -160,63 +160,31 @@
   }
 }
 
-/* PROVIX Logo */
-.provix-logo {
-  display: flex;
-  align-items: center;
-  font-family: 'Outfit', 'Inter', sans-serif;
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: #000000;
-  letter-spacing: -0.5px;
+.brand-logo-img {
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+  transition: transform 0.25s ease;
 
-  .target-o {
-    position: relative;
-    width: 26px;
-    height: 26px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 1px;
-
-    .outer-ring {
-      position: absolute;
-      inset: 0;
-      border: 4px solid #dc2626;
-      border-radius: 50%;
-    }
-
-    .crosshair {
-      position: absolute;
-      background: #dc2626;
-      &.c-v {
-        width: 4px;
-        height: 100%;
-      }
-      &.c-h {
-        height: 4px;
-        width: 100%;
-      }
-    }
-
-    .inner-dot {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #000000;
-      border-radius: 50%;
-      z-index: 2;
-    }
+  &:hover {
+    transform: scale(1.06);
   }
+}
+
+.provix-img {
+  height: 30px;
+  width: auto;
 
   @media (max-width: 600px) {
-    font-size: 1.3rem;
-    .target-o {
-      width: 20px;
-      height: 20px;
-      .outer-ring { border-width: 3px; }
-      .inner-dot { width: 7px; height: 7px; }
-    }
+    height: 22px;
+  }
+}
+
+.exemys-img {
+  height: 58px;
+  width: auto;
+
+  @media (max-width: 600px) {
+    height: 42px;
   }
 }
 
@@ -224,56 +192,6 @@
   width: 1.5px;
   height: 36px;
   background: #94a3b8;
-}
-
-/* EXEMYS Logo */
-.exemys-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-
-  .exemys-icon {
-    width: 26px;
-    height: 26px;
-    position: relative;
-
-    .square-box {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 2px;
-      background: #0284c7;
-      padding: 3px;
-      border-radius: 4px;
-
-      .tri {
-        &.t-blue-top { background: #ffffff; clip-path: polygon(0 0, 100% 0, 50% 100%); }
-        &.t-orange-left { background: #f97316; clip-path: polygon(0 0, 100% 50%, 0 100%); }
-        &.t-orange-right { background: #f97316; clip-path: polygon(100% 0, 100% 100%, 0 50%); }
-        &.t-blue-bottom { background: #ffffff; clip-path: polygon(50% 0, 100% 100%, 0 100%); }
-      }
-    }
-  }
-
-  .exemys-text {
-    font-family: 'Outfit', 'Inter', sans-serif;
-    font-size: 1.85rem;
-    font-weight: 800;
-    color: #0284c7;
-    letter-spacing: -1px;
-  }
-
-  @media (max-width: 600px) {
-    .exemys-text {
-      font-size: 1.4rem;
-    }
-    .exemys-icon {
-      width: 20px;
-      height: 20px;
-    }
-  }
 }
 
 /* Projects Section */
