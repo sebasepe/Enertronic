@@ -60,6 +60,27 @@ export class HomeComponent {
       sectorES: 'Meteorología e Hidrología',
       sectorEN: 'Meteorology & Hydrology',
     },
+    {
+      id: 'inacal',
+      name: 'INACAL',
+      logo: 'assets/clients/inacal.png',
+      sectorES: 'Instituto Nacional de Calidad',
+      sectorEN: 'National Quality Institute',
+    },
+    {
+      id: 'liftoil',
+      name: 'LiftOil',
+      logo: 'assets/clients/liftoil.png',
+      sectorES: 'Tecnología de Extracción Oil & Gas',
+      sectorEN: 'Oil Extraction Technology',
+    },
+    {
+      id: 'electroperu',
+      name: 'Electroperú',
+      logo: 'assets/clients/electroperu.png',
+      sectorES: 'Generación y Energía Eléctrica',
+      sectorEN: 'Power Generation & Energy',
+    },
   ];
 
   public homeBlogPosts = [
