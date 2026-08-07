@@ -103,7 +103,7 @@
 </mat-toolbar>
 
 <!-- Mobile Navigation Menu -->
-<mat-menu #mobileMenu="matMenu" class="mobile-nav-menu">
+<mat-menu #mobileMenu="matMenu" xPosition="before" class="mobile-nav-menu">
   @for (item of navItems; track item.route) {
   <a mat-menu-item [routerLink]="item.route" routerLinkActive="mobile-active">
     <mat-icon>chevron_right</mat-icon>

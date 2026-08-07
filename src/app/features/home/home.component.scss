@@ -5,6 +5,16 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 2.5rem;
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 2rem;
+    padding: 0 0.75rem;
+  }
 }
 
 /* Sectores Banner Section */
@@ -16,9 +26,14 @@
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
+    width: calc(100% - 1.5rem);
+    margin: 1rem auto 1.5rem auto;
+  }
+
+  @media (max-width: 480px) {
     width: calc(100% - 1rem);
-    margin: 1rem auto 2rem auto;
+    margin: 0.75rem auto 1.25rem auto;
   }
 }
 
@@ -33,6 +48,7 @@
 
   @media (max-width: 1024px) {
     flex-direction: column;
+    border-radius: 14px;
   }
 }
 
@@ -49,10 +65,24 @@
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
 
   @media (max-width: 1024px) {
-    border-radius: 16px 16px 30px 30px;
-    padding: 1rem;
+    border-radius: 14px 14px 20px 20px;
+    padding: 0.85rem 1rem;
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center;
+    gap: 1rem 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem 0.2rem;
+    padding: 0.75rem 0.4rem;
+  }
+
+  @media (max-width: 420px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem 0.4rem;
+    padding: 0.75rem 0.5rem;
   }
 }
 
@@ -96,8 +126,17 @@
       font-size: 1.5rem;
     }
     svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+    svg {
+      width: 20px;
+      height: 20px;
     }
   }
 }
@@ -111,6 +150,13 @@
 
   @media (max-width: 768px) {
     font-size: 0.72rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.62rem;
+    letter-spacing: 0.2px;
+    text-align: center;
+    white-space: nowrap;
   }
 }
 
@@ -136,8 +182,12 @@
   border-radius: 0 16px 16px 0;
 
   @media (max-width: 1024px) {
-    border-radius: 0 0 16px 16px;
-    padding: 1rem;
+    border-radius: 0 0 14px 14px;
+    padding: 0.85rem 1rem;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0.75rem 0.5rem;
   }
 }
 
@@ -148,15 +198,28 @@
   letter-spacing: 1.2px;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
+  text-align: center;
+
+  @media (max-width: 480px) {
+    font-size: 0.65rem;
+    letter-spacing: 0.8px;
+    margin-bottom: 0.35rem;
+  }
 }
 
 .logos-group {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
+  width: 100%;
 
   @media (max-width: 600px) {
     gap: 1rem;
+  }
+
+  @media (max-width: 400px) {
+    gap: 0.6rem;
   }
 }
 
@@ -173,18 +236,28 @@
 .provix-img {
   height: 30px;
   width: auto;
+  max-width: 42%;
 
   @media (max-width: 600px) {
     height: 22px;
+  }
+
+  @media (max-width: 380px) {
+    height: 18px;
   }
 }
 
 .exemys-img {
   height: 58px;
   width: auto;
+  max-width: 48%;
 
   @media (max-width: 600px) {
     height: 42px;
+  }
+
+  @media (max-width: 380px) {
+    height: 34px;
   }
 }
 
@@ -192,6 +265,15 @@
   width: 1.5px;
   height: 36px;
   background: #94a3b8;
+  flex-shrink: 0;
+
+  @media (max-width: 600px) {
+    height: 24px;
+  }
+
+  @media (max-width: 380px) {
+    height: 20px;
+  }
 }
 
 /* Projects Section */
@@ -364,11 +446,28 @@
   align-items: center;
   justify-content: center;
 
+  @media (max-width: 600px) {
+    width: 250px;
+    height: 250px;
+    margin: 1rem 0;
+  }
+
+  @media (max-width: 380px) {
+    width: 210px;
+    height: 210px;
+  }
+
   .visual-main-icon {
     font-size: 72px;
     width: 72px;
     height: 72px;
     color: #0284c7;
+
+    @media (max-width: 600px) {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+    }
   }
 }
 
@@ -378,6 +477,10 @@
   border-radius: 50%;
   border: 2px solid rgba(2, 132, 199, 0.3);
   animation: pulseAnim 3s infinite ease-in-out;
+
+  @media (max-width: 600px) {
+    inset: -12px;
+  }
 }
 
 @keyframes pulseAnim {
@@ -408,6 +511,7 @@
   font-weight: 700;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
 
   mat-icon {
     font-size: 16px;
@@ -434,6 +538,32 @@
   &.bottom-right {
     bottom: 10px;
     right: -20px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.68rem;
+    padding: 4px 8px;
+
+    mat-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+    }
+
+    &.top-left { top: -6px; left: -6px; }
+    &.top-right { top: -6px; right: -6px; }
+    &.bottom-left { bottom: -6px; left: -6px; }
+    &.bottom-right { bottom: -6px; right: -6px; }
+  }
+
+  @media (max-width: 380px) {
+    font-size: 0.62rem;
+    padding: 3px 6px;
+
+    &.top-left { top: -12px; left: 0; }
+    &.top-right { top: -12px; right: 0; }
+    &.bottom-left { bottom: -12px; left: 0; }
+    &.bottom-right { bottom: -12px; right: 0; }
   }
 }
 

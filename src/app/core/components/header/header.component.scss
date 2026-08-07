@@ -54,13 +54,13 @@
   }
 
   @media (max-width: 768px) {
-    height: 54px;
-    max-width: 280px;
+    height: 44px;
+    max-width: 170px;
   }
 
   @media (max-width: 480px) {
-    height: 44px;
-    max-width: 220px;
+    height: 36px;
+    max-width: 130px;
   }
 }
 
@@ -316,6 +316,14 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.35rem;
+  }
 }
 
 /* Language Switcher */
@@ -327,6 +335,10 @@
   padding: 4px 8px;
   border-radius: 20px;
   border: 1px solid var(--ctrl-border, rgba(255, 255, 255, 0.12));
+
+  @media (max-width: 480px) {
+    padding: 2px 4px;
+  }
 }
 
 .lang-btn {
@@ -347,6 +359,11 @@
   &.active {
     color: #ffffff;
     background: #0284c7;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.7rem;
+    padding: 3px 5px;
   }
 }
 
@@ -384,6 +401,18 @@
     height: 16px;
     color: #94a3b8;
   }
+
+  @media (max-width: 480px) {
+    width: 50px;
+    height: 26px;
+    padding: 0 4px;
+
+    .sun-icon, .moon-icon {
+      font-size: 13px;
+      width: 13px;
+      height: 13px;
+    }
+  }
 }
 
 .pill-thumb {
@@ -407,6 +436,19 @@
     height: 14px;
     color: #f59e0b;
   }
+
+  @media (max-width: 480px) {
+    width: 18px;
+    height: 18px;
+    top: 3px;
+    left: 3px;
+
+    .thumb-icon {
+      font-size: 11px;
+      width: 11px;
+      height: 11px;
+    }
+  }
 }
 
 .dark-active {
@@ -419,6 +461,10 @@
     .thumb-icon {
       color: #38bdf8;
     }
+
+    @media (max-width: 480px) {
+      transform: translateX(24px);
+    }
   }
 }
 
@@ -428,6 +474,39 @@
   color: inherit;
 
   @media (max-width: 960px) {
-    display: flex;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    background: rgba(2, 132, 199, 0.15);
+    border: 1px solid rgba(2, 132, 199, 0.3);
+    color: #0284c7;
+    transition: all 0.2s ease;
+
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover, &:active {
+      background: #0284c7;
+      color: #ffffff;
+    }
+  }
+
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
   }
 }
