@@ -31,21 +31,24 @@
         <div class="mega-menu-panel">
           <div class="mega-menu-content">
             <div class="mega-menu-header">
-              <span class="mega-badge">{{ langService.currentLang() === 'ES' ? 'SOLUCIONES ENERTRONIC' : 'ENERTRONIC SOLUTIONS' }}</span>
+              <span class="mega-badge">{{ langService.currentLang() === 'ES' ? 'SOLUCIONES ENERTRONIC' : 'ENERTRONIC
+                SOLUTIONS' }}</span>
               <h4 class="mega-title">
-                {{ langService.currentLang() === 'ES' ? 'Selecciona una solución de telemetría' : 'Select a telemetry solution' }}
+                {{ langService.currentLang() === 'ES' ? 'Selecciona una solución de telemetría' : 'Select a telemetry
+                solution' }}
               </h4>
             </div>
 
             <div class="mega-menu-grid">
               @for (sol of solutionsList; track sol.shortTitleES) {
-                <a routerLink="/soluciones" class="mega-card">
-                  <div class="mega-icon-box">
-                    <mat-icon>{{ sol.icon }}</mat-icon>
-                  </div>
-                  <span class="mega-card-title">{{ langService.currentLang() === 'ES' ? sol.shortTitleES : sol.shortTitleEN }}</span>
-                  <mat-icon class="mega-arrow">arrow_forward</mat-icon>
-                </a>
+              <a routerLink="/soluciones" class="mega-card">
+                <div class="mega-icon-box">
+                  <mat-icon>{{ sol.icon }}</mat-icon>
+                </div>
+                <span class="mega-card-title">{{ langService.currentLang() === 'ES' ? sol.shortTitleES :
+                  sol.shortTitleEN }}</span>
+                <mat-icon class="mega-arrow">arrow_forward</mat-icon>
+              </a>
               }
             </div>
           </div>
@@ -67,34 +70,21 @@
     <div class="header-controls">
       <!-- Language Switcher -->
       <div class="lang-switcher">
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="langService.currentLang() === 'ES'"
-          (click)="langService.setLanguage('ES')"
-        >
+        <button type="button" class="lang-btn" [class.active]="langService.currentLang() === 'ES'"
+          (click)="langService.setLanguage('ES')">
           ES
         </button>
         <span class="lang-divider">|</span>
-        <button
-          type="button"
-          class="lang-btn"
-          [class.active]="langService.currentLang() === 'EN'"
-          (click)="langService.setLanguage('EN')"
-        >
+        <button type="button" class="lang-btn" [class.active]="langService.currentLang() === 'EN'"
+          (click)="langService.setLanguage('EN')">
           EN
         </button>
       </div>
 
       <!-- Custom Dark / Light Theme Pill Toggle -->
-      <button
-        type="button"
-        class="theme-toggle-pill"
-        [class.dark-active]="themeService.isDarkMode()"
-        (click)="themeService.toggleTheme()"
-        [matTooltip]="themeService.isDarkMode() ? 'Modo Claro' : 'Modo Oscuro'"
-        aria-label="Cambiar tema"
-      >
+      <button type="button" class="theme-toggle-pill" [class.dark-active]="themeService.isDarkMode()"
+        (click)="themeService.toggleTheme()" [matTooltip]="themeService.isDarkMode() ? 'Modo Claro' : 'Modo Oscuro'"
+        aria-label="Cambiar tema">
         <div class="pill-thumb">
           <mat-icon class="thumb-icon">
             {{ themeService.isDarkMode() ? 'dark_mode' : 'light_mode' }}
@@ -105,12 +95,7 @@
       </button>
 
       <!-- Mobile Menu Button -->
-      <button
-        mat-icon-button
-        class="mobile-menu-btn"
-        [matMenuTriggerFor]="mobileMenu"
-        aria-label="Menú principal"
-      >
+      <button mat-icon-button class="mobile-menu-btn" [matMenuTriggerFor]="mobileMenu" aria-label="Menú principal">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
@@ -120,13 +105,9 @@
 <!-- Mobile Navigation Menu -->
 <mat-menu #mobileMenu="matMenu" class="mobile-nav-menu">
   @for (item of navItems; track item.route) {
-    <a
-      mat-menu-item
-      [routerLink]="item.route"
-      routerLinkActive="mobile-active"
-    >
-      <mat-icon>chevron_right</mat-icon>
-      <span>{{ langService.currentLang() === 'ES' ? item.labelES : item.labelEN }}</span>
-    </a>
+  <a mat-menu-item [routerLink]="item.route" routerLinkActive="mobile-active">
+    <mat-icon>chevron_right</mat-icon>
+    <span>{{ langService.currentLang() === 'ES' ? item.labelES : item.labelEN }}</span>
+  </a>
   }
 </mat-menu>

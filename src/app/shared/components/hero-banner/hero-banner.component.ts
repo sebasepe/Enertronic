@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { LanguageService } from '../../../core/services/language.service';
 
 export interface HeroSlide {
   id: number;
-  image: string;
+  type?: 'image' | 'video';
+  image?: string;
+  videoUrl?: string;
   titleES: string;
   titleEN: string;
   subtitleES: string;
@@ -25,6 +28,7 @@ export interface HeroSlide {
     RouterLink,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
   ],
   templateUrl: './hero-banner.component.html',
   styleUrl: './hero-banner.component.scss',
@@ -38,7 +42,8 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   public slides: HeroSlide[] = [
     {
       id: 0,
-      image: 'assets/slides/slide-1.png',
+      type: 'video',
+      videoUrl: 'assets/slides/video.mp4',
       titleES: 'CONTROL TOTAL DE SU OPERACIÓN INDUSTRIAL',
       titleEN: 'TOTAL CONTROL OF YOUR INDUSTRIAL OPERATION',
       subtitleES: 'SCADA · TELEMETRÍA · IIoT CON IA · LoRaWAN · VISIÓN REMOTA',
@@ -93,6 +98,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     },
   ];
 
+  public readonly isPlaying = signal<boolean>(true);
+  public readonly isMuted = signal<boolean>(true);
+
   ngOnInit(): void {
     this.startAutoPlay();
   }
@@ -101,9 +109,35 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.stopAutoPlay();
   }
 
+  public onVideoEnded(): void {
+    const allVideos = document.querySelectorAll('video');
+    allVideos.forEach((v) => {
+      v.pause();
+    });
+    this.nextSlide();
+  }
+
   public goToSlide(index: number): void {
+    // Pausar cualquier video activo al cambiar de diapositiva
+    const allVideos = document.querySelectorAll('video');
+    allVideos.forEach((v) => {
+      v.pause();
+    });
+
     this.activeSlide.set(index);
     this.restartAutoPlay();
+
+    if (this.slides[index]?.type === 'video') {
+      setTimeout(() => {
+        const activeVideo = this.getActiveVideo();
+        if (activeVideo) {
+          activeVideo.currentTime = 0;
+          activeVideo.play().then(() => {
+            this.isPlaying.set(true);
+          }).catch(() => {});
+        }
+      }, 50);
+    }
   }
 
   public prevSlide(): void {
@@ -118,15 +152,71 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     this.goToSlide(next);
   }
 
+  public getActiveVideo(): HTMLVideoElement | null {
+    return document.querySelector('.hero-slide.active video') as HTMLVideoElement;
+  }
+
+  public togglePlayPause(event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+    const video = this.getActiveVideo();
+    if (!video) return;
+    if (video.paused) {
+      video.play().then(() => {
+        this.isPlaying.set(true);
+      }).catch(() => {});
+    } else {
+      video.pause();
+      this.isPlaying.set(false);
+    }
+  }
+
+  public toggleMute(event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+    const video = this.getActiveVideo();
+    if (!video) return;
+    video.muted = !video.muted;
+    this.isMuted.set(video.muted);
+  }
+
+  public toggleFullscreen(event: Event): void {
+    event.stopPropagation();
+    event.preventDefault();
+    const video = this.getActiveVideo();
+    if (!video) return;
+
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    } else {
+      if (video.requestFullscreen) {
+        video.requestFullscreen().catch(() => {});
+      } else if ((video as any).webkitRequestFullscreen) {
+        (video as any).webkitRequestFullscreen();
+      } else if ((video as any).msRequestFullscreen) {
+        (video as any).msRequestFullscreen();
+      }
+    }
+  }
+
   private startAutoPlay(): void {
-    this.autoPlayTimer = setInterval(() => {
+    this.stopAutoPlay();
+    const currentSlide = this.slides[this.activeSlide()];
+    
+    // Si la diapositiva actual es un video, avanza automáticamente al finalizar el video (evento ended)
+    if (currentSlide?.type === 'video') {
+      return;
+    }
+
+    // Para las imágenes normales, avanza a los 6.5 segundos
+    this.autoPlayTimer = setTimeout(() => {
       this.nextSlide();
     }, 6500);
   }
 
   private stopAutoPlay(): void {
     if (this.autoPlayTimer) {
-      clearInterval(this.autoPlayTimer);
+      clearTimeout(this.autoPlayTimer);
     }
   }
 

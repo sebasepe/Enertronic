@@ -1,33 +1,36 @@
 <div class="solutions-page-container">
   <div class="page-header">
-    <span class="badge">{{ langService.currentLang() === 'ES' ? 'TECNOLOGÍA E INGENIERÍA' : 'TECHNOLOGY & ENGINEERING' }}</span>
+    <span class="badge">{{ langService.currentLang() === 'ES' ? 'TECNOLOGÍA E INGENIERÍA' : 'TECHNOLOGY & ENGINEERING'
+      }}</span>
     <h1>{{ langService.currentLang() === 'ES' ? 'NUESTRAS SOLUCIONES' : 'OUR SOLUTIONS' }}</h1>
     <p>
       {{
-        langService.currentLang() === 'ES'
-          ? 'Soluciones integrales de telemetría IoT, redes satelitales, sistemas SCADA y control de procesos para sectores industriales críticos.'
-          : 'Comprehensive IoT telemetry solutions, satellite networks, SCADA systems, and process control for critical industrial sectors.'
+      langService.currentLang() === 'ES'
+      ? 'Soluciones integrales de telemetría IoT, redes satelitales, sistemas SCADA y control de procesos para sectores
+      industriales críticos.'
+      : 'Comprehensive IoT telemetry solutions, satellite networks, SCADA systems, and process control for critical
+      industrial sectors.'
       }}
     </p>
   </div>
 
   <div class="solutions-grid">
     @for (sol of solutionList; track sol.titleES) {
-      <div class="sol-card">
-        <div class="card-header">
-          <div class="icon-box">
-            <mat-icon>{{ sol.icon }}</mat-icon>
-          </div>
-          <h3 class="sol-title">{{ langService.currentLang() === 'ES' ? sol.titleES : sol.titleEN }}</h3>
+    <div class="sol-card">
+      <div class="card-header">
+        <div class="icon-box">
+          <mat-icon>{{ sol.icon }}</mat-icon>
         </div>
-        <p class="sol-desc">{{ langService.currentLang() === 'ES' ? sol.descES : sol.descEN }}</p>
-        <div class="card-footer">
-          <a routerLink="/contactos" class="read-more-btn">
-            <span>{{ langService.currentLang() === 'ES' ? 'Leer más' : 'Read more' }}</span>
-            <mat-icon>arrow_forward</mat-icon>
-          </a>
-        </div>
+        <h3 class="sol-title">{{ langService.currentLang() === 'ES' ? sol.titleES : sol.titleEN }}</h3>
       </div>
+      <p class="sol-desc">{{ langService.currentLang() === 'ES' ? sol.descES : sol.descEN }}</p>
+      <div class="card-footer">
+        <a routerLink="/contactos" class="read-more-btn">
+          <span>{{ langService.currentLang() === 'ES' ? 'Leer más' : 'Read more' }}</span>
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
+      </div>
+    </div>
     }
   </div>
 </div>

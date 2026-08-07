@@ -5,19 +5,62 @@
         class="hero-slide"
         [class.active]="i === activeSlide()"
       >
-        <!-- Banner Image -->
-        <img
-          [src]="slide.image"
-          [alt]="langService.currentLang() === 'ES' ? slide.titleES : slide.titleEN"
-          class="banner-img"
-          loading="eager"
-        />
-
-        <!-- Clickable Overlay Link to CTA Route -->
-        <a [routerLink]="slide.ctaRoute" class="slide-click-overlay" [attr.aria-label]="slide.titleES"></a>
+        @if (slide.type === 'video' && slide.videoUrl) {
+          <video
+            [src]="slide.videoUrl"
+            autoplay
+            muted
+            playsinline
+            class="banner-video"
+            (click)="togglePlayPause($event)"
+            (ended)="onVideoEnded()"
+          ></video>
+        } @else {
+          <!-- Banner Image -->
+          <img
+            [src]="slide.image"
+            [alt]="langService.currentLang() === 'ES' ? slide.titleES : slide.titleEN"
+            class="banner-img"
+            loading="eager"
+          />
+          <!-- Clickable Overlay Link to CTA Route -->
+          <a [routerLink]="slide.ctaRoute" class="slide-click-overlay" [attr.aria-label]="slide.titleES"></a>
+        }
       </div>
     }
   </div>
+
+  <!-- Video Floating Controls (Visible when current slide is a video) -->
+  @if (slides[activeSlide()]?.type === 'video') {
+    <div class="video-controls-overlay">
+      <button
+        type="button"
+        class="video-ctrl-btn"
+        (click)="togglePlayPause($event)"
+        [matTooltip]="isPlaying() ? 'Pausar' : 'Reproducir'"
+      >
+        <mat-icon>{{ isPlaying() ? 'pause' : 'play_arrow' }}</mat-icon>
+      </button>
+
+      <button
+        type="button"
+        class="video-ctrl-btn"
+        (click)="toggleMute($event)"
+        [matTooltip]="isMuted() ? 'Activar sonido' : 'Silenciar'"
+      >
+        <mat-icon>{{ isMuted() ? 'volume_off' : 'volume_up' }}</mat-icon>
+      </button>
+
+      <button
+        type="button"
+        class="video-ctrl-btn"
+        (click)="toggleFullscreen($event)"
+        matTooltip="Pantalla completa"
+      >
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+    </div>
+  }
 
   <!-- Carousel Previous Control -->
   <button
