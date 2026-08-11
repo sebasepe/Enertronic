@@ -1,0 +1,209 @@
+@if (solution) {
+<div class="solution-detail-page">
+  
+  <!-- HERO SPLIT SECTION (Structure from Sketch: Left = Nombre de solución | Right = Imagen referencial) -->
+  <section class="solution-hero-section">
+    <div class="hero-container">
+      
+      <!-- HERO LEFT COLUMN: Nombre de Solución -->
+      <div class="hero-left-col">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-nav" aria-label="breadcrumb">
+          <a routerLink="/home" class="crumb-link">
+            <mat-icon>home</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Inicio' : 'Home' }}</span>
+          </a>
+          <mat-icon class="crumb-sep">chevron_right</mat-icon>
+          <a routerLink="/soluciones" class="crumb-link">
+            <span>{{ langService.currentLang() === 'ES' ? 'Soluciones' : 'Solutions' }}</span>
+          </a>
+          <mat-icon class="crumb-sep">chevron_right</mat-icon>
+          <span class="crumb-active">{{ langService.currentLang() === 'ES' ? solution.shortTitleES : solution.shortTitleEN }}</span>
+        </nav>
+
+        <!-- Category Badge -->
+        <div class="category-badge">
+          <mat-icon>{{ solution.icon }}</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? solution.categoryES : solution.categoryEN }}</span>
+        </div>
+
+        <!-- Nombre de Solución (Main Title) -->
+        <h1 class="solution-title">
+          {{ langService.currentLang() === 'ES' ? solution.titleES : solution.titleEN }}
+        </h1>
+
+        <!-- Tagline / Subtitle -->
+        <p class="solution-tagline">
+          {{ langService.currentLang() === 'ES' ? solution.taglineES : solution.taglineEN }}
+        </p>
+
+        <!-- Key Feature Pills -->
+        <div class="highlights-list">
+          @for (item of (langService.currentLang() === 'ES' ? solution.highlightsES : solution.highlightsEN); track item) {
+          <div class="highlight-pill">
+            <mat-icon class="check-icon">check_circle</mat-icon>
+            <span>{{ item }}</span>
+          </div>
+          }
+        </div>
+
+        <!-- Action CTA Buttons -->
+        <div class="hero-actions">
+          <a routerLink="/contactos" mat-raised-button color="primary" class="primary-btn">
+            <mat-icon>support_agent</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Solicitar Cotización' : 'Request Quote' }}</span>
+          </a>
+          <a routerLink="/contactos" mat-outlined-button class="secondary-btn">
+            <mat-icon>article</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Consultar Ficha Técnica' : 'Technical Datasheet' }}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- HERO RIGHT COLUMN: Imagen Referencial de la Solución -->
+      <div class="hero-right-col">
+        <div class="referential-image-card">
+          <div class="image-wrapper">
+            <img [src]="solution.referentialImage" [alt]="solution.titleES" class="solution-img" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MIDDLE SECTION (Structure from Sketch: Texto de qué trata la solución) -->
+  <section class="solution-content-section">
+    <div class="content-container">
+      
+      <!-- Section Header -->
+      <div class="section-title-wrapper text-center">
+        <span class="section-badge">{{ langService.currentLang() === 'ES' ? 'INFORMACIÓN TÉCNICA DETALLADA' : 'DETAILED TECHNICAL INFORMATION' }}</span>
+        <h2 class="section-heading">
+          {{ langService.currentLang() === 'ES' ? '¿En qué consiste la solución?' : 'What does the solution consist of?' }}
+        </h2>
+        <p class="section-subtext">
+          {{ langService.currentLang() === 'ES' ? 'Arquitectura de ingeniería, especificaciones y beneficios operativos para entornos industriales exigentes.' : 'Engineering architecture, specifications, and operational benefits for demanding industrial environments.' }}
+        </p>
+      </div>
+
+      <!-- Main Overview Article -->
+      <div class="overview-box">
+        <div class="box-icon-col">
+          <mat-icon>{{ solution.icon }}</mat-icon>
+        </div>
+        <div class="box-text-col">
+          <h3>{{ langService.currentLang() === 'ES' ? 'Descripción General & Arquitectura' : 'General Overview & Architecture' }}</h3>
+          <p class="overview-text">
+            {{ langService.currentLang() === 'ES' ? solution.overviewES : solution.overviewEN }}
+          </p>
+          <p class="overview-extra">
+            {{ langService.currentLang() === 'ES' ? solution.descES : solution.descEN }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Models Section (if available) -->
+      @if (solution.models && solution.models.length > 0) {
+      <div class="models-section">
+        <h3 class="subsection-title">
+          <mat-icon>developer_board</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? 'Modelos Disponibles' : 'Available Models' }}</span>
+        </h3>
+
+        <div class="models-grid">
+          @for (model of solution.models; track model.name) {
+          <div class="model-card">
+            <div class="model-header">
+              <mat-icon class="model-icon">hardware</mat-icon>
+              <h4 class="model-name">{{ model.name }}</h4>
+            </div>
+            <p class="model-specs">{{ langService.currentLang() === 'ES' ? model.specsES : model.specsEN }}</p>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      <!-- Technical Specifications Grid -->
+      <div class="specs-section">
+        <h3 class="subsection-title">
+          <mat-icon>tune</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? 'Ficha Técnica y Especificaciones' : 'Technical Specs & Datasheet' }}</span>
+        </h3>
+
+        <div class="specs-grid">
+          @for (spec of solution.specs; track spec.labelES) {
+          <div class="spec-card">
+            <div class="spec-icon">
+              <mat-icon>check_circle_outline</mat-icon>
+            </div>
+            <div class="spec-info">
+              <span class="spec-label">{{ langService.currentLang() === 'ES' ? spec.labelES : spec.labelEN }}</span>
+              <span class="spec-value">{{ langService.currentLang() === 'ES' ? spec.valueES : spec.valueEN }}</span>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Key Benefits & Advantages -->
+      <div class="benefits-section">
+        <h3 class="subsection-title">
+          <mat-icon>stars</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? 'Ventajas y Beneficios Operativos' : 'Key Benefits & Operational Advantages' }}</span>
+        </h3>
+
+        <div class="benefits-grid">
+          @for (benefit of solution.benefits; track benefit.titleES) {
+          <div class="benefit-card">
+            <div class="benefit-icon-box">
+              <mat-icon>{{ benefit.icon }}</mat-icon>
+            </div>
+            <h4>{{ langService.currentLang() === 'ES' ? benefit.titleES : benefit.titleEN }}</h4>
+            <p>{{ langService.currentLang() === 'ES' ? benefit.descES : benefit.descEN }}</p>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Industrial Applications & Use Cases -->
+      <div class="applications-section">
+        <h3 class="subsection-title">
+          <mat-icon>factory</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? 'Aplicaciones y Sectores Industriales' : 'Applications & Industrial Sectors' }}</span>
+        </h3>
+
+        <div class="apps-grid">
+          @for (app of (langService.currentLang() === 'ES' ? solution.applicationsES : solution.applicationsEN); track app) {
+          <div class="app-item">
+            <div class="app-dot"></div>
+            <span>{{ app }}</span>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Bottom Consultation Banner -->
+      <div class="detail-cta-banner">
+        <div class="cta-content">
+          <h3>
+            {{ langService.currentLang() === 'ES' ? '¿Deseas implementar esta solución en tu planta o proyecto?' : 'Do you want to implement this solution in your plant or project?' }}
+          </h3>
+          <p>
+            {{ langService.currentLang() === 'ES' ? 'Nuestros ingenieros especialistas en telemetría e integración SCADA dimensionan la arquitectura perfecta para tus requerimientos.' : 'Our telemetry and SCADA integration engineers design the perfect architecture for your specific requirements.' }}
+          </p>
+        </div>
+        <a routerLink="/contactos" mat-raised-button color="accent" class="cta-btn">
+          <mat-icon>headset_mic</mat-icon>
+          <span>{{ langService.currentLang() === 'ES' ? 'Hablar con un Especialista' : 'Speak to a Specialist' }}</span>
+        </a>
+      </div>
+
+
+
+    </div>
+  </section>
+
+</div>
+}

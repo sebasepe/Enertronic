@@ -8,12 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
-
-export interface MegaMenuItem {
-  icon: string;
-  shortTitleES: string;
-  shortTitleEN: string;
-}
+import { SolutionsService, SolutionItem } from '../../services/solutions.service';
 
 @Component({
   selector: 'app-header',
@@ -34,6 +29,7 @@ export interface MegaMenuItem {
 export class HeaderComponent {
   public themeService = inject(ThemeService);
   public langService = inject(LanguageService);
+  public solutionsService = inject(SolutionsService);
 
   public navItems = [
     { labelES: 'INICIO', labelEN: 'HOME', route: '/home' },
@@ -43,61 +39,7 @@ export class HeaderComponent {
     { labelES: 'CONTACTOS', labelEN: 'CONTACT', route: '/contactos' },
   ];
 
-  public solutionsList: MegaMenuItem[] = [
-    {
-      icon: 'cell_tower',
-      shortTitleES: 'Telemetría Celular 2G 3G 4G',
-      shortTitleEN: '2G 3G 4G Cellular Telemetry',
-    },
-    {
-      icon: 'satellite_alt',
-      shortTitleES: 'Telemetría Satelital Iridium',
-      shortTitleEN: 'Iridium Satellite Telemetry',
-    },
-    {
-      icon: 'satellite',
-      shortTitleES: 'Telemetría Satelital STARLINK',
-      shortTitleEN: 'STARLINK Satellite Telemetry',
-    },
-    {
-      icon: 'rss_feed',
-      shortTitleES: 'Telemetría Radio Mesh 2.4GHz',
-      shortTitleEN: '2.4GHz Mesh Radio Telemetry',
-    },
-    {
-      icon: 'swap_calls',
-      shortTitleES: 'Telemetría MQTT',
-      shortTitleEN: 'MQTT Telemetry',
-    },
-    {
-      icon: 'lan',
-      shortTitleES: 'Telemetría Ethernet',
-      shortTitleEN: 'Ethernet Telemetry',
-    },
-    {
-      icon: 'wifi',
-      shortTitleES: 'Telemetría WIFI',
-      shortTitleEN: 'WiFi Telemetry',
-    },
-    {
-      icon: 'public',
-      shortTitleES: 'Satelital Inmarsat BGAN M2M',
-      shortTitleEN: 'Inmarsat BGAN M2M Satellite',
-    },
-    {
-      icon: 'sensors',
-      shortTitleES: 'Telemetría LoRaWAN',
-      shortTitleEN: 'LoRaWAN Telemetry',
-    },
-    {
-      icon: 'transform',
-      shortTitleES: 'Túnel Inalámbrico 2.4GHz',
-      shortTitleEN: '2.4GHz Wireless Tunnel',
-    },
-    {
-      icon: 'visibility',
-      shortTitleES: 'Visión Remota & SCADA',
-      shortTitleEN: 'Remote Vision & SCADA',
-    },
-  ];
+  public get solutionsList(): SolutionItem[] {
+    return this.solutionsService.getSolutions();
+  }
 }

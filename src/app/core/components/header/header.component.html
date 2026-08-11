@@ -40,8 +40,8 @@
             </div>
 
             <div class="mega-menu-grid">
-              @for (sol of solutionsList; track sol.shortTitleES) {
-              <a routerLink="/soluciones" class="mega-card">
+              @for (sol of solutionsList; track sol.slug) {
+              <a [routerLink]="['/soluciones', sol.slug]" class="mega-card">
                 <div class="mega-icon-box">
                   <mat-icon>{{ sol.icon }}</mat-icon>
                 </div>
