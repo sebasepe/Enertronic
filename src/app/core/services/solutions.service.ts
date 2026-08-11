@@ -332,7 +332,7 @@ export class SolutionsService {
         'Implementación del protocolo MQTT mediante Scripts en dispositivos GRD-MQ-4G de EXEMYS para comunicación ligera, encriptada y directa con Brokers AWS, Azure, Mosquitto y Kepserver OPC Server.',
       descEN:
         'Implementation of MQTT protocol via Scripts on EXEMYS GRD-MQ-4G devices for lightweight, encrypted, direct communication with AWS, Azure, Mosquitto, and Kepserver OPC Server Brokers.',
-      referentialImage: 'assets/slides/slide-2.jpg',
+      referentialImage: 'assets/solutions/telemetria-mqtt.jpg',
       imageBadgeES: 'Dispositivo EXEMYS GRD-MQ-4G con MQTTS',
       imageBadgeEN: 'EXEMYS GRD-MQ-4G Device with MQTTS',
       overviewES:
@@ -405,7 +405,7 @@ export class SolutionsService {
         'Dispositivos cLAN-XF de EXEMYS para supervisar y controlar remotamente sensores, transductores y PLCs a través de redes Ethernet/WiFi con protocolo Modbus TCP, SNMP, FTP y Scripts.',
       descEN:
         'EXEMYS cLAN-XF devices for remote supervision and control of sensors, transducers, and PLCs over Ethernet/WiFi networks with Modbus TCP, SNMP, FTP, and Scripts.',
-      referentialImage: 'assets/slides/slide-3.jpg',
+      referentialImage: 'assets/solutions/telemetria-ethernet.jpg',
       imageBadgeES: 'Módem cLAN-XF Ethernet Exemys',
       imageBadgeEN: 'Exemys cLAN-XF Ethernet Modem',
       overviewES:
@@ -478,7 +478,7 @@ export class SolutionsService {
         'SMART RTU con comunicación WiFi y Celular para adquisición de datos en tiempo real de fuentes Modbus RTU (RS232/RS485) y Modbus TCP por Ethernet con buffer offline de 100,000 eventos.',
       descEN:
         'SMART RTU with WiFi and Cellular communication for real-time data acquisition from Modbus RTU (RS232/RS485) and Modbus TCP sources with a 100,000-event offline buffer.',
-      referentialImage: 'assets/slides/slide-1.jpg',
+      referentialImage: 'assets/solutions/telemetria-wifi.jpg',
       imageBadgeES: 'SMART RTU WiFi Industrial Exemys',
       imageBadgeEN: 'Exemys Industrial WiFi SMART RTU',
       overviewES:
@@ -538,7 +538,7 @@ export class SolutionsService {
         'Monitoreo satelital en tiempo real de estaciones y activos industriales aislados mediante el servicio Inmarsat BGAN M2M, integrando Modbus RTU/TCP, buffer de 100,000 eventos y lógica de control.',
       descEN:
         'Real-time satellite monitoring of remote stations and isolated industrial assets via Inmarsat BGAN M2M, integrating Modbus RTU/TCP, 100,000-event buffer, and control logic.',
-      referentialImage: 'assets/slides/slide-2.jpg',
+      referentialImage: 'assets/solutions/telemetria-satelital-inmarsat-bgan-m2m.jpg',
       imageBadgeES: 'Terminal Satelital Inmarsat BGAN M2M',
       imageBadgeEN: 'Inmarsat BGAN M2M Satellite Terminal',
       overviewES:
@@ -598,7 +598,7 @@ export class SolutionsService {
         'Dispositivo wRemote-LoRa y Lorificador® de EXEMYS para convertir entradas analógicas (0-10V/4-20mA), digitales y registros Modbus RTU a redes LoRaWAN en bandas libres (AU915/US915).',
       descEN:
         'EXEMYS wRemote-LoRa device and Lorificador® to convert analog (0-10V/4-20mA), digital inputs, and Modbus RTU registers to LoRaWAN networks on free bands (AU915/US915).',
-      referentialImage: 'assets/slides/slide-3.jpg',
+      referentialImage: 'assets/solutions/telemetria-lorawan.jpg',
       imageBadgeES: 'Dispositivo wRemote-LoRa / Lorificador® Exemys',
       imageBadgeEN: 'Exemys wRemote-LoRa Device / Lorificador®',
       overviewES:
@@ -671,7 +671,7 @@ export class SolutionsService {
         'Dispositivo wTunnel de EXEMYS para reflejar inalámbricamente las entradas de un equipo como salidas en otro, además de replicar puertos seriales RS232/RS485 o USB sin cables ni PLC.',
       descEN:
         'EXEMYS wTunnel device to wirelessly mirror inputs from one unit as outputs on another, replicating RS232/RS485 or USB serial ports without wires or PLCs.',
-      referentialImage: 'assets/slides/slide-1.jpg',
+      referentialImage: 'assets/solutions/tunel-inalambrico-2-4ghz.jpg',
       imageBadgeES: 'Sistema wTunnel Exemys Transmisor/Receptor',
       imageBadgeEN: 'Exemys wTunnel Transmitter/Receiver System',
       overviewES:
@@ -748,7 +748,7 @@ export class SolutionsService {
         'Integración de telemetría industrial, redes inalámbricas y sistemas SCADA con soluciones avanzadas de visión remota y supervisión operacional PROVIX para ambientes extremos (Sector Minero e Industrial).',
       descEN:
         'Integration of industrial telemetry, wireless networks, and SCADA with PROVIX advanced remote vision and operational monitoring for extreme environments (Mining & Industry).',
-      referentialImage: 'assets/slides/slide-2.jpg',
+      referentialImage: 'assets/solutions/telemetria-scada-vision-remota-provix.jpg',
       imageBadgeES: 'Sistema de Visión Remota Industrial PROVIX + SCADA',
       imageBadgeEN: 'PROVIX Industrial Remote Vision System + SCADA',
       overviewES:
