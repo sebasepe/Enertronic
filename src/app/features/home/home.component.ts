@@ -1,9 +1,8 @@
-import { Component, inject, signal, OnInit, OnDestroy, PLATFORM_ID } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
 import { HeroBannerComponent } from '../../shared/components/hero-banner/hero-banner.component';
 import { LanguageService } from '../../core/services/language.service';
 
@@ -15,7 +14,6 @@ import { LanguageService } from '../../core/services/language.service';
     RouterLink,
     MatButtonModule,
     MatIconModule,
-    MatCardModule,
     HeroBannerComponent,
   ],
   templateUrl: './home.component.html',

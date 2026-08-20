@@ -4,7 +4,6 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SolutionsService, SolutionItem } from '../../../core/services/solutions.service';
 import { LanguageService } from '../../../core/services/language.service';
@@ -18,7 +17,6 @@ import { LanguageService } from '../../../core/services/language.service';
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    MatCardModule,
     MatTabsModule,
   ],
   templateUrl: './solution-detail.component.html',

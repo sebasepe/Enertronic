@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -14,7 +13,6 @@ import { LanguageService } from '../../core/services/language.service';
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
     MatIconModule,
     MatButtonModule,
     MatInputModule,

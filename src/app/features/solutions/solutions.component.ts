@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { LanguageService } from '../../core/services/language.service';
 import { SolutionsService, SolutionItem } from '../../core/services/solutions.service';
@@ -9,7 +8,7 @@ import { SolutionsService, SolutionItem } from '../../core/services/solutions.se
 @Component({
   selector: 'app-solutions',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatCardModule, MatIconModule],
+  imports: [CommonModule, RouterLink, MatIconModule],
   templateUrl: './solutions.component.html',
   styleUrl: './solutions.component.scss',
 })
