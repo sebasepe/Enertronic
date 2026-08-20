@@ -45,5 +45,33 @@
         </p>
       </div>
     </div>
+
+    <!-- Valores Card -->
+    <div class="info-card values-card">
+      <div class="card-top-icon values-icon-bg">
+        <mat-icon>verified</mat-icon>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title values-title">{{ langService.currentLang() === 'ES' ? 'Valores' : 'Values' }}</h2>
+        <ul class="values-list">
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Experiencia y capacitación' : 'Experience and training' }}</span>
+          </li>
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Soluciones personalizadas' : 'Customized solutions' }}</span>
+          </li>
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Tecnología de vanguardia' : 'Cutting-edge technology' }}</span>
+          </li>
+          <li>
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Compromiso con la calidad' : 'Commitment to quality' }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
