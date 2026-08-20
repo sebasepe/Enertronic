@@ -53,6 +53,12 @@
     flex-shrink: 0;
   }
 
+  .top-bar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
   .top-link {
     color: #e2e8f0;
     text-decoration: none;

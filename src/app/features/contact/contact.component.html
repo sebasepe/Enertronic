@@ -105,11 +105,22 @@
 
         <div class="info-item">
           <div class="icon-circle">
+            <mat-icon>email</mat-icon>
+          </div>
+          <div class="info-content">
+            <h4 class="info-label">{{ langService.currentLang() === 'ES' ? 'Correo Electrónico:' : 'Email:' }}</h4>
+            <a href="mailto:ventas@enertronicperu.com" class="info-value">ventas&#64;enertronicperu.com</a>
+            <a href="mailto:proyectos@enertronic.peru" class="info-value">proyectos&#64;enertronic.peru</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon-circle">
             <mat-icon>location_on</mat-icon>
           </div>
           <div class="info-content">
             <h4 class="info-label">{{ langService.currentLang() === 'ES' ? 'Dirección:' : 'Address:' }}</h4>
-            <span class="info-value text-wrap">Calle Buganvilias Mz.C Lte.27 Ate-Lima-Perú</span>
+            <span class="info-value text-wrap">Calle Buganvilias Mz.C Lte.26 Ate-Lima-Perú</span>
           </div>
         </div>
 

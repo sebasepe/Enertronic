@@ -29,7 +29,7 @@ export class HomeComponent {
       id: 'sedapal',
       name: 'SEDAPAL',
       logo: 'assets/clients/sedapal.png',
-      sectorES: 'Saneamiento y Agua Potable',
+      sectorES: 'Agua Potable',
       sectorEN: 'Sanitation & Drinking Water',
     },
     {
