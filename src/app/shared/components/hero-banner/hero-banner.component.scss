@@ -49,6 +49,13 @@
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.banner-video {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 video:fullscreen,
