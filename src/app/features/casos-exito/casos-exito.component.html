@@ -1,0 +1,242 @@
+<div class="casos-container">
+  <!-- Hero Section -->
+  <header class="casos-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">
+        <mat-icon>workspace_premium</mat-icon>
+        {{ langService.currentLang() === 'ES' ? 'HISTORIAS DE ÉXITO ENERTRONIC' : 'ENERTRONIC SUCCESS STORIES' }}
+      </span>
+      <h1 class="hero-title">
+        {{ langService.currentLang() === 'ES' ? 'Casos de Éxito Industriales' : 'Industrial Case Studies' }}
+      </h1>
+      <p class="hero-subtitle">
+        {{
+          langService.currentLang() === 'ES'
+            ? 'Descubre cómo nuestras soluciones de telemetría IoT, redes satelitales y automatización SCADA transforman la eficiencia operativa de sectores críticos en el Perú e Hispanoamérica.'
+            : 'Discover how our IoT telemetry, satellite networks, and SCADA automation solutions transform operational efficiency across critical sectors in Peru and Latin America.'
+        }}
+      </p>
+    </div>
+  </header>
+
+  <!-- Key Metrics / Stats Bar -->
+  <section class="stats-bar">
+    <div class="stat-card">
+      <mat-icon class="stat-icon">task_alt</mat-icon>
+      <div class="stat-info">
+        <span class="stat-number">+50</span>
+        <span class="stat-label">{{ langService.currentLang() === 'ES' ? 'Proyectos Ejecutados' : 'Projects Completed' }}</span>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <mat-icon class="stat-icon">verified_user</mat-icon>
+      <div class="stat-info">
+        <span class="stat-number">99.9%</span>
+        <span class="stat-label">{{ langService.currentLang() === 'ES' ? 'Disponibilidad de Red' : 'Network Uptime' }}</span>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <mat-icon class="stat-icon">public</mat-icon>
+      <div class="stat-info">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">{{ langService.currentLang() === 'ES' ? 'Cobertura Nacional' : 'National Coverage' }}</span>
+      </div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <mat-icon class="stat-icon">headset_mic</mat-icon>
+      <div class="stat-info">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">{{ langService.currentLang() === 'ES' ? 'Soporte Especializado' : 'Expert Support' }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Section -->
+  <section class="casos-body">
+    <!-- Category Filter Chips -->
+    <div class="filter-section">
+      <span class="filter-title">
+        <mat-icon>filter_alt</mat-icon>
+        {{ langService.currentLang() === 'ES' ? 'Filtrar por sector:' : 'Filter by sector:' }}
+      </span>
+      <div class="chips-group">
+        @for (cat of categories; track cat.id) {
+          <button
+            type="button"
+            class="filter-chip"
+            [class.active]="selectedCategory() === cat.id"
+            (click)="filterCategory(cat.id)"
+          >
+            {{ langService.currentLang() === 'ES' ? cat.labelES : cat.labelEN }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Case Studies Cards Grid -->
+    <div class="studies-grid">
+      @for (study of filteredCaseStudies; track study.id) {
+        <mat-card class="study-card">
+          <div class="card-image-wrap">
+            <img [src]="study.image" [alt]="study.titleES" class="card-img" />
+            <div class="image-overlay"></div>
+            <span class="client-badge" [style.border-color]="study.accentColor">
+              <mat-icon class="badge-icon">{{ study.icon }}</mat-icon>
+              {{ study.client }}
+            </span>
+          </div>
+
+          <mat-card-content class="card-content">
+            <div class="meta-row">
+              <span class="category-tag">
+                {{ langService.currentLang() === 'ES' ? study.categoryES : study.categoryEN }}
+              </span>
+              <span class="location-tag">
+                <mat-icon>place</mat-icon>
+                {{ study.location }}
+              </span>
+            </div>
+
+            <h3 class="study-title">
+              {{ langService.currentLang() === 'ES' ? study.titleES : study.titleEN }}
+            </h3>
+
+            <p class="study-summary">
+              {{ langService.currentLang() === 'ES' ? study.summaryES : study.summaryEN }}
+            </p>
+
+            <!-- Metrics Pill -->
+            <div class="metrics-pill" [style.background-color]="study.accentColor + '15'" [style.border-color]="study.accentColor + '40'">
+              <mat-icon [style.color]="study.accentColor">trending_up</mat-icon>
+              <span [style.color]="study.accentColor">
+                {{ langService.currentLang() === 'ES' ? study.metricsES : study.metricsEN }}
+              </span>
+            </div>
+
+            <!-- Tech Tags -->
+            <div class="tech-stack">
+              @for (tech of study.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions class="card-actions">
+            <button mat-raised-button color="primary" class="detail-btn" (click)="openModal(study)">
+              <span>{{ langService.currentLang() === 'ES' ? 'Ver Caso Completo' : 'View Full Case' }}</span>
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-card">
+      <div class="cta-icon-box">
+        <mat-icon>settings_suggest</mat-icon>
+      </div>
+      <div class="cta-text">
+        <h2>
+          {{ langService.currentLang() === 'ES' ? '¿Tienes un proyecto industrial que requiere ingeniería especializada?' : 'Have an industrial project requiring specialized engineering?' }}
+        </h2>
+        <p>
+          {{ langService.currentLang() === 'ES' ? 'Diseñamos e implementamos soluciones llave en mano en telemetría, SCADA y automatización de procesos.' : 'We design and implement turnkey telemetry, SCADA, and process automation solutions.' }}
+        </p>
+      </div>
+      <a routerLink="/contactos" mat-raised-button color="primary" class="cta-btn">
+        <mat-icon>contact_mail</mat-icon>
+        <span>{{ langService.currentLang() === 'ES' ? 'Solicitar Asesoría' : 'Request Advice' }}</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Detail Modal Overlay -->
+  @if (selectedStudy(); as study) {
+    <div class="modal-backdrop" (click)="closeModal()">
+      <div class="modal-dialog" (click)="$event.stopPropagation()">
+        <header class="modal-header" [style.border-top-color]="study.accentColor">
+          <div class="modal-title-group">
+            <span class="modal-client" [style.color]="study.accentColor">
+              <mat-icon>{{ study.icon }}</mat-icon>
+              {{ study.client }} • {{ study.location }}
+            </span>
+            <h2>{{ langService.currentLang() === 'ES' ? study.titleES : study.titleEN }}</h2>
+          </div>
+          <button type="button" class="close-btn" (click)="closeModal()" aria-label="Cerrar">
+            <mat-icon>close</mat-icon>
+          </button>
+        </header>
+
+        <div class="modal-body">
+          <div class="modal-img-wrap">
+            <img [src]="study.image" [alt]="study.titleES" />
+            <div class="modal-metrics-badge" [style.background]="study.accentColor">
+              <mat-icon>star</mat-icon>
+              <span>{{ langService.currentLang() === 'ES' ? study.metricsES : study.metricsEN }}</span>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h4 class="block-heading challenge-heading">
+              <mat-icon>warning_amber</mat-icon>
+              {{ langService.currentLang() === 'ES' ? 'El Desafío' : 'The Challenge' }}
+            </h4>
+            <p>{{ langService.currentLang() === 'ES' ? study.challengeES : study.challengeEN }}</p>
+          </div>
+
+          <div class="section-block">
+            <h4 class="block-heading solution-heading">
+              <mat-icon>build_circle</mat-icon>
+              {{ langService.currentLang() === 'ES' ? 'Nuestra Solución' : 'Our Solution' }}
+            </h4>
+            <p>{{ langService.currentLang() === 'ES' ? study.solutionES : study.solutionEN }}</p>
+          </div>
+
+          <div class="section-block">
+            <h4 class="block-heading results-heading">
+              <mat-icon>check_circle</mat-icon>
+              {{ langService.currentLang() === 'ES' ? 'Resultados e Impacto Obtenido' : 'Results & Impact' }}
+            </h4>
+            <ul class="results-list">
+              @for (item of (langService.currentLang() === 'ES' ? study.resultsES : study.resultsEN); track item) {
+                <li>
+                  <mat-icon class="check-icon">done</mat-icon>
+                  <span>{{ item }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="section-block">
+            <h4 class="block-heading tech-heading">
+              <mat-icon>memory</mat-icon>
+              {{ langService.currentLang() === 'ES' ? 'Tecnologías Clave' : 'Key Technologies' }}
+            </h4>
+            <div class="modal-tech-stack">
+              @for (t of study.technologies; track t) {
+                <span class="modal-tech-chip">{{ t }}</span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <footer class="modal-footer">
+          <button mat-button class="modal-close-action" (click)="closeModal()">
+            {{ langService.currentLang() === 'ES' ? 'Cerrar' : 'Close' }}
+          </button>
+          <a routerLink="/contactos" mat-raised-button color="primary" (click)="closeModal()">
+            <mat-icon>send</mat-icon>
+            <span>{{ langService.currentLang() === 'ES' ? 'Consultar sobre un proyecto similar' : 'Inquire about similar project' }}</span>
+          </a>
+        </footer>
+      </div>
+    </div>
+  }
+</div>

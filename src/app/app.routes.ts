@@ -29,6 +29,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'casos-de-exito',
+    loadComponent: () =>
+      import('./features/casos-exito/casos-exito.component').then(
+        (m) => m.CasosDeExitoComponent
+      ),
+  },
+  {
     path: 'blog',
     loadComponent: () =>
       import('./features/blog/blog.component').then((m) => m.BlogComponent),

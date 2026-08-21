@@ -35,6 +35,7 @@ export class HeaderComponent {
     { labelES: 'INICIO', labelEN: 'HOME', route: '/home' },
     { labelES: 'LA EMPRESA', labelEN: 'COMPANY', route: '/la-empresa' },
     { labelES: 'SOLUCIONES', labelEN: 'SOLUTIONS', route: '/soluciones' },
+    { labelES: 'CASOS DE ÉXITO', labelEN: 'CASE STUDIES', route: '/casos-de-exito' },
     { labelES: 'BLOG', labelEN: 'BLOG', route: '/blog' },
     { labelES: 'CONTACTOS', labelEN: 'CONTACT', route: '/contactos' },
   ];
