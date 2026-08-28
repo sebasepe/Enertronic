@@ -57,11 +57,9 @@ export class BlogComponent implements OnInit, OnDestroy {
 
   public categories = [
     { id: 'ALL', labelES: 'Todos', labelEN: 'All' },
-    { id: 'ENERTRONIC', labelES: 'Enertronic Perú', labelEN: 'Enertronic Peru' },
-    { id: 'HACKSTER', labelES: 'Hackster.io (Hardware & IoT)', labelEN: 'Hackster.io (Hardware & IoT)' },
-    { id: 'ADVANTECH', labelES: 'Advantech (Routers & 4G/5G)', labelEN: 'Advantech (Routers & 4G/5G)' },
-    { id: 'IOT_ANALYTICS', labelES: 'IoT Analytics (SCADA)', labelEN: 'IoT Analytics (SCADA)' },
-    { id: 'IOT_FOR_ALL', labelES: 'IoT For All (Casos IIoT)', labelEN: 'IoT For All (IIoT Cases)' },
+    { id: 'HARDWARE_IOT', labelES: 'Hardware & IoT', labelEN: 'Hardware & IoT' },
+    { id: 'ROUTERS_4G_5G', labelES: 'Routers & 4G/5G', labelEN: 'Routers & 4G/5G' },
+    { id: 'SCADA', labelES: 'SCADA', labelEN: 'SCADA' },
   ];
 
   public rssPosts = signal<BlogPost[]>([]);
@@ -430,11 +428,15 @@ export class BlogComponent implements OnInit, OnDestroy {
     const cat = this.selectedCategory();
     const all = [...this.blogPosts, ...this.rssPosts()];
     if (cat === 'ALL') return all;
-    if (cat === 'ENERTRONIC') return all.filter((p) => p.sourceCategoryId === 'ENERTRONIC');
-    if (cat === 'HACKSTER') return all.filter((p) => p.sourceCategoryId === 'HACKSTER');
-    if (cat === 'ADVANTECH') return all.filter((p) => p.sourceCategoryId === 'ADVANTECH');
-    if (cat === 'IOT_ANALYTICS') return all.filter((p) => p.sourceCategoryId === 'IOT_ANALYTICS');
-    if (cat === 'IOT_FOR_ALL') return all.filter((p) => p.sourceCategoryId === 'IOT_FOR_ALL');
+    if (cat === 'HARDWARE_IOT') {
+      return all.filter((p) => p.sourceCategoryId === 'HACKSTER' || p.categoryES.includes('Hardware') || p.categoryES.includes('Radio Mesh'));
+    }
+    if (cat === 'ROUTERS_4G_5G') {
+      return all.filter((p) => p.sourceCategoryId === 'ADVANTECH' || p.categoryES.includes('MQTT') || p.categoryES.includes('Routers'));
+    }
+    if (cat === 'SCADA') {
+      return all.filter((p) => p.sourceCategoryId === 'IOT_ANALYTICS' || p.categoryES.includes('SCADA'));
+    }
     return all;
   }
 
