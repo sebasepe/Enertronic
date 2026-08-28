@@ -104,20 +104,13 @@
   <!-- CTA Banner -->
   <section class="cta-banner">
     <div class="cta-card">
-      <div class="cta-icon-box">
-        <mat-icon>settings_suggest</mat-icon>
+      <div class="cta-content">
+        <h2>{{ langService.currentLang() === 'ES' ? '¿Deseas asesoría técnica para tu proyecto en Perú?' : 'Need technical advice for your project in Peru?' }}</h2>
+        <p>{{ langService.currentLang() === 'ES' ? 'Nuestros ingenieros especialistas están listos para diseñar la arquitectura óptima de telemetría y SCADA.' : 'Our specialist engineers are ready to design the optimal telemetry and SCADA architecture.' }}</p>
       </div>
-      <div class="cta-text">
-        <h2>
-          {{ langService.currentLang() === 'ES' ? '¿Tienes un proyecto industrial que requiere ingeniería especializada?' : 'Have an industrial project requiring specialized engineering?' }}
-        </h2>
-        <p>
-          {{ langService.currentLang() === 'ES' ? 'Diseñamos e implementamos soluciones llave en mano en telemetría, SCADA y automatización de procesos.' : 'We design and implement turnkey telemetry, SCADA, and process automation solutions.' }}
-        </p>
-      </div>
-      <a routerLink="/contactos" mat-raised-button color="primary" class="cta-btn">
-        <mat-icon>contact_mail</mat-icon>
-        <span>{{ langService.currentLang() === 'ES' ? 'Solicitar Asesoría' : 'Request Advice' }}</span>
+      <a routerLink="/contactos" class="cta-button">
+        <mat-icon>chat</mat-icon>
+        <span>{{ langService.currentLang() === 'ES' ? 'CONTACTAR A UN INGENIERO' : 'CONTACT AN ENGINEER' }}</span>
       </a>
     </div>
   </section>
