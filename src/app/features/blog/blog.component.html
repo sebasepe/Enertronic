@@ -2,19 +2,32 @@
   <!-- Page Header -->
   <div class="blog-header">
     <div class="header-badge">
-      <mat-icon>article</mat-icon>
-      <span>{{ langService.currentLang() === 'ES' ? 'ARTÍCULOS TÉCNICOS & NOTICIAS' : 'TECHNICAL ARTICLES & NEWS' }}</span>
+      <mat-icon>rss_feed</mat-icon>
+      <span>{{ langService.currentLang() === 'ES' ? 'NOTICIAS EN VIVO Y ARTÍCULOS TÉCNICOS' : 'LIVE NEWS & TECHNICAL ARTICLES' }}</span>
     </div>
+    
     <h1 class="header-title">
-      {{ langService.currentLang() === 'ES' ? 'BLOG DE INGENIERÍA Y TELEMETRÍA EN PERÚ' : 'ENGINEERING & TELEMETRY BLOG IN PERU' }}
+      {{ langService.currentLang() === 'ES' ? 'BLOG DE INGENIERÍA, TELEMETRÍA E IIOT' : 'ENGINEERING, TELEMETRY & IIOT BLOG' }}
     </h1>
+
     <p class="header-subtitle">
       {{
         langService.currentLang() === 'ES'
-          ? 'Explora guías, análisis de soluciones y tendencias en telemetría IoT, software SCADA y automatización industrial.'
-          : 'Explore guides, solution analysis, and trends in IoT telemetry, SCADA software, and industrial automation.'
+          ? 'Explora tendencias globales y noticias automatizadas de Hackster.io, Advantech, IoT Analytics e IoT For All junto a nuestras guías de ingeniería.'
+          : 'Explore global trends and automated news from Hackster.io, Advantech, IoT Analytics, and IoT For All alongside our engineering guides.'
       }}
     </p>
+
+    <!-- Live Auto-Refresh Indicator -->
+    <div class="live-refresh-badge" [class.loading]="isLoadingRss()">
+      <span class="pulse-dot"></span>
+      <span class="badge-text">
+        {{ langService.currentLang() === 'ES'
+           ? (isLoadingRss() ? 'Actualizando noticias en vivo...' : 'Noticias en vivo')
+           : (isLoadingRss() ? 'Refreshing live feeds...' : 'Live News')
+        }}
+      </span>
+    </div>
   </div>
 
   <!-- Category Filter Bar -->
@@ -34,11 +47,11 @@
   <!-- Blog Posts Grid -->
   <div class="blog-grid">
     @for (post of filteredPosts; track post.id) {
-      <div class="blog-card">
+      <div class="blog-card" [class.is-rss]="post.externalUrl">
         <!-- Card Image Header -->
         <div class="card-image-wrapper">
-          <img [src]="post.image" [alt]="post.titleES" class="card-img" />
-          <div class="category-badge">
+          <img [src]="post.image" [alt]="post.titleES" class="card-img" (error)="post.image = 'assets/blog/blog-1.png'" />
+          <div class="category-badge" [class.rss-badge]="post.externalUrl">
             {{ langService.currentLang() === 'ES' ? post.categoryES : post.categoryEN }}
           </div>
         </div>
@@ -47,10 +60,10 @@
         <div class="card-body">
           <div class="card-meta">
             <span class="meta-item"><mat-icon>calendar_today</mat-icon> {{ post.date }}</span>
-            <span class="meta-item"><mat-icon>schedule</mat-icon> {{ post.readTime }}</span>
+            <span class="meta-item"><mat-icon>person</mat-icon> {{ post.author }}</span>
           </div>
 
-          <h3 class="card-title">
+          <h3 class="card-title" [title]="langService.currentLang() === 'ES' ? post.titleES : post.titleEN">
             {{ langService.currentLang() === 'ES' ? post.titleES : post.titleEN }}
           </h3>
 
@@ -106,7 +119,7 @@
       </div>
 
       <div class="modal-image-container">
-        <img [src]="selectedPost()?.image" [alt]="selectedPost()?.titleES" />
+        <img [src]="selectedPost()?.image" [alt]="selectedPost()?.titleES" (error)="selectedPost()!.image = 'assets/blog/blog-1.png'" />
       </div>
 
       <div class="modal-body-content">
@@ -116,6 +129,12 @@
       </div>
 
       <div class="modal-footer">
+        @if (selectedPost()?.externalUrl) {
+          <a [href]="selectedPost()?.externalUrl" target="_blank" rel="noopener noreferrer" class="btn-external-link">
+            <span>{{ langService.currentLang() === 'ES' ? 'VER NOTICIA EN FUENTE ORIGINAL' : 'READ ON ORIGINAL SOURCE' }}</span>
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        }
         <a routerLink="/contactos" class="modal-contact-btn" (click)="closeArticle()">
           <mat-icon>headset_mic</mat-icon>
           <span>{{ langService.currentLang() === 'ES' ? 'SOLICITAR COTIZACIÓN / ASESORÍA' : 'REQUEST QUOTE / ADVICE' }}</span>
