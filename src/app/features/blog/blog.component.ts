@@ -204,7 +204,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       contentEN: [excerptText],
       date: formattedDate,
       readTime: '3 min',
-      author: item.author || sourceName,
+      author: this.cleanAuthorName(item.author, sourceName),
       externalUrl: item.link,
       sourceName: sourceName,
       sourceCategoryId: sourceCategoryId,
@@ -236,6 +236,44 @@ export class BlogComponent implements OnInit, OnDestroy {
       return clean.substring(0, maxLength) + '...';
     }
     return clean;
+  }
+
+  private cleanAuthorName(rawAuthor: string, defaultName: string): string {
+    if (!rawAuthor || typeof rawAuthor !== 'string') return defaultName;
+
+    let author = rawAuthor.trim();
+    if (!author) return defaultName;
+
+    // 1. Si contiene paréntesis e.g. "... (Michal Hašek)", extraer el contenido del paréntesis
+    const matches = author.match(/\(([^()]+)\)/g);
+    if (matches && matches.length > 0) {
+      for (let i = matches.length - 1; i >= 0; i--) {
+        const matchText = matches[i].replace(/[()]/g, '').trim();
+        if (matchText && !matchText.includes('@') && !matchText.startsWith('http')) {
+          return matchText;
+        }
+      }
+    }
+
+    // 2. Decodificar URI si viene codificado (e.g. %C5%A1 -> š)
+    try {
+      author = decodeURIComponent(author);
+    } catch {}
+
+    // 3. Eliminar direcciones de email
+    author = author.replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, '').trim();
+
+    // 4. Eliminar dominios o URLs
+    author = author.replace(/https?:\/\/\S+/g, '').replace(/[a-zA-Z0-9-]+\.(com|org|net|io|edu|gov|co|pe)[^\s]*/gi, '').trim();
+
+    // 5. Limpiar caracteres de puntuación al inicio/final
+    author = author.replace(/^[\s\-_:;()]+|[\s\-_:;()]+$/g, '').trim();
+
+    if (!author || author.length < 2) {
+      return defaultName;
+    }
+
+    return author;
   }
 
   private formatRssDate(pubDateStr: string): string {
