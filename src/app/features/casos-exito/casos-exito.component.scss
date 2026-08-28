@@ -8,17 +8,14 @@
 /* Hero Section */
 .casos-hero {
   position: relative;
-  background: linear-gradient(135deg, #091224 0%, #111d35 50%, #030712 100%);
-  padding: 5rem 1.5rem 4rem;
+  background: transparent;
+  padding: 3rem 1.5rem 1.5rem;
   text-align: center;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: none;
 
   .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(2, 132, 199, 0.18), transparent 70%);
-    pointer-events: none;
+    display: none;
   }
 
   .hero-content {
