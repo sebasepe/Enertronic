@@ -84,8 +84,6 @@ export class BlogComponent implements OnInit, OnDestroy {
     this.isLoadingRss.set(true);
 
     const sources: Array<{ url: string; id: string; name: string; category: string; image: string; prefix: string }> = [
-      { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.hackster.io/news.atom',                             id: 'HACKSTER',      name: 'Hackster.io',   category: 'Hardware e IoT',         image: 'assets/blog/blog-1.png',    prefix: 'hackster' },
-      { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://icr.advantech.com/blog/rss',                           id: 'ADVANTECH',     name: 'Advantech',     category: 'Routers & 4G/5G',        image: 'assets/blog/blog-2.png',    prefix: 'advantech' },
       { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://iot-analytics.com/category/industrial-iot/feed/',       id: 'IOT_ANALYTICS', name: 'IoT Analytics', category: 'SCADA & IIoT',           image: 'assets/blog/blog-3.png',    prefix: 'iotanalytics' },
       { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.iotforall.com/feed',                               id: 'IOT_FOR_ALL',   name: 'IoT For All',   category: 'Casos IIoT',             image: 'assets/slides/slide-4.png', prefix: 'iotforall' },
     ];
