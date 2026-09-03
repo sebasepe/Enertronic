@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { LanguageService } from '../../core/services/language.service';
 
 @Component({
@@ -27,8 +28,10 @@ import { LanguageService } from '../../core/services/language.service';
 export class ContactComponent {
   public langService = inject(LanguageService);
   private fb = inject(FormBuilder);
+  private http = inject(HttpClient);
 
   public submitted = false;
+  public isSubmitting = false;
 
   public contactForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -39,13 +42,38 @@ export class ContactComponent {
   });
 
   public onSubmit(): void {
-    if (this.contactForm.valid) {
-      this.submitted = true;
-      setTimeout(() => {
-        this.contactForm.reset({ service: 'Programación PLC' });
-      }, 3000);
-    } else {
+    if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
+      return;
     }
+
+    this.isSubmitting = true;
+    this.submitted = false;
+
+    const payload = {
+      Nombre: this.contactForm.value.name,
+      Email: this.contactForm.value.email,
+      Teléfono: this.contactForm.value.phone || 'No especificado',
+      Servicio: this.contactForm.value.service,
+      Mensaje: this.contactForm.value.message,
+      _subject: 'Nuevo mensaje de contacto desde Enertronic',
+      _captcha: 'false',
+      _template: 'table',
+    };
+
+    this.http.post('https://formsubmit.co/ajax/sebasdarkate@gmail.com', payload).subscribe({
+      next: () => {
+        this.isSubmitting = false;
+        this.submitted = true;
+        this.contactForm.reset({ service: 'Programación PLC' });
+      },
+      error: (err) => {
+        console.error('Error enviando el formulario de contacto:', err);
+        this.isSubmitting = false;
+        this.submitted = true;
+        this.contactForm.reset({ service: 'Programación PLC' });
+      },
+    });
   }
 }
+

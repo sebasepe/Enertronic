@@ -67,8 +67,8 @@
           </div>
 
           <div class="form-action-row">
-            <button mat-raised-button class="submit-btn" type="submit">
-              <span>{{ langService.currentLang() === 'ES' ? 'ENVIAR MENSAJE' : 'SEND MESSAGE' }}</span>
+            <button mat-raised-button class="submit-btn" type="submit" [disabled]="isSubmitting">
+              <span>{{ isSubmitting ? (langService.currentLang() === 'ES' ? 'ENVIANDO...' : 'SENDING...') : (langService.currentLang() === 'ES' ? 'ENVIAR MENSAJE' : 'SEND MESSAGE') }}</span>
             </button>
           </div>
 
