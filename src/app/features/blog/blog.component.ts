@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LanguageService } from '../../core/services/language.service';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { Subscription, timer, forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -40,6 +41,7 @@ export interface BlogPost {
     MatButtonModule,
     MatChipsModule,
     MatDialogModule,
+    TranslatePipe,
   ],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',

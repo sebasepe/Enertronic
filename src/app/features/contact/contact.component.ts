@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LanguageService } from '../../core/services/language.service';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 export interface CountryCode {
   code: string;
@@ -30,6 +31,7 @@ export interface CountryCode {
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslatePipe,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',

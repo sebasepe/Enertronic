@@ -4,18 +4,10 @@
     <div class="hero-content">
       <span class="hero-badge">
         <mat-icon>workspace_premium</mat-icon>
-        {{ langService.currentLang() === 'ES' ? 'HISTORIAS DE ÉXITO ENERTRONIC' : 'ENERTRONIC SUCCESS STORIES' }}
+        {{ 'CASOS.BADGE' | translate }}
       </span>
-      <h1 class="hero-title">
-        {{ langService.currentLang() === 'ES' ? 'Casos de Éxito Industriales' : 'Industrial Case Studies' }}
-      </h1>
-      <p class="hero-subtitle">
-        {{
-          langService.currentLang() === 'ES'
-            ? 'Descubre cómo nuestras soluciones de telemetría IoT, redes satelitales y automatización SCADA transforman la eficiencia operativa de sectores críticos en el Perú.'
-            : 'Discover how our IoT telemetry, satellite networks, and SCADA automation solutions transform operational efficiency across critical sectors in Peru.'
-        }}
-      </p>
+      <h1 class="hero-title">{{ 'CASOS.TITLE' | translate }}</h1>
+      <p class="hero-subtitle">{{ 'CASOS.SUBTITLE' | translate }}</p>
     </div>
   </header>
 
@@ -26,7 +18,7 @@
     <div class="filter-section">
       <span class="filter-title">
         <mat-icon>filter_alt</mat-icon>
-        {{ langService.currentLang() === 'ES' ? 'Filtrar por sector:' : 'Filter by sector:' }}
+        {{ 'CASOS.FILTER_LABEL' | translate }}
       </span>
       <div class="chips-group">
         @for (cat of categories; track cat.id) {
@@ -92,7 +84,7 @@
 
           <mat-card-actions class="card-actions">
             <button mat-raised-button color="primary" class="detail-btn" (click)="openModal(study)">
-              <span>{{ langService.currentLang() === 'ES' ? 'Ver Caso Completo' : 'View Full Case' }}</span>
+              <span>{{ 'CASOS.VIEW_FULL' | translate }}</span>
               <mat-icon>arrow_forward</mat-icon>
             </button>
           </mat-card-actions>
@@ -105,12 +97,12 @@
   <section class="cta-banner">
     <div class="cta-card">
       <div class="cta-content">
-        <h2>{{ langService.currentLang() === 'ES' ? '¿Deseas asesoría técnica para tu proyecto en Perú?' : 'Need technical advice for your project in Peru?' }}</h2>
-        <p>{{ langService.currentLang() === 'ES' ? 'Nuestros ingenieros especialistas están listos para diseñar la arquitectura óptima de telemetría y SCADA.' : 'Our specialist engineers are ready to design the optimal telemetry and SCADA architecture.' }}</p>
+        <h2>{{ 'CASOS.CTA_TITLE' | translate }}</h2>
+        <p>{{ 'CASOS.CTA_DESC' | translate }}</p>
       </div>
       <a routerLink="/contactos" class="cta-button">
         <mat-icon>chat</mat-icon>
-        <span>{{ langService.currentLang() === 'ES' ? 'CONTACTAR A UN INGENIERO' : 'CONTACT AN ENGINEER' }}</span>
+        <span>{{ 'CASOS.CTA_BTN' | translate }}</span>
       </a>
     </div>
   </section>
@@ -144,7 +136,7 @@
           <div class="section-block">
             <h4 class="block-heading challenge-heading">
               <mat-icon>warning_amber</mat-icon>
-              {{ langService.currentLang() === 'ES' ? 'El Desafío' : 'The Challenge' }}
+              {{ 'CASOS.CHALLENGE' | translate }}
             </h4>
             <p>{{ langService.currentLang() === 'ES' ? study.challengeES : study.challengeEN }}</p>
           </div>
@@ -152,7 +144,7 @@
           <div class="section-block">
             <h4 class="block-heading solution-heading">
               <mat-icon>build_circle</mat-icon>
-              {{ langService.currentLang() === 'ES' ? 'Nuestra Solución' : 'Our Solution' }}
+              {{ 'CASOS.SOLUTION' | translate }}
             </h4>
             <p>{{ langService.currentLang() === 'ES' ? study.solutionES : study.solutionEN }}</p>
           </div>
@@ -160,7 +152,7 @@
           <div class="section-block">
             <h4 class="block-heading results-heading">
               <mat-icon>check_circle</mat-icon>
-              {{ langService.currentLang() === 'ES' ? 'Resultados e Impacto Obtenido' : 'Results & Impact' }}
+              {{ 'CASOS.RESULTS' | translate }}
             </h4>
             <ul class="results-list">
               @for (item of (langService.currentLang() === 'ES' ? study.resultsES : study.resultsEN); track item) {
@@ -175,7 +167,7 @@
           <div class="section-block">
             <h4 class="block-heading tech-heading">
               <mat-icon>memory</mat-icon>
-              {{ langService.currentLang() === 'ES' ? 'Tecnologías Clave' : 'Key Technologies' }}
+              {{ 'CASOS.TECHNOLOGIES' | translate }}
             </h4>
             <div class="modal-tech-stack">
               @for (t of study.technologies; track t) {
@@ -187,11 +179,11 @@
 
         <footer class="modal-footer">
           <button mat-button class="modal-close-action" (click)="closeModal()">
-            {{ langService.currentLang() === 'ES' ? 'Cerrar' : 'Close' }}
+            {{ 'CASOS.CLOSE' | translate }}
           </button>
           <a routerLink="/contactos" mat-raised-button color="primary" (click)="closeModal()">
             <mat-icon>send</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Consultar sobre un proyecto similar' : 'Inquire about similar project' }}</span>
+            <span>{{ 'CASOS.INQUIRE' | translate }}</span>
           </a>
         </footer>
       </div>

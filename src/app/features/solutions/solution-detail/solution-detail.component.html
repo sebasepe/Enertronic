@@ -11,11 +11,11 @@
         <nav class="breadcrumb-nav" aria-label="breadcrumb">
           <a routerLink="/home" class="crumb-link">
             <mat-icon>home</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Inicio' : 'Home' }}</span>
+            <span>{{ 'SOLUTION_DETAIL.BREADCRUMB_HOME' | translate }}</span>
           </a>
           <mat-icon class="crumb-sep">chevron_right</mat-icon>
           <a routerLink="/soluciones" class="crumb-link">
-            <span>{{ langService.currentLang() === 'ES' ? 'Soluciones' : 'Solutions' }}</span>
+            <span>{{ 'SOLUTION_DETAIL.BREADCRUMB_SOLUTIONS' | translate }}</span>
           </a>
           <mat-icon class="crumb-sep">chevron_right</mat-icon>
           <span class="crumb-active">{{ langService.currentLang() === 'ES' ? solution.shortTitleES : solution.shortTitleEN }}</span>
@@ -51,11 +51,11 @@
         <div class="hero-actions">
           <a routerLink="/contactos" mat-raised-button color="primary" class="primary-btn">
             <mat-icon>support_agent</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Solicitar Cotización' : 'Request Quote' }}</span>
+            <span>{{ 'SOLUTION_DETAIL.QUOTE_BTN' | translate }}</span>
           </a>
           <a routerLink="/contactos" mat-outlined-button class="secondary-btn">
             <mat-icon>article</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Consultar Ficha Técnica' : 'Technical Datasheet' }}</span>
+            <span>{{ 'SOLUTION_DETAIL.DATASHEET_BTN' | translate }}</span>
           </a>
         </div>
       </div>
@@ -78,13 +78,9 @@
       
       <!-- Section Header -->
       <div class="section-title-wrapper text-center">
-        <span class="section-badge">{{ langService.currentLang() === 'ES' ? 'INFORMACIÓN TÉCNICA DETALLADA' : 'DETAILED TECHNICAL INFORMATION' }}</span>
-        <h2 class="section-heading">
-          {{ langService.currentLang() === 'ES' ? '¿En qué consiste la solución?' : 'What does the solution consist of?' }}
-        </h2>
-        <p class="section-subtext">
-          {{ langService.currentLang() === 'ES' ? 'Arquitectura de ingeniería, especificaciones y beneficios operativos para entornos industriales exigentes.' : 'Engineering architecture, specifications, and operational benefits for demanding industrial environments.' }}
-        </p>
+        <span class="section-badge">{{ 'SOLUTION_DETAIL.TECH_INFO_BADGE' | translate }}</span>
+        <h2 class="section-heading">{{ 'SOLUTION_DETAIL.TECH_INFO_TITLE' | translate }}</h2>
+        <p class="section-subtext">{{ 'SOLUTION_DETAIL.TECH_INFO_SUBTITLE' | translate }}</p>
       </div>
 
       <!-- Main Overview Article -->
@@ -93,7 +89,7 @@
           <mat-icon>{{ solution.icon }}</mat-icon>
         </div>
         <div class="box-text-col">
-          <h3>{{ langService.currentLang() === 'ES' ? 'Descripción General & Arquitectura' : 'General Overview & Architecture' }}</h3>
+          <h3>{{ 'SOLUTION_DETAIL.OVERVIEW_TITLE' | translate }}</h3>
           <p class="overview-text">
             {{ langService.currentLang() === 'ES' ? solution.overviewES : solution.overviewEN }}
           </p>
@@ -108,7 +104,7 @@
       <div class="models-section">
         <h3 class="subsection-title">
           <mat-icon>developer_board</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'Modelos Disponibles' : 'Available Models' }}</span>
+          <span>{{ 'SOLUTION_DETAIL.MODELS_TITLE' | translate }}</span>
         </h3>
 
         <div class="models-grid">
@@ -129,7 +125,7 @@
       <div class="specs-section">
         <h3 class="subsection-title">
           <mat-icon>tune</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'Ficha Técnica y Especificaciones' : 'Technical Specs & Datasheet' }}</span>
+          <span>{{ 'SOLUTION_DETAIL.SPECS_TITLE' | translate }}</span>
         </h3>
 
         <div class="specs-grid">
@@ -151,7 +147,7 @@
       <div class="benefits-section">
         <h3 class="subsection-title">
           <mat-icon>stars</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'Ventajas y Beneficios Operativos' : 'Key Benefits & Operational Advantages' }}</span>
+          <span>{{ 'SOLUTION_DETAIL.BENEFITS_TITLE' | translate }}</span>
         </h3>
 
         <div class="benefits-grid">
@@ -171,7 +167,7 @@
       <div class="applications-section">
         <h3 class="subsection-title">
           <mat-icon>factory</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'Aplicaciones y Sectores Industriales' : 'Applications & Industrial Sectors' }}</span>
+          <span>{{ 'SOLUTION_DETAIL.APPS_TITLE' | translate }}</span>
         </h3>
 
         <div class="apps-grid">
@@ -188,15 +184,13 @@
       <div class="detail-cta-banner">
         <div class="cta-content">
           <h3>
-            {{ langService.currentLang() === 'ES' ? '¿Deseas implementar esta solución en tu planta o proyecto?' : 'Do you want to implement this solution in your plant or project?' }}
+            {{ 'SOLUTION_DETAIL.CTA_TITLE' | translate }}
           </h3>
-          <p>
-            {{ langService.currentLang() === 'ES' ? 'Nuestros ingenieros especialistas en telemetría e integración SCADA dimensionan la arquitectura perfecta para tus requerimientos.' : 'Our telemetry and SCADA integration engineers design the perfect architecture for your specific requirements.' }}
-          </p>
+          <p>{{ 'SOLUTION_DETAIL.CTA_DESC' | translate }}</p>
         </div>
         <a routerLink="/contactos" mat-raised-button color="accent" class="cta-btn">
           <mat-icon>headset_mic</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'Hablar con un Especialista' : 'Speak to a Specialist' }}</span>
+          <span>{{ 'SOLUTION_DETAIL.CTA_BTN' | translate }}</span>
         </a>
       </div>
 

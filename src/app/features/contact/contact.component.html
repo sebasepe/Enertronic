@@ -20,23 +20,19 @@
       <!-- Form Section -->
       <div class="contact-form-section">
         <div class="form-header">
-          <h2 class="form-title">
-            {{ langService.currentLang() === 'ES' ? 'QUÉ OFRECEMOS PARA USTED' : 'WHAT WE OFFER FOR YOU' }}
-          </h2>
-          <p class="form-subtitle">
-            {{ langService.currentLang() === 'ES' ? 'Confianza y experiencia en cada proyecto' : 'Trust and experience in every project' }}
-          </p>
+          <h2 class="form-title">{{ 'CONTACT.PAGE_TITLE' | translate }}</h2>
+          <p class="form-subtitle">{{ 'CONTACT.PAGE_SUBTITLE' | translate }}</p>
         </div>
 
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
           <div class="form-row">
             <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ langService.currentLang() === 'ES' ? 'Nombres' : 'Full Name' }}</mat-label>
-              <input matInput formControlName="name" [placeholder]="langService.currentLang() === 'ES' ? 'Ingresa tu nombre' : 'Enter your name'" />
+              <mat-label>{{ 'CONTACT.FIELD_NAME' | translate }}</mat-label>
+              <input matInput formControlName="name" [placeholder]="'CONTACT.FIELD_NAME_PLACEHOLDER' | translate" />
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ langService.currentLang() === 'ES' ? 'Correo Electrónico' : 'Email Address' }}</mat-label>
+              <mat-label>{{ 'CONTACT.FIELD_EMAIL' | translate }}</mat-label>
               <input matInput type="email" formControlName="email" placeholder="correo&#64;empresa.com" />
             </mat-form-field>
           </div>
@@ -44,7 +40,7 @@
           <div class="form-row">
             <div class="phone-group">
               <mat-form-field appearance="outline" class="form-field country-select-field">
-                <mat-label>{{ langService.currentLang() === 'ES' ? 'País' : 'Country' }}</mat-label>
+                <mat-label>{{ 'CONTACT.FIELD_COUNTRY' | translate }}</mat-label>
                 <mat-select formControlName="countryCode" (selectionChange)="onCountryChange()">
                   <mat-select-trigger>
                     <span>{{ selectedCountry.flag }} {{ selectedCountry.dialCode }}</span>
@@ -58,7 +54,7 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="form-field phone-input-field">
-                <mat-label>{{ langService.currentLang() === 'ES' ? 'Teléfono' : 'Phone' }}</mat-label>
+                <mat-label>{{ 'CONTACT.FIELD_PHONE' | translate }}</mat-label>
                 <input
                   matInput
                   type="tel"
@@ -72,34 +68,34 @@
             </div>
 
             <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ langService.currentLang() === 'ES' ? 'Servicio / Consulta' : 'Service / Inquiry' }}</mat-label>
+              <mat-label>{{ 'CONTACT.FIELD_SERVICE' | translate }}</mat-label>
               <mat-select formControlName="service">
-                <mat-option value="Programación PLC">{{ langService.currentLang() === 'ES' ? 'Programación PLC' : 'PLC Programming' }}</mat-option>
-                <mat-option value="Telemetria">{{ langService.currentLang() === 'ES' ? 'Telemetria' : 'Telemetry' }}</mat-option>
-                <mat-option value="Software SCADA">{{ langService.currentLang() === 'ES' ? 'Software SCADA' : 'SCADA Software' }}</mat-option>
-                <mat-option value="Mantenimiento de plantas">{{ langService.currentLang() === 'ES' ? 'Mantenimiento de plantas' : 'Plant Maintenance' }}</mat-option>
-                <mat-option value="Tableros instrumentales">{{ langService.currentLang() === 'ES' ? 'Tableros instrumentales' : 'Instrument Panels' }}</mat-option>
+                <mat-option value="Programación PLC">{{ 'CONTACT.SERVICE_PLC' | translate }}</mat-option>
+                <mat-option value="Telemetria">{{ 'CONTACT.SERVICE_TELEMETRY' | translate }}</mat-option>
+                <mat-option value="Software SCADA">{{ 'CONTACT.SERVICE_SCADA' | translate }}</mat-option>
+                <mat-option value="Mantenimiento de plantas">{{ 'CONTACT.SERVICE_MAINTENANCE' | translate }}</mat-option>
+                <mat-option value="Tableros instrumentales">{{ 'CONTACT.SERVICE_PANELS' | translate }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
 
           <div class="form-full-row">
             <mat-form-field appearance="outline" class="form-field full-width">
-              <mat-label>{{ langService.currentLang() === 'ES' ? 'Déjanos tu consulta' : 'Leave us your query' }}</mat-label>
-              <textarea matInput rows="4" formControlName="message" [placeholder]="langService.currentLang() === 'ES' ? 'Escribe aquí los detalles de tu requerimiento...' : 'Write request details here...'"></textarea>
+              <mat-label>{{ 'CONTACT.FIELD_MESSAGE' | translate }}</mat-label>
+              <textarea matInput rows="4" formControlName="message" [placeholder]="'CONTACT.FIELD_MESSAGE_PLACEHOLDER' | translate"></textarea>
             </mat-form-field>
           </div>
 
           <div class="form-action-row">
             <button mat-raised-button class="submit-btn" type="submit" [disabled]="isSubmitting">
-              <span>{{ isSubmitting ? (langService.currentLang() === 'ES' ? 'ENVIANDO...' : 'SENDING...') : (langService.currentLang() === 'ES' ? 'ENVIAR MENSAJE' : 'SEND MESSAGE') }}</span>
+              <span>{{ isSubmitting ? ('CONTACT.BTN_SENDING' | translate) : ('CONTACT.BTN_SEND' | translate) }}</span>
             </button>
           </div>
 
           @if (submitted) {
             <div class="success-message">
               <mat-icon>check_circle</mat-icon>
-              <span>{{ langService.currentLang() === 'ES' ? '¡Gracias! Tu consulta ha sido enviada exitosamente. Nos comunicaremos contigo pronto.' : 'Thank you! Your inquiry has been sent successfully. We will get back to you soon.' }}</span>
+              <span>{{ 'CONTACT.SUCCESS_MSG' | translate }}</span>
             </div>
           }
         </form>
@@ -112,7 +108,7 @@
             <mat-icon>phone_iphone</mat-icon>
           </div>
           <div class="info-content">
-            <h4 class="info-label">{{ langService.currentLang() === 'ES' ? 'Teléfono:' : 'Phone:' }}</h4>
+            <h4 class="info-label">{{ 'CONTACT.INFO_PHONE' | translate }}</h4>
             <a href="tel:+51941700464" class="info-value">+51 941700464</a>
           </div>
         </div>
@@ -132,7 +128,7 @@
             <mat-icon>email</mat-icon>
           </div>
           <div class="info-content">
-            <h4 class="info-label">{{ langService.currentLang() === 'ES' ? 'Correo Electrónico:' : 'Email:' }}</h4>
+            <h4 class="info-label">{{ 'CONTACT.INFO_EMAIL' | translate }}</h4>
             <a href="mailto:ventas@enertronicperu.com" class="info-value">ventas&#64;enertronicperu.com</a>
             <a href="mailto:proyectos@enertronicperu.com" class="info-value">proyectos&#64;enertronicperu.com</a>
           </div>
@@ -143,7 +139,7 @@
             <mat-icon>location_on</mat-icon>
           </div>
           <div class="info-content">
-            <h4 class="info-label">{{ langService.currentLang() === 'ES' ? 'Dirección:' : 'Address:' }}</h4>
+            <h4 class="info-label">{{ 'CONTACT.INFO_ADDRESS' | translate }}</h4>
             <span class="info-value text-wrap">Calle Buganvilias Mz.C Lte.26 Ate-Lima-Perú</span>
           </div>
         </div>

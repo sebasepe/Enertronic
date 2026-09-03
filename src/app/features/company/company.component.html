@@ -1,14 +1,8 @@
 <div class="company-page-container">
   <div class="page-header">
-    <span class="badge">{{ langService.currentLang() === 'ES' ? 'NOSOTROS' : 'ABOUT US' }}</span>
-    <h1>{{ langService.currentLang() === 'ES' ? 'LA EMPRESA' : 'THE COMPANY' }}</h1>
-    <p>
-      {{
-        langService.currentLang() === 'ES'
-          ? 'Líderes en ingeniería de automatización, telemetría IoT, sistemas SCADA y control de procesos en Agua, Energía y Oil & Gas.'
-          : 'Leaders in automation engineering, IoT telemetry, SCADA systems, and process control in Water, Energy, and Oil & Gas.'
-      }}
-    </p>
+    <span class="badge">{{ 'COMPANY.BADGE' | translate }}</span>
+    <h1>{{ 'COMPANY.TITLE' | translate }}</h1>
+    <p>{{ 'COMPANY.SUBTITLE' | translate }}</p>
   </div>
 
   <div class="company-cards-grid">
@@ -18,14 +12,8 @@
         <mat-icon>flag</mat-icon>
       </div>
       <div class="card-body">
-        <h2 class="card-title">{{ langService.currentLang() === 'ES' ? 'Misión' : 'Mission' }}</h2>
-        <p class="card-text">
-          {{
-            langService.currentLang() === 'ES'
-              ? 'En ENERTRONIC INGENIERÍA S.A.C., nuestra misión es brindar soluciones tecnológicas avanzadas y personalizadas que optimicen la eficiencia y la sostenibilidad de nuestros clientes. A través de la innovación constante, buscamos mejorar los procesos operativos en diversas industrias, garantizando resultados confiables, seguros y de alto rendimiento.'
-              : 'At ENERTRONIC INGENIERÍA S.A.C., our mission is to provide advanced and customized technological solutions that optimize our clients\' efficiency and sustainability. Through constant innovation, we seek to improve operational processes across various industries, guaranteeing reliable, safe, and high-performance results.'
-          }}
-        </p>
+        <h2 class="card-title">{{ 'COMPANY.MISSION_TITLE' | translate }}</h2>
+        <p class="card-text">{{ 'COMPANY.MISSION_TEXT' | translate }}</p>
       </div>
     </div>
 
@@ -35,14 +23,8 @@
         <mat-icon>visibility</mat-icon>
       </div>
       <div class="card-body">
-        <h2 class="card-title vision-title">{{ langService.currentLang() === 'ES' ? 'Visión' : 'Vision' }}</h2>
-        <p class="card-text">
-          {{
-            langService.currentLang() === 'ES'
-              ? 'Aspiramos a ser la empresa líder en integración de sistemas tecnológicos en el mercado latinoamericano, reconocida por nuestra capacidad para entregar soluciones innovadoras, eficientes y sostenibles. Buscamos contribuir al desarrollo y la transformación digital de los sectores estratégicos de la economía, a través de un compromiso constante con la calidad y el avance tecnológico.'
-              : 'We aspire to be the leading technological systems integration company in the Latin American market, recognized for our ability to deliver innovative, efficient, and sustainable solutions. We seek to contribute to the development and digital transformation of strategic economic sectors through a constant commitment to quality and technological advancement.'
-          }}
-        </p>
+        <h2 class="card-title vision-title">{{ 'COMPANY.VISION_TITLE' | translate }}</h2>
+        <p class="card-text">{{ 'COMPANY.VISION_TEXT' | translate }}</p>
       </div>
     </div>
 
@@ -52,24 +34,12 @@
         <mat-icon>verified</mat-icon>
       </div>
       <div class="card-body">
-        <h2 class="card-title values-title">{{ langService.currentLang() === 'ES' ? 'Valores' : 'Values' }}</h2>
+        <h2 class="card-title values-title">{{ 'COMPANY.VALUES_TITLE' | translate }}</h2>
         <ul class="values-list">
-          <li>
-            <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Experiencia y capacitación' : 'Experience and training' }}</span>
-          </li>
-          <li>
-            <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Soluciones personalizadas' : 'Customized solutions' }}</span>
-          </li>
-          <li>
-            <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Tecnología de vanguardia' : 'Cutting-edge technology' }}</span>
-          </li>
-          <li>
-            <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Compromiso con la calidad' : 'Commitment to quality' }}</span>
-          </li>
+          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_1' | translate }}</span></li>
+          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_2' | translate }}</span></li>
+          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_3' | translate }}</span></li>
+          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_4' | translate }}</span></li>
         </ul>
       </div>
     </div>

@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { LanguageService } from '../../core/services/language.service';
 import { SolutionsService, SolutionItem } from '../../core/services/solutions.service';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-solutions',
   standalone: true,
-  imports: [CommonModule, RouterLink, MatIconModule],
+  imports: [CommonModule, RouterLink, MatIconModule, TranslatePipe],
   templateUrl: './solutions.component.html',
   styleUrl: './solutions.component.scss',
 })

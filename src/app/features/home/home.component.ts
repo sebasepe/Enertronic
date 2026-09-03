@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HeroBannerComponent } from '../../shared/components/hero-banner/hero-banner.component';
 import { LanguageService } from '../../core/services/language.service';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ import { LanguageService } from '../../core/services/language.service';
     MatButtonModule,
     MatIconModule,
     HeroBannerComponent,
+    TranslatePipe,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

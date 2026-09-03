@@ -1,14 +1,8 @@
 <div class="solutions-page-container">
   <div class="page-header">
-    <span class="badge">{{ langService.currentLang() === 'ES' ? 'TECNOLOGÍA E INGENIERÍA' : 'TECHNOLOGY & ENGINEERING' }}</span>
-    <h1>{{ langService.currentLang() === 'ES' ? 'NUESTRAS SOLUCIONES' : 'OUR SOLUTIONS' }}</h1>
-    <p>
-      {{
-      langService.currentLang() === 'ES'
-      ? 'Soluciones integrales de telemetría IoT, redes satelitales, sistemas SCADA y control de procesos para sectores industriales críticos.'
-      : 'Comprehensive IoT telemetry solutions, satellite networks, SCADA systems, and process control for critical industrial sectors.'
-      }}
-    </p>
+    <span class="badge">{{ 'SOLUTIONS.BADGE' | translate }}</span>
+    <h1>{{ 'SOLUTIONS.TITLE' | translate }}</h1>
+    <p>{{ 'SOLUTIONS.SUBTITLE' | translate }}</p>
   </div>
 
   <div class="solutions-grid">
@@ -27,7 +21,7 @@
       <p class="sol-desc">{{ langService.currentLang() === 'ES' ? sol.descES : sol.descEN }}</p>
       <div class="card-footer">
         <a [routerLink]="['/soluciones', sol.slug]" class="read-more-btn">
-          <span>{{ langService.currentLang() === 'ES' ? 'Leer más' : 'Read more' }}</span>
+          <span>{{ 'SOLUTIONS.READ_MORE' | translate }}</span>
           <mat-icon>arrow_forward</mat-icon>
         </a>
       </div>

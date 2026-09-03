@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
 import { SolutionsService, SolutionItem } from '../../services/solutions.service';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,7 @@ import { SolutionsService, SolutionItem } from '../../services/solutions.service
     MatIconModule,
     MatMenuModule,
     MatTooltipModule,
+    TranslatePipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

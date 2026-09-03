@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { LanguageService } from '../../core/services/language.service';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 export interface CaseStudy {
   id: string;
@@ -42,6 +43,7 @@ export interface CaseStudy {
     MatButtonModule,
     MatChipsModule,
     MatCardModule,
+    TranslatePipe,
   ],
   templateUrl: './casos-exito.component.html',
   styleUrl: './casos-exito.component.scss',

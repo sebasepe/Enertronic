@@ -3,29 +3,18 @@
   <div class="blog-header">
     <div class="header-badge">
       <mat-icon>rss_feed</mat-icon>
-      <span>{{ langService.currentLang() === 'ES' ? 'NOTICIAS EN VIVO Y ARTÍCULOS TÉCNICOS' : 'LIVE NEWS & TECHNICAL ARTICLES' }}</span>
+      <span>{{ 'BLOG.BADGE' | translate }}</span>
     </div>
     
-    <h1 class="header-title">
-      {{ langService.currentLang() === 'ES' ? 'BLOG DE INGENIERÍA, TELEMETRÍA E IIOT' : 'ENGINEERING, TELEMETRY & IIOT BLOG' }}
-    </h1>
+    <h1 class="header-title">{{ 'BLOG.TITLE' | translate }}</h1>
 
-    <p class="header-subtitle">
-      {{
-        langService.currentLang() === 'ES'
-          ? 'Explora tendencias globales y noticias automatizadas de Hackster.io, Advantech, IoT Analytics e IoT For All junto a nuestras guías de ingeniería.'
-          : 'Explore global trends and automated news from Hackster.io, Advantech, IoT Analytics, and IoT For All alongside our engineering guides.'
-      }}
-    </p>
+    <p class="header-subtitle">{{ 'BLOG.SUBTITLE' | translate }}</p>
 
     <!-- Live Auto-Refresh Indicator -->
     <div class="live-refresh-badge" [class.loading]="isLoadingRss()">
       <span class="pulse-dot"></span>
       <span class="badge-text">
-        {{ langService.currentLang() === 'ES'
-           ? (isLoadingRss() ? 'Actualizando noticias en vivo...' : 'Noticias en vivo')
-           : (isLoadingRss() ? 'Refreshing live feeds...' : 'Live News')
-        }}
+        {{ isLoadingRss() ? ('BLOG.LOADING' | translate) : ('BLOG.LIVE' | translate) }}
       </span>
     </div>
   </div>
@@ -77,7 +66,7 @@
               class="btn-ver-mas"
               (click)="openArticle(post)"
             >
-              <span>{{ langService.currentLang() === 'ES' ? 'VER MÁS' : 'READ MORE' }}</span>
+              <span>{{ 'BLOG.READ_MORE' | translate }}</span>
               <mat-icon>arrow_forward</mat-icon>
             </button>
           </div>
@@ -89,12 +78,12 @@
   <!-- Newsletter / Contact Banner -->
   <div class="blog-cta-banner">
     <div class="cta-content">
-      <h2>{{ langService.currentLang() === 'ES' ? '¿Deseas asesoría técnica para tu proyecto en Perú?' : 'Need technical advice for your project in Peru?' }}</h2>
-      <p>{{ langService.currentLang() === 'ES' ? 'Nuestros ingenieros especialistas están listos para diseñar la arquitectura óptima de telemetría y SCADA.' : 'Our specialist engineers are ready to design the optimal telemetry and SCADA architecture.' }}</p>
+      <h2>{{ 'BLOG.CTA_TITLE' | translate }}</h2>
+      <p>{{ 'BLOG.CTA_DESC' | translate }}</p>
     </div>
     <a routerLink="/contactos" class="cta-button">
       <mat-icon>chat</mat-icon>
-      <span>{{ langService.currentLang() === 'ES' ? 'CONTACTAR A UN INGENIERO' : 'CONTACT AN ENGINEER' }}</span>
+      <span>{{ 'BLOG.CTA_BTN' | translate }}</span>
     </a>
   </div>
 </div>
@@ -131,13 +120,13 @@
       <div class="modal-footer">
         @if (selectedPost()?.externalUrl) {
           <a [href]="selectedPost()?.externalUrl" target="_blank" rel="noopener noreferrer" class="btn-external-link">
-            <span>{{ langService.currentLang() === 'ES' ? 'VER NOTICIA EN FUENTE ORIGINAL' : 'READ ON ORIGINAL SOURCE' }}</span>
+            <span>{{ 'BLOG.ORIGINAL_SOURCE' | translate }}</span>
             <mat-icon>open_in_new</mat-icon>
           </a>
         }
         <a routerLink="/contactos" class="modal-contact-btn" (click)="closeArticle()">
           <mat-icon>headset_mic</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'SOLICITAR COTIZACIÓN / ASESORÍA' : 'REQUEST QUOTE / ADVICE' }}</span>
+          <span>{{ 'BLOG.REQUEST_QUOTE' | translate }}</span>
         </a>
       </div>
     </div>

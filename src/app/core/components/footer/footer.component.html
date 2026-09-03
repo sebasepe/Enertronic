@@ -34,46 +34,40 @@
         <img src="assets/logo-dark.png" alt="ENERTRONIC Logo" class="footer-logo-img logo-dark" />
         <img src="assets/logo-light.png" alt="ENERTRONIC Logo" class="footer-logo-img logo-light" />
       </div>
-      <h3>{{ langService.currentLang() === 'ES' ? 'Nosotros' : 'About Us' }}</h3>
-      <p class="brand-description">
-        {{
-          langService.currentLang() === 'ES'
-            ? 'ENERTRONIC INGENIERÍA S.A.C. es una empresa peruana de ingeniería integradora de sistemas tecnológicas fundada en el año 2012. Inició sus operaciones a principios del año 2013 con un grupo de Ingenieros capacitados en fábrica por medio del programa de Formación en Fábrica en Automatización y Sistemas SCADA por la empresa TELVENT en las instalaciones de Sevilla - España.'
-            : 'ENERTRONIC INGENIERÍA S.A.C. is a Peruvian engineering company integrating technological systems founded in 2012. It began operations in early 2013 with a group of factory-trained engineers through the TELVENT Factory Training Program in Automation and SCADA Systems in Sevilla, Spain.'
-        }}
-      </p>
+      <h3>{{ 'FOOTER.ABOUT_TITLE' | translate }}</h3>
+      <p class="brand-description">{{ 'FOOTER.ABOUT_TEXT' | translate }}</p>
     </div>
 
     <!-- Servicios -->
     <div class="footer-col">
-      <h3>{{ langService.currentLang() === 'ES' ? 'Servicios' : 'Services' }}</h3>
+      <h3>{{ 'FOOTER.SERVICES_TITLE' | translate }}</h3>
       <ul>
-        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Servicio de Medición de Caudales (Aforos)' : 'Flow Measurement Service (Gauging)' }}</a></li>
-        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? "Programación de PLC's y HMI's" : "PLC & HMI Programming" }}</a></li>
-        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Tableros de telemetría celular y satelital' : 'Cellular & satellite telemetry panels' }}</a></li>
-        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Tableros de Instrumentación y control' : 'Instrumentation & control panels' }}</a></li>
-        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Mantenimiento Plantas Industriales' : 'Industrial Plant Maintenance' }}</a></li>
-        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Automatización de software SCADA' : 'SCADA software automation' }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ 'FOOTER.SERVICE_1' | translate }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ 'FOOTER.SERVICE_2' | translate }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ 'FOOTER.SERVICE_3' | translate }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ 'FOOTER.SERVICE_4' | translate }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ 'FOOTER.SERVICE_5' | translate }}</a></li>
+        <li><a routerLink="/servicios"><span class="bullet">•</span> {{ 'FOOTER.SERVICE_6' | translate }}</a></li>
       </ul>
     </div>
 
     <!-- Soluciones -->
     <div class="footer-col">
-      <h3>{{ langService.currentLang() === 'ES' ? 'SOLUCIONES' : 'SOLUTIONS' }}</h3>
+      <h3>{{ 'FOOTER.SOLUTIONS_TITLE' | translate }}</h3>
       <ul>
-        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Celular 2G 3G 4G' : 'Cellular Telemetry Solution 2G 3G 4G' }}</a></li>
-        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Satelital Iridium' : 'Iridium Satellite Telemetry Solution' }}</a></li>
-        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Satelital STARLINK' : 'STARLINK Satellite Telemetry Solution' }}</a></li>
-        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Radio Mesh 2.4GHz' : '2.4GHz Mesh Radio Telemetry Solution' }}</a></li>
-        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría MQTT' : 'MQTT Telemetry Solution' }}</a></li>
-        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Solución de Telemetría Ethernet' : 'Ethernet Telemetry Solution' }}</a></li>
-        <li><a routerLink="/casos-de-exito"><span class="bullet">•</span> {{ langService.currentLang() === 'ES' ? 'Casos de Éxito Industriales' : 'Industrial Case Studies' }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ 'FOOTER.SOL_1' | translate }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ 'FOOTER.SOL_2' | translate }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ 'FOOTER.SOL_3' | translate }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ 'FOOTER.SOL_4' | translate }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ 'FOOTER.SOL_5' | translate }}</a></li>
+        <li><a routerLink="/soluciones"><span class="bullet">•</span> {{ 'FOOTER.SOL_6' | translate }}</a></li>
+        <li><a routerLink="/casos-de-exito"><span class="bullet">•</span> {{ 'FOOTER.SOL_7' | translate }}</a></li>
       </ul>
     </div>
 
     <!-- Síguenos en -->
     <div class="footer-col social-col">
-      <h3>{{ langService.currentLang() === 'ES' ? 'Síguenos en:' : 'Follow us on:' }}</h3>
+      <h3>{{ 'FOOTER.FOLLOW_US' | translate }}</h3>
       <div class="social-links">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -96,8 +90,8 @@
 
   <div class="footer-bottom">
     <div class="footer-bottom-content">
-      <span>Copyright © 2025 Enertronic Perú. All Rights Reserved.</span>
-      <span class="tech-tag">{{ langService.currentLang() === 'ES' ? 'Desarrollado por: Seo Consulting Perú' : 'Developed by: Seo Consulting Perú' }}</span>
+      <span>{{ 'FOOTER.COPYRIGHT' | translate }}</span>
+      <span class="tech-tag">{{ 'FOOTER.DEVELOPED_BY' | translate }}</span>
     </div>
   </div>
 </footer>

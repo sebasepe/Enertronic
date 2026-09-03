@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SolutionsService, SolutionItem } from '../../../core/services/solutions.service';
 import { LanguageService } from '../../../core/services/language.service';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-solution-detail',
@@ -18,6 +19,7 @@ import { LanguageService } from '../../../core/services/language.service';
     MatIconModule,
     MatChipsModule,
     MatTabsModule,
+    TranslatePipe,
   ],
   templateUrl: './solution-detail.component.html',
   styleUrl: './solution-detail.component.scss',

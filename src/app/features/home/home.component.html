@@ -107,38 +107,26 @@
     <div class="overview-container">
       <div class="overview-content">
         <span class="sub-heading">SOLUCIONES A MEDIDA</span>
-        <h2>
-          {{
-            langService.currentLang() === 'ES'
-              ? 'Conectando el campo industrial con la toma de decisiones'
-              : 'Connecting the industrial field with decision making'
-          }}
-        </h2>
-        <p>
-          {{
-            langService.currentLang() === 'ES'
-              ? 'Desarrollamos e integramos hardware y software de telemetría robustos para condiciones extremas, garantizando interoperabilidad con protocolos industriales estándar (Modbus RTU/TCP, DNP3, IEC 60870-5-104, MQTT Industrial).'
-              : 'We develop and integrate robust telemetry hardware and software for extreme conditions, ensuring interoperability with standard industrial protocols (Modbus RTU/TCP, DNP3, IEC 60870-5-104, Industrial MQTT).'
-          }}
-        </p>
+        <h2>{{ 'HOME.OVERVIEW_TITLE' | translate }}</h2>
+        <p>{{ 'HOME.OVERVIEW_DESC' | translate }}</p>
         <div class="feature-bullets">
           <div class="bullet-item">
             <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Arquitectura cibersegura conforme a ISA/IEC 62443' : 'Cybersecure architecture conforming to ISA/IEC 62443' }}</span>
+            <span>{{ 'HOME.BULLET_1' | translate }}</span>
           </div>
           <div class="bullet-item">
             <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Monitoreo 24/7 con alertas de falla por SMS / Email / SCADA' : '24/7 Monitoring with SMS / Email / SCADA fault alerts' }}</span>
+            <span>{{ 'HOME.BULLET_2' | translate }}</span>
           </div>
           <div class="bullet-item">
             <mat-icon>check_circle</mat-icon>
-            <span>{{ langService.currentLang() === 'ES' ? 'Suministro de energía solar autónoma para nodos remotos' : 'Autonomous solar power supply for remote nodes' }}</span>
+            <span>{{ 'HOME.BULLET_3' | translate }}</span>
           </div>
         </div>
 
         <a routerLink="/soluciones" mat-raised-button color="primary" class="overview-cta">
           <mat-icon>analytics</mat-icon>
-          <span>{{ langService.currentLang() === 'ES' ? 'Ver Soluciones de Telemetría' : 'View Telemetry Solutions' }}</span>
+          <span>{{ 'HOME.CTA_SOLUTIONS' | translate }}</span>
         </a>
       </div>
       <div class="overview-visual">
@@ -171,18 +159,10 @@
     <div class="section-header text-center">
       <div class="header-badge">
         <mat-icon>business</mat-icon>
-        <span>{{ langService.currentLang() === 'ES' ? 'CLIENTES Y ALIADOS' : 'CLIENTS & PARTNERS' }}</span>
+        <span>{{ 'HOME.CLIENTS_BADGE' | translate }}</span>
       </div>
-      <h2 class="section-title">
-        {{ langService.currentLang() === 'ES' ? 'TRABAJAMOS CON' : 'WE WORK WITH' }}
-      </h2>
-      <p class="section-subtitle">
-        {{
-          langService.currentLang() === 'ES'
-            ? 'Empresas e instituciones de prestigio que confían en nuestras soluciones de telemetría y automatización industrial.'
-            : 'Prestigious companies and institutions that trust our telemetry and industrial automation solutions.'
-        }}
-      </p>
+      <h2 class="section-title">{{ 'HOME.CLIENTS_TITLE' | translate }}</h2>
+      <p class="section-subtitle">{{ 'HOME.CLIENTS_SUBTITLE' | translate }}</p>
     </div>
 
     <!-- Infinite Continuous Marquee Track -->
@@ -227,9 +207,7 @@
         <mat-icon>article</mat-icon>
         <span>NUESTROS ARTÍCULOS</span>
       </div>
-      <h2 class="section-title">
-        {{ langService.currentLang() === 'ES' ? 'BLOG DE TELEMETRÍA Y AUTOMATIZACIÓN EN PERÚ' : 'TELEMETRY & AUTOMATION BLOG IN PERU' }}
-      </h2>
+      <h2 class="section-title">{{ 'HOME.BLOG_TITLE' | translate }}</h2>
     </div>
 
     <div class="home-blog-grid">
@@ -242,7 +220,7 @@
             <h3>{{ langService.currentLang() === 'ES' ? post.titleES : post.titleEN }}</h3>
             <p>{{ langService.currentLang() === 'ES' ? post.excerptES : post.excerptEN }}</p>
             <a routerLink="/blog" class="ver-mas-btn">
-              <span>{{ langService.currentLang() === 'ES' ? 'VER MÁS' : 'READ MORE' }}</span>
+              <span>{{ 'HOME.READ_MORE' | translate }}</span>
             </a>
           </div>
         </div>
@@ -253,23 +231,11 @@
   <!-- Consultation Banner -->
   <section class="consultation-banner">
     <div class="banner-content">
-      <h2>
-        {{
-          langService.currentLang() === 'ES'
-            ? '¿Tienes un proyecto de automatización o telemetría en mente?'
-            : 'Do you have an automation or telemetry project in mind?'
-        }}
-      </h2>
-      <p>
-        {{
-          langService.currentLang() === 'ES'
-            ? 'Nuestros ingenieros especialistas están listos para diseñar la arquitectura SCADA óptima para tu empresa.'
-            : 'Our specialist engineers are ready to design the optimal SCADA architecture for your company.'
-        }}
-      </p>
+      <h2>{{ 'HOME.BANNER_TITLE' | translate }}</h2>
+      <p>{{ 'HOME.BANNER_DESC' | translate }}</p>
       <a routerLink="/contactos" mat-fab extended color="accent" class="banner-btn">
         <mat-icon>headset_mic</mat-icon>
-        <span>{{ langService.currentLang() === 'ES' ? 'Solicitar Asesoría Técnica' : 'Request Technical Advice' }}</span>
+        <span>{{ 'HOME.BANNER_CTA' | translate }}</span>
       </a>
     </div>
   </section>
