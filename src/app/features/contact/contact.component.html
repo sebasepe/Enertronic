@@ -42,10 +42,34 @@
           </div>
 
           <div class="form-row">
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ langService.currentLang() === 'ES' ? 'Teléfono' : 'Phone' }}</mat-label>
-              <input matInput type="tel" formControlName="phone" placeholder="+51 941700464" />
-            </mat-form-field>
+            <div class="phone-group">
+              <mat-form-field appearance="outline" class="form-field country-select-field">
+                <mat-label>{{ langService.currentLang() === 'ES' ? 'País' : 'Country' }}</mat-label>
+                <mat-select formControlName="countryCode" (selectionChange)="onCountryChange()">
+                  <mat-select-trigger>
+                    <span>{{ selectedCountry.flag }} {{ selectedCountry.dialCode }}</span>
+                  </mat-select-trigger>
+                  @for (c of countries; track c.code) {
+                    <mat-option [value]="c.code">
+                      <span>{{ c.flag }} {{ c.name }} ({{ c.dialCode }})</span>
+                    </mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="form-field phone-input-field">
+                <mat-label>{{ langService.currentLang() === 'ES' ? 'Teléfono' : 'Phone' }}</mat-label>
+                <input
+                  matInput
+                  type="tel"
+                  formControlName="phone"
+                  [maxlength]="selectedCountry.digits"
+                  (input)="onPhoneInput($event)"
+                  (keydown)="onPhoneKeydown($event)"
+                  [placeholder]="selectedCountry.placeholder"
+                />
+              </mat-form-field>
+            </div>
 
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>{{ langService.currentLang() === 'ES' ? 'Servicio / Consulta' : 'Service / Inquiry' }}</mat-label>

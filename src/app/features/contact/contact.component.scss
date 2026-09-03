@@ -95,6 +95,21 @@
   }
 }
 
+.phone-group {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+
+  .country-select-field {
+    flex: 0 0 115px;
+    min-width: 115px;
+  }
+
+  .phone-input-field {
+    flex: 1;
+  }
+}
+
 .form-full-row {
   width: 100%;
 }
