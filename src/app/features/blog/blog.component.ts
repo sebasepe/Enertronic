@@ -75,99 +75,30 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Apaga el temporizador al salir de la sección Blog para ahorrar datos y memoria del navegador.
-    if (this.timerSubscription) {
-      this.timerSubscription.unsubscribe();
-    }
+    this.timerSubscription?.unsubscribe();
   }
 
   public loadRssFeeds(): void {
     this.isLoadingRss.set(true);
 
-    const hackster$ = this.http
-      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=https://www.hackster.io/news.atom')
-      .pipe(catchError(() => of({ status: 'error', items: [] })));
+    const sources: Array<{ url: string; id: string; name: string; category: string; image: string; prefix: string }> = [
+      { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.hackster.io/news.atom',                             id: 'HACKSTER',      name: 'Hackster.io',   category: 'Hardware e IoT',         image: 'assets/blog/blog-1.png',    prefix: 'hackster' },
+      { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://icr.advantech.com/blog/rss',                           id: 'ADVANTECH',     name: 'Advantech',     category: 'Routers & 4G/5G',        image: 'assets/blog/blog-2.png',    prefix: 'advantech' },
+      { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://iot-analytics.com/category/industrial-iot/feed/',       id: 'IOT_ANALYTICS', name: 'IoT Analytics', category: 'SCADA & IIoT',           image: 'assets/blog/blog-3.png',    prefix: 'iotanalytics' },
+      { url: 'https://api.rss2json.com/v1/api.json?rss_url=https://www.iotforall.com/feed',                               id: 'IOT_FOR_ALL',   name: 'IoT For All',   category: 'Casos IIoT',             image: 'assets/slides/slide-4.png', prefix: 'iotforall' },
+    ];
 
-    const advantech$ = this.http
-      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=https://icr.advantech.com/blog/rss')
-      .pipe(catchError(() => of({ status: 'error', items: [] })));
-
-    const iotAnalytics$ = this.http
-      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=https://iot-analytics.com/category/industrial-iot/feed/')
-      .pipe(catchError(() => of({ status: 'error', items: [] })));
-
-    const iotForAll$ = this.http
-      .get<any>('https://api.rss2json.com/v1/api.json?rss_url=https://www.iotforall.com/feed')
-      .pipe(catchError(() => of({ status: 'error', items: [] })));
-
-    forkJoin([hackster$, advantech$, iotAnalytics$, iotForAll$]).subscribe({
-      next: ([hacksterRes, advantechRes, iotAnalyticsRes, iotForAllRes]) => {
+    forkJoin(sources.map((s) => this.fetchRssFeed(s.url))).subscribe({
+      next: (results) => {
         const livePosts: BlogPost[] = [];
-
-        // 1. Hackster.io (Noticias de Hardware e IoT)
-        if (hacksterRes?.status === 'ok' && Array.isArray(hacksterRes.items)) {
-          hacksterRes.items.slice(0, 6).forEach((item: any, idx: number) => {
-            livePosts.push(
-              this.transformRssItemToBlogPost(
-                item,
-                'HACKSTER',
-                'Hackster.io',
-                'Hardware e IoT',
-                'assets/blog/blog-1.png',
-                `hackster-${idx}`
-              )
+        results.forEach((res, i) => {
+          const s = sources[i];
+          if (res?.status === 'ok' && Array.isArray(res.items)) {
+            res.items.slice(0, 6).forEach((item: any, idx: number) =>
+              livePosts.push(this.transformRssItemToBlogPost(item, s.id, s.name, s.category, s.image, `${s.prefix}-${idx}`))
             );
-          });
-        }
-
-        // 2. Advantech (Telemetría, Routers Industriales y 4G/5G)
-        if (advantechRes?.status === 'ok' && Array.isArray(advantechRes.items)) {
-          advantechRes.items.slice(0, 6).forEach((item: any, idx: number) => {
-            livePosts.push(
-              this.transformRssItemToBlogPost(
-                item,
-                'ADVANTECH',
-                'Advantech',
-                'Routers & 4G/5G',
-                'assets/blog/blog-2.png',
-                `advantech-${idx}`
-              )
-            );
-          });
-        }
-
-        // 3. IoT Analytics (SCADA, LoRaWAN y Mercado Industrial)
-        if (iotAnalyticsRes?.status === 'ok' && Array.isArray(iotAnalyticsRes.items)) {
-          iotAnalyticsRes.items.slice(0, 6).forEach((item: any, idx: number) => {
-            livePosts.push(
-              this.transformRssItemToBlogPost(
-                item,
-                'IOT_ANALYTICS',
-                'IoT Analytics',
-                'SCADA & IIoT',
-                'assets/blog/blog-3.png',
-                `iotanalytics-${idx}`
-              )
-            );
-          });
-        }
-
-        // 4. IoT For All (Casos de uso general de Internet de las Cosas)
-        if (iotForAllRes?.status === 'ok' && Array.isArray(iotForAllRes.items)) {
-          iotForAllRes.items.slice(0, 6).forEach((item: any, idx: number) => {
-            livePosts.push(
-              this.transformRssItemToBlogPost(
-                item,
-                'IOT_FOR_ALL',
-                'IoT For All',
-                'Casos IIoT',
-                'assets/slides/slide-4.png',
-                `iotforall-${idx}`
-              )
-            );
-          });
-        }
-
+          }
+        });
         this.rssPosts.set(livePosts);
         this.lastUpdated.set(new Date());
         this.isLoadingRss.set(false);
@@ -177,6 +108,12 @@ export class BlogComponent implements OnInit, OnDestroy {
         this.isLoadingRss.set(false);
       },
     });
+  }
+
+  private fetchRssFeed(url: string) {
+    return this.http
+      .get<any>(url)
+      .pipe(catchError(() => of({ status: 'error', items: [] })));
   }
 
   private transformRssItemToBlogPost(

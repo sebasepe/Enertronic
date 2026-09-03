@@ -139,18 +139,18 @@ export class ContactComponent {
     };
 
     this.http.post('https://formsubmit.co/ajax/sebasdarkate@gmail.com', payload).subscribe({
-      next: () => {
-        this.isSubmitting = false;
-        this.submitted = true;
-        this.contactForm.reset({ countryCode: 'PE', service: 'Programación PLC' });
-      },
+      next: () => this.resetFormState(),
       error: (err) => {
         console.error('Error enviando el formulario de contacto:', err);
-        this.isSubmitting = false;
-        this.submitted = true;
-        this.contactForm.reset({ countryCode: 'PE', service: 'Programación PLC' });
+        this.resetFormState();
       },
     });
+  }
+
+  private resetFormState(): void {
+    this.isSubmitting = false;
+    this.submitted = true;
+    this.contactForm.reset({ countryCode: 'PE', service: 'Programación PLC' });
   }
 }
 

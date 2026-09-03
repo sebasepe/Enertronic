@@ -123,20 +123,13 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
   public onVideoEnded(): void {
     this.exitFullscreenIfActive();
-    const allVideos = document.querySelectorAll('video');
-    allVideos.forEach((v) => {
-      v.pause();
-    });
+    this.pauseAllVideos();
     this.nextSlide();
   }
 
   public goToSlide(index: number): void {
     this.exitFullscreenIfActive();
-    // Pausar cualquier video activo al cambiar de diapositiva
-    const allVideos = document.querySelectorAll('video');
-    allVideos.forEach((v) => {
-      v.pause();
-    });
+    this.pauseAllVideos();
 
     this.activeSlide.set(index);
     this.restartAutoPlay();
@@ -211,6 +204,10 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
         (video as any).msRequestFullscreen();
       }
     }
+  }
+
+  private pauseAllVideos(): void {
+    document.querySelectorAll('video').forEach((v) => v.pause());
   }
 
   private startAutoPlay(): void {
