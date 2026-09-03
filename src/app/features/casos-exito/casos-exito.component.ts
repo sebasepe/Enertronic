@@ -235,7 +235,7 @@ export class CasosDeExitoComponent {
       titleES: 'Sistema Predictivo y Dosificación Automática de Cloro (Estanque Regulador IIoT Santa Rosa)',
       titleEN: 'Predictive System & Automatic Chlorine Dosing (IIoT Santa Rosa Regulation Tank)',
       location: 'Estanque Regulador Santa Rosa - SEDAPAL, Lima',
-      image: 'assets/slides/sedapal-cloracion-iiot.jpg',
+      image: 'assets/slides/sedapal-cloracion-iiot.png',
       icon: 'science',
       accentColor: '#0284c7',
       metricsES: 'Cloro Residual: 1.02 ppm (En Rango) | Predicción Algorítmica a +13h',
