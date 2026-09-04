@@ -75,7 +75,7 @@
     "FIELD_EMAIL": "Email Address",
     "FIELD_CORP_EMAIL": "Corporate Email",
     "FIELD_COUNTRY": "Country",
-    "FIELD_DEPARTMENT": "Department",
+    "FIELD_DEPARTMENT": "City",
     "FIELD_PHONE": "Phone",
     "FIELD_REQUIREMENT": "Requirement Type",
     "REQ_SERVICE": "Service",
