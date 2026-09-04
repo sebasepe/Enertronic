@@ -24,67 +24,224 @@
           <p class="form-subtitle">{{ 'CONTACT.PAGE_SUBTITLE' | translate }}</p>
         </div>
 
+        <!-- Selector de Tipo de Cliente (Cliente Normal vs Empresa) -->
+        <div class="client-type-switcher">
+          <button
+            type="button"
+            class="type-tab"
+            [class.active]="clientType === 'person'"
+            (click)="setClientType('person')"
+          >
+            <mat-icon>person</mat-icon>
+            <span>{{ 'CONTACT.TYPE_NORMAL' | translate }}</span>
+          </button>
+          <button
+            type="button"
+            class="type-tab"
+            [class.active]="clientType === 'company'"
+            (click)="setClientType('company')"
+          >
+            <mat-icon>business</mat-icon>
+            <span>{{ 'CONTACT.TYPE_COMPANY' | translate }}</span>
+          </button>
+        </div>
+
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-          <div class="form-row">
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ 'CONTACT.FIELD_NAME' | translate }}</mat-label>
-              <input matInput formControlName="name" [placeholder]="'CONTACT.FIELD_NAME_PLACEHOLDER' | translate" />
-            </mat-form-field>
+          <!-- FORMULARIO CLIENTE NORMAL -->
+          @if (clientType === 'person') {
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_NAME' | translate }}</mat-label>
+                <input matInput formControlName="name" [placeholder]="'CONTACT.FIELD_NAME_PLACEHOLDER' | translate" />
+                @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_REQUIRED' | translate }}</mat-error>
+                }
+              </mat-form-field>
 
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ 'CONTACT.FIELD_EMAIL' | translate }}</mat-label>
-              <input matInput type="email" formControlName="email" placeholder="correo&#64;empresa.com" />
-            </mat-form-field>
-          </div>
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_EMAIL' | translate }}</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="correo@empresa.com" />
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_EMAIL' | translate }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
 
-          <div class="form-row">
-            <div class="phone-group">
-              <mat-form-field appearance="outline" class="form-field country-select-field">
-                <mat-label>{{ 'CONTACT.FIELD_COUNTRY' | translate }}</mat-label>
-                <mat-select formControlName="countryCode" (selectionChange)="onCountryChange()">
-                  <mat-select-trigger>
-                    <span>{{ selectedCountry.flag }} {{ selectedCountry.dialCode }}</span>
-                  </mat-select-trigger>
-                  @for (c of countries; track c.code) {
-                    <mat-option [value]="c.code">
-                      <span>{{ c.flag }} {{ c.name }} ({{ c.dialCode }})</span>
-                    </mat-option>
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_DEPARTMENT' | translate }}</mat-label>
+                <mat-select formControlName="department">
+                  @for (d of departments; track d) {
+                    <mat-option [value]="d">{{ d }}</mat-option>
                   }
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field appearance="outline" class="form-field phone-input-field">
+              <mat-form-field appearance="outline" class="form-field">
                 <mat-label>{{ 'CONTACT.FIELD_PHONE' | translate }}</mat-label>
                 <input
                   matInput
                   type="tel"
                   formControlName="phone"
-                  [maxlength]="selectedCountry.digits"
+                  maxlength="9"
                   (input)="onPhoneInput($event)"
                   (keydown)="onPhoneKeydown($event)"
-                  [placeholder]="selectedCountry.placeholder"
+                  placeholder="941 700 464"
                 />
+                @if (contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_PHONE' | translate }}</mat-error>
+                }
               </mat-form-field>
             </div>
 
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label>{{ 'CONTACT.FIELD_SERVICE' | translate }}</mat-label>
-              <mat-select formControlName="service">
-                <mat-option value="Programación PLC">{{ 'CONTACT.SERVICE_PLC' | translate }}</mat-option>
-                <mat-option value="Telemetria">{{ 'CONTACT.SERVICE_TELEMETRY' | translate }}</mat-option>
-                <mat-option value="Software SCADA">{{ 'CONTACT.SERVICE_SCADA' | translate }}</mat-option>
-                <mat-option value="Mantenimiento de plantas">{{ 'CONTACT.SERVICE_MAINTENANCE' | translate }}</mat-option>
-                <mat-option value="Tableros instrumentales">{{ 'CONTACT.SERVICE_PANELS' | translate }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_SERVICE' | translate }}</mat-label>
+                <mat-select formControlName="service">
+                  <mat-option value="Programación PLC">{{ 'CONTACT.SERVICE_PLC' | translate }}</mat-option>
+                  <mat-option value="Telemetria">{{ 'CONTACT.SERVICE_TELEMETRY' | translate }}</mat-option>
+                  <mat-option value="Software SCADA">{{ 'CONTACT.SERVICE_SCADA' | translate }}</mat-option>
+                  <mat-option value="Mantenimiento de plantas">{{ 'CONTACT.SERVICE_MAINTENANCE' | translate }}</mat-option>
+                  <mat-option value="Tableros instrumentales">{{ 'CONTACT.SERVICE_PANELS' | translate }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
 
-          <div class="form-full-row">
-            <mat-form-field appearance="outline" class="form-field full-width">
-              <mat-label>{{ 'CONTACT.FIELD_MESSAGE' | translate }}</mat-label>
-              <textarea matInput rows="4" formControlName="message" [placeholder]="'CONTACT.FIELD_MESSAGE_PLACEHOLDER' | translate"></textarea>
-            </mat-form-field>
-          </div>
+            <div class="form-full-row">
+              <mat-form-field appearance="outline" class="form-field full-width">
+                <mat-label>{{ 'CONTACT.FIELD_MESSAGE' | translate }}</mat-label>
+                <textarea matInput rows="4" formControlName="message" [placeholder]="'CONTACT.FIELD_MESSAGE_PLACEHOLDER' | translate"></textarea>
+                @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_REQUIRED' | translate }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+          }
+
+          <!-- FORMULARIO EMPRESA -->
+          @if (clientType === 'company') {
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_COMPANY_NAME' | translate }}</mat-label>
+                <input matInput formControlName="razonSocial" [placeholder]="'CONTACT.FIELD_COMPANY_NAME_PLACEHOLDER' | translate" />
+                @if (contactForm.get('razonSocial')?.invalid && contactForm.get('razonSocial')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_REQUIRED' | translate }}</mat-error>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_RUC' | translate }}</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="ruc"
+                  maxlength="11"
+                  (input)="onRucInput($event)"
+                  (keydown)="onPhoneKeydown($event)"
+                  [placeholder]="'CONTACT.FIELD_RUC_PLACEHOLDER' | translate"
+                />
+                @if (contactForm.get('ruc')?.invalid && contactForm.get('ruc')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_RUC' | translate }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_CORP_EMAIL' | translate }}</mat-label>
+                <input matInput type="email" formControlName="email" placeholder="contacto@empresa.com" />
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_EMAIL' | translate }}</mat-error>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_PHONE' | translate }}</mat-label>
+                <input
+                  matInput
+                  type="tel"
+                  formControlName="phone"
+                  maxlength="9"
+                  (input)="onPhoneInput($event)"
+                  (keydown)="onPhoneKeydown($event)"
+                  placeholder="941 700 464"
+                />
+                @if (contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched) {
+                  <mat-error>{{ 'CONTACT.ERROR_PHONE' | translate }}</mat-error>
+                }
+              </mat-form-field>
+            </div>
+
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>{{ 'CONTACT.FIELD_DEPARTMENT' | translate }}</mat-label>
+                <mat-select formControlName="department">
+                  @for (d of departments; track d) {
+                    <mat-option [value]="d">{{ d }}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="form-row requirement-row">
+              <div class="requirement-type-container">
+                <label class="req-label">{{ 'CONTACT.FIELD_REQUIREMENT' | translate }}:</label>
+                <div class="req-toggle-group">
+                  <button
+                    type="button"
+                    class="req-btn"
+                    [class.selected]="contactForm.get('requirementType')?.value === 'Servicio'"
+                    (click)="setRequirementType('Servicio')"
+                  >
+                    <mat-icon>build</mat-icon>
+                    <span>{{ 'CONTACT.REQ_SERVICE' | translate }}</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="req-btn"
+                    [class.selected]="contactForm.get('requirementType')?.value === 'Compra'"
+                    (click)="setRequirementType('Compra')"
+                  >
+                    <mat-icon>shopping_cart</mat-icon>
+                    <span>{{ 'CONTACT.REQ_PURCHASE' | translate }}</span>
+                  </button>
+                </div>
+              </div>
+
+              @if (contactForm.get('requirementType')?.value === 'Servicio') {
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>{{ 'CONTACT.FIELD_SERVICE' | translate }}</mat-label>
+                  <mat-select formControlName="service">
+                    <mat-option value="Programación PLC">{{ 'CONTACT.SERVICE_PLC' | translate }}</mat-option>
+                    <mat-option value="Telemetria">{{ 'CONTACT.SERVICE_TELEMETRY' | translate }}</mat-option>
+                    <mat-option value="Software SCADA">{{ 'CONTACT.SERVICE_SCADA' | translate }}</mat-option>
+                    <mat-option value="Mantenimiento de plantas">{{ 'CONTACT.SERVICE_MAINTENANCE' | translate }}</mat-option>
+                    <mat-option value="Tableros instrumentales">{{ 'CONTACT.SERVICE_PANELS' | translate }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              }
+
+              @if (contactForm.get('requirementType')?.value === 'Compra') {
+                <mat-form-field appearance="outline" class="form-field">
+                  <mat-label>{{ 'CONTACT.FIELD_PURCHASE_TYPE' | translate }}</mat-label>
+                  <mat-select formControlName="purchaseType">
+                    <mat-option value="Equipos y Soluciones de Telemetría">{{ 'CONTACT.PURCHASE_TELEMETRY' | translate }}</mat-option>
+                    <mat-option value="Tableros de Instrumentación y Control">{{ 'CONTACT.PURCHASE_PANELS' | translate }}</mat-option>
+                    <mat-option value="Licencias de Software SCADA">{{ 'CONTACT.PURCHASE_SOFTWARE' | translate }}</mat-option>
+                    <mat-option value="Sensores e Instrumentación Industrial">{{ 'CONTACT.PURCHASE_SENSORS' | translate }}</mat-option>
+                    <mat-option value="Otros Productos / Equipos">{{ 'CONTACT.PURCHASE_OTHER' | translate }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              }
+            </div>
+
+            <div class="form-full-row">
+              <mat-form-field appearance="outline" class="form-field full-width">
+                <mat-label>{{ 'CONTACT.FIELD_MESSAGE' | translate }}</mat-label>
+                <textarea matInput rows="3" formControlName="message" [placeholder]="'CONTACT.FIELD_MESSAGE_PLACEHOLDER' | translate"></textarea>
+              </mat-form-field>
+            </div>
+          }
 
           <div class="form-action-row">
             <button mat-raised-button class="submit-btn" type="submit" [disabled]="isSubmitting">

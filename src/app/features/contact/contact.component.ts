@@ -43,56 +43,108 @@ export class ContactComponent {
 
   public submitted = false;
   public isSubmitting = false;
+  public clientType: 'person' | 'company' = 'person';
 
-  public countries: CountryCode[] = [
-    { code: 'PE', name: 'Perú', dialCode: '+51', flag: '🇵🇪', digits: 9, placeholder: '941 700 464' },
-    { code: 'CL', name: 'Chile', dialCode: '+56', flag: '🇨🇱', digits: 9, placeholder: '9 1234 5678' },
-    { code: 'CO', name: 'Colombia', dialCode: '+57', flag: '🇨🇴', digits: 10, placeholder: '300 123 4567' },
-    { code: 'MX', name: 'México', dialCode: '+52', flag: '🇲🇽', digits: 10, placeholder: '55 1234 5678' },
-    { code: 'US', name: 'EE.UU. / Canadá', dialCode: '+1', flag: '🇺🇸', digits: 10, placeholder: '202 555 0123' },
-    { code: 'ES', name: 'España', dialCode: '+34', flag: '🇪🇸', digits: 9, placeholder: '612 345 678' },
-    { code: 'AR', name: 'Argentina', dialCode: '+54', flag: '🇦🇷', digits: 10, placeholder: '11 1234 5678' },
-    { code: 'EC', name: 'Ecuador', dialCode: '+593', flag: '🇪🇨', digits: 9, placeholder: '99 123 4567' },
-    { code: 'BO', name: 'Bolivia', dialCode: '+591', flag: '🇧🇴', digits: 8, placeholder: '7123 4567' },
-    { code: 'BR', name: 'Brasil', dialCode: '+55', flag: '🇧🇷', digits: 11, placeholder: '11 91234 5678' },
-    { code: 'VE', name: 'Venezuela', dialCode: '+58', flag: '🇻🇪', digits: 10, placeholder: '412 123 4567' },
-    { code: 'PA', name: 'Panamá', dialCode: '+507', flag: '🇵🇦', digits: 8, placeholder: '6123 4567' },
-    { code: 'CR', name: 'Costa Rica', dialCode: '+506', flag: '🇨🇷', digits: 8, placeholder: '8123 4567' },
-    { code: 'UY', name: 'Uruguay', dialCode: '+598', flag: '🇺🇾', digits: 8, placeholder: '99 123 456' },
-    { code: 'PY', name: 'Paraguay', dialCode: '+595', flag: '🇵🇾', digits: 9, placeholder: '981 123 456' },
+  public departments: string[] = [
+    'Lima',
+    'Callao',
+    'Amazonas',
+    'Áncash',
+    'Apurímac',
+    'Arequipa',
+    'Ayacucho',
+    'Cajamarca',
+    'Cusco',
+    'Huancavelica',
+    'Huánuco',
+    'Ica',
+    'Junín',
+    'La Libertad',
+    'Lambayeque',
+    'Loreto',
+    'Madre de Dios',
+    'Moquegua',
+    'Pasco',
+    'Piura',
+    'Puno',
+    'San Martín',
+    'Tacna',
+    'Tumbes',
+    'Ucayali',
   ];
 
   public contactForm: FormGroup = this.fb.group({
+    clientType: ['person'],
+    // Cliente Normal fields
     name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    countryCode: ['PE'],
-    phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+    email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+    department: ['Lima', Validators.required],
+    phone: ['', [Validators.required, Validators.pattern('^[0-9]{9}$')]],
     service: ['Programación PLC'],
     message: ['', Validators.required],
+    // Empresa fields
+    ruc: [''],
+    razonSocial: [''],
+    requirementType: ['Servicio'],
+    purchaseType: ['Equipos y Soluciones de Telemetría'],
   });
 
-  public get selectedCountry(): CountryCode {
-    const code = this.contactForm.get('countryCode')?.value || 'PE';
-    return this.countries.find((c) => c.code === code) || this.countries[0];
+  public setClientType(type: 'person' | 'company'): void {
+    this.clientType = type;
+    this.contactForm.get('clientType')?.setValue(type);
+    this.updateValidators();
   }
 
-  public onCountryChange(): void {
-    const currentPhone = this.contactForm.get('phone')?.value || '';
-    const maxDigits = this.selectedCountry.digits;
-    if (currentPhone.length > maxDigits) {
-      this.contactForm.get('phone')?.setValue(currentPhone.slice(0, maxDigits));
+  public setRequirementType(reqType: 'Servicio' | 'Compra'): void {
+    this.contactForm.get('requirementType')?.setValue(reqType);
+  }
+
+  private updateValidators(): void {
+    const nameCtrl = this.contactForm.get('name');
+    const rucCtrl = this.contactForm.get('ruc');
+    const razonSocialCtrl = this.contactForm.get('razonSocial');
+    const messageCtrl = this.contactForm.get('message');
+    const emailCtrl = this.contactForm.get('email');
+
+    emailCtrl?.setValidators([Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]);
+
+    if (this.clientType === 'person') {
+      nameCtrl?.setValidators([Validators.required]);
+      rucCtrl?.clearValidators();
+      razonSocialCtrl?.clearValidators();
+      messageCtrl?.setValidators([Validators.required]);
+    } else {
+      nameCtrl?.clearValidators();
+      rucCtrl?.setValidators([Validators.required, Validators.pattern(/^[0-9]{11}$/)]);
+      razonSocialCtrl?.setValidators([Validators.required]);
+      messageCtrl?.clearValidators();
     }
+
+    emailCtrl?.updateValueAndValidity();
+    nameCtrl?.updateValueAndValidity();
+    rucCtrl?.updateValueAndValidity();
+    razonSocialCtrl?.updateValueAndValidity();
+    messageCtrl?.updateValueAndValidity();
   }
 
   public onPhoneInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     let rawValue = input.value.replace(/\D/g, '');
-    const maxDigits = this.selectedCountry.digits;
-    if (rawValue.length > maxDigits) {
-      rawValue = rawValue.slice(0, maxDigits);
+    if (rawValue.length > 9) {
+      rawValue = rawValue.slice(0, 9);
     }
     input.value = rawValue;
     this.contactForm.get('phone')?.setValue(rawValue, { emitEvent: false });
+  }
+
+  public onRucInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    let rawValue = input.value.replace(/\D/g, '');
+    if (rawValue.length > 11) {
+      rawValue = rawValue.slice(0, 11);
+    }
+    input.value = rawValue;
+    this.contactForm.get('ruc')?.setValue(rawValue, { emitEvent: false });
   }
 
   public onPhoneKeydown(event: KeyboardEvent): void {
@@ -115,9 +167,22 @@ export class ContactComponent {
   }
 
   public onSubmit(): void {
+    const emailVal = this.contactForm.get('email')?.value || '';
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(emailVal)) {
+      this.contactForm.get('email')?.setErrors({ invalidEmail: true });
+    }
+
     const phoneVal = this.contactForm.value.phone || '';
-    if (phoneVal.length !== this.selectedCountry.digits) {
+    if (phoneVal.length !== 9 || !/^[0-9]{9}$/.test(phoneVal)) {
       this.contactForm.get('phone')?.setErrors({ invalidLength: true });
+    }
+
+    if (this.clientType === 'company') {
+      const rucVal = this.contactForm.get('ruc')?.value || '';
+      if (rucVal.length !== 11 || !/^[0-9]{11}$/.test(rucVal)) {
+        this.contactForm.get('ruc')?.setErrors({ invalidLength: true });
+      }
     }
 
     if (this.contactForm.invalid) {
@@ -128,17 +193,42 @@ export class ContactComponent {
     this.isSubmitting = true;
     this.submitted = false;
 
-    const payload = {
-      Nombre: this.contactForm.value.name,
-      Email: this.contactForm.value.email,
-      Teléfono: `${this.selectedCountry.dialCode} ${this.contactForm.value.phone}`,
-      País: `${this.selectedCountry.flag} ${this.selectedCountry.name}`,
-      Servicio: this.contactForm.value.service,
-      Mensaje: this.contactForm.value.message,
-      _subject: 'Nuevo mensaje de contacto desde Enertronic',
-      _captcha: 'false',
-      _template: 'table',
-    };
+    let payload: Record<string, string>;
+
+    if (this.clientType === 'company') {
+      const reqType = this.contactForm.value.requirementType || 'Servicio';
+      const detail = reqType === 'Servicio' 
+        ? this.contactForm.value.service 
+        : this.contactForm.value.purchaseType;
+
+      payload = {
+        'Tipo de Cliente': 'Empresa',
+        'Razón Social': this.contactForm.value.razonSocial,
+        RUC: this.contactForm.value.ruc,
+        'Correo Corporativo': this.contactForm.value.email,
+        'Teléfono': `+51 ${this.contactForm.value.phone}`,
+        'Departamento': this.contactForm.value.department,
+        'Requerimiento': reqType,
+        'Detalle Requerimiento': detail || '',
+        'Mensaje Adicional': this.contactForm.value.message || 'Sin mensaje adicional',
+        _subject: 'Nuevo contacto Empresa desde Enertronic: ' + this.contactForm.value.razonSocial,
+        _captcha: 'false',
+        _template: 'table',
+      };
+    } else {
+      payload = {
+        'Tipo de Cliente': 'Cliente',
+        Nombre: this.contactForm.value.name,
+        Email: this.contactForm.value.email,
+        'Teléfono': `+51 ${this.contactForm.value.phone}`,
+        'Departamento': this.contactForm.value.department,
+        Servicio: this.contactForm.value.service,
+        Mensaje: this.contactForm.value.message,
+        _subject: 'Nuevo mensaje de contacto desde Enertronic',
+        _captcha: 'false',
+        _template: 'table',
+      };
+    }
 
     this.http.post('https://formsubmit.co/ajax/alexander.parra@enertronicperu.com', payload).subscribe({
       next: () => this.resetFormState(),
@@ -152,7 +242,13 @@ export class ContactComponent {
   private resetFormState(): void {
     this.isSubmitting = false;
     this.submitted = true;
-    this.contactForm.reset({ countryCode: 'PE', service: 'Programación PLC' });
+    this.contactForm.reset({
+      clientType: this.clientType,
+      department: 'Lima',
+      service: 'Programación PLC',
+      requirementType: 'Servicio',
+      purchaseType: 'Equipos y Soluciones de Telemetría',
+    });
   }
 }
 

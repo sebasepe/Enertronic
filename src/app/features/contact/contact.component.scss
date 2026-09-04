@@ -78,10 +78,121 @@
   }
 }
 
+/* Client Type Switcher Tabs */
+.client-type-switcher {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 0.35rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  width: fit-content;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+
+  .type-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary, #94a3b8);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    @media (max-width: 480px) {
+      flex: 1;
+      font-size: 0.88rem;
+      padding: 0.5rem 0.75rem;
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      color: var(--text-primary, #ffffff);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    &.active {
+      background: #0284c7;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+    }
+  }
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+}
+
+/* Requirement Toggle Group for Empresa */
+.requirement-row {
+  align-items: center;
+}
+
+.requirement-type-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  .req-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .req-toggle-group {
+    display: flex;
+    gap: 0.5rem;
+
+    .req-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border, rgba(255, 255, 255, 0.15));
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-secondary, #94a3b8);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        border-color: #ea580c;
+        color: #ffffff;
+      }
+
+      &.selected {
+        background: rgba(234, 88, 12, 0.15);
+        border-color: #ea580c;
+        color: #ea580c;
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 .form-row {
@@ -118,7 +229,13 @@
   width: 100%;
 
   .mat-mdc-form-field-subscript-wrapper {
-    display: none;
+    padding: 0 4px;
+  }
+
+  mat-error {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #ef4444;
   }
 }
 
