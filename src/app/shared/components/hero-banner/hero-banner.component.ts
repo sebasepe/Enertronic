@@ -74,28 +74,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       ctaTextEN: 'LEARN MORE',
       ctaRoute: '/soluciones',
     },
-    {
-      id: 3,
-      image: 'assets/slides/slide-4.png',
-      titleES: 'VIGILANCIA SATELITAL DEL TERRENO Y DUCTOS',
-      titleEN: 'SATELLITE SURVEILLANCE OF TERRAIN & PIPELINES',
-      subtitleES: 'Para garantizar la seguridad y continuidad operativa en el sector gas e infraestructura remota.',
-      subtitleEN: 'To ensure safety and operational continuity in the gas sector and remote infrastructure.',
-      ctaTextES: 'VER MÁS',
-      ctaTextEN: 'LEARN MORE',
-      ctaRoute: '/soluciones',
-    },
-    {
-      id: 4,
-      image: 'assets/slides/slide-5.png',
-      titleES: 'MONITOREO DE LA ESTABILIDAD DEL TERRENO',
-      titleEN: 'MONITORING TERRAIN STABILITY & INTEGRITY',
-      subtitleES: 'Monitoreo de ductos en tiempo real mediante tecnología satelital avanzada, garantizando seguridad y continuidad operativa.',
-      subtitleEN: 'Real-time pipeline monitoring via advanced satellite tech, guaranteeing safety and operational continuity.',
-      ctaTextES: 'VER MÁS',
-      ctaTextEN: 'LEARN MORE',
-      ctaRoute: '/soluciones',
-    },
   ];
 
   public readonly isPlaying = signal<boolean>(true);
