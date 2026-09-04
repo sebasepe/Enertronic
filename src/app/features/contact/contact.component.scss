@@ -22,6 +22,10 @@
     @media (max-width: 768px) {
       height: 300px;
     }
+
+    @media (max-width: 480px) {
+      height: 240px;
+    }
   }
 }
 
@@ -33,7 +37,11 @@
   width: 100%;
 
   @media (max-width: 600px) {
-    padding: 0 1rem 3rem 1rem;
+    padding: 0 1rem 2.5rem 1rem;
+  }
+
+  @media (max-width: 380px) {
+    padding: 0 0.75rem 2rem 0.75rem;
   }
 }
 
@@ -68,6 +76,10 @@
     margin: 0;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+
+    @media (max-width: 600px) {
+      font-size: 1.35rem;
+    }
   }
 
   .form-subtitle {
@@ -75,6 +87,10 @@
     font-weight: 600;
     color: var(--text-secondary, #94a3b8);
     margin: 0;
+
+    @media (max-width: 600px) {
+      font-size: 0.92rem;
+    }
   }
 }
 
@@ -88,7 +104,7 @@
   border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
   width: fit-content;
 
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
     width: 100%;
   }
 
@@ -107,16 +123,27 @@
     cursor: pointer;
     transition: all 0.2s ease;
 
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
       flex: 1;
       font-size: 0.88rem;
-      padding: 0.5rem 0.75rem;
+      padding: 0.55rem 0.65rem;
+    }
+
+    @media (max-width: 360px) {
+      font-size: 0.82rem;
+      gap: 0.3rem;
     }
 
     mat-icon {
       font-size: 20px;
       width: 20px;
       height: 20px;
+
+      @media (max-width: 360px) {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
     }
 
     &:hover {
@@ -147,6 +174,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  width: 100%;
 
   .req-label {
     font-size: 0.85rem;
@@ -160,9 +188,14 @@
     display: flex;
     gap: 0.5rem;
 
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+
     .req-btn {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 0.4rem;
       padding: 0.65rem 1rem;
       border-radius: 8px;
@@ -173,6 +206,12 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
+
+      @media (max-width: 480px) {
+        flex: 1;
+        padding: 0.55rem 0.5rem;
+        font-size: 0.85rem;
+      }
 
       mat-icon {
         font-size: 18px;
@@ -202,22 +241,7 @@
 
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-.phone-group {
-  display: flex;
-  gap: 0.5rem;
-  width: 100%;
-
-  .country-select-field {
-    flex: 0 0 115px;
-    min-width: 115px;
-  }
-
-  .phone-input-field {
-    flex: 1;
+    gap: 0.85rem;
   }
 }
 
@@ -253,6 +277,11 @@
   border-radius: 8px !important;
   box-shadow: none !important;
   transition: background 0.2s ease, transform 0.15s ease !important;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    height: 48px !important;
+  }
 
   &:hover {
     background: #c2410c !important;
