@@ -11,16 +11,14 @@
 .slides-viewport {
   position: relative;
   width: 100%;
-  /* Aspect ratio roughly 2.6:1 based on banners 1920x738 */
-  aspect-ratio: 21 / 8;
+  /* 16:9 aspect ratio matching the 1920x1080 video resolution */
+  aspect-ratio: 16 / 9;
+  max-height: 75vh;
   overflow: hidden;
 
   @media (max-width: 768px) {
     aspect-ratio: 16 / 9;
-  }
-
-  @media (max-width: 480px) {
-    aspect-ratio: 4 / 3;
+    max-height: none;
   }
 }
 
