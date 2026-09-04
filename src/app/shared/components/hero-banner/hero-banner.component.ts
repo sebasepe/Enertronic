@@ -43,7 +43,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     {
       id: 0,
       type: 'video',
-      videoUrl: 'assets/slides/video-enertronic.mp4',
+      videoUrl: 'assets/slides/videoenertronic.mp4',
       titleES: 'CONTROL TOTAL DE SU OPERACIÓN INDUSTRIAL',
       titleEN: 'TOTAL CONTROL OF YOUR INDUSTRIAL OPERATION',
       subtitleES: 'SCADA · TELEMETRÍA · IIoT CON IA · LoRaWAN · VISIÓN REMOTA',
