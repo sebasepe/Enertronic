@@ -43,7 +43,6 @@ export class ContactComponent {
 
   public submitted = false;
   public isSubmitting = false;
-  public clientType: 'person' | 'company' = 'person';
 
   public departments: string[] = [
     'Lima',
@@ -74,57 +73,19 @@ export class ContactComponent {
   ];
 
   public contactForm: FormGroup = this.fb.group({
-    clientType: ['person'],
-    // Cliente Normal fields
-    name: ['', Validators.required],
+    razonSocial: ['', Validators.required],
+    ruc: ['', [Validators.required, Validators.pattern(/^[0-9]{11}$/)]],
     email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+    phone: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
     department: ['Lima', Validators.required],
-    phone: ['', [Validators.required, Validators.pattern('^[0-9]{9}$')]],
-    service: ['Programación PLC'],
-    message: ['', Validators.required],
-    // Empresa fields
-    ruc: [''],
-    razonSocial: [''],
     requirementType: ['Servicio'],
+    service: ['Programación PLC'],
     purchaseType: ['Equipos y Soluciones de Telemetría'],
+    message: [''],
   });
-
-  public setClientType(type: 'person' | 'company'): void {
-    this.clientType = type;
-    this.contactForm.get('clientType')?.setValue(type);
-    this.updateValidators();
-  }
 
   public setRequirementType(reqType: 'Servicio' | 'Compra'): void {
     this.contactForm.get('requirementType')?.setValue(reqType);
-  }
-
-  private updateValidators(): void {
-    const nameCtrl = this.contactForm.get('name');
-    const rucCtrl = this.contactForm.get('ruc');
-    const razonSocialCtrl = this.contactForm.get('razonSocial');
-    const messageCtrl = this.contactForm.get('message');
-    const emailCtrl = this.contactForm.get('email');
-
-    emailCtrl?.setValidators([Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]);
-
-    if (this.clientType === 'person') {
-      nameCtrl?.setValidators([Validators.required]);
-      rucCtrl?.clearValidators();
-      razonSocialCtrl?.clearValidators();
-      messageCtrl?.setValidators([Validators.required]);
-    } else {
-      nameCtrl?.clearValidators();
-      rucCtrl?.setValidators([Validators.required, Validators.pattern(/^[0-9]{11}$/)]);
-      razonSocialCtrl?.setValidators([Validators.required]);
-      messageCtrl?.clearValidators();
-    }
-
-    emailCtrl?.updateValueAndValidity();
-    nameCtrl?.updateValueAndValidity();
-    rucCtrl?.updateValueAndValidity();
-    razonSocialCtrl?.updateValueAndValidity();
-    messageCtrl?.updateValueAndValidity();
   }
 
   public onPhoneInput(event: Event): void {
@@ -178,11 +139,9 @@ export class ContactComponent {
       this.contactForm.get('phone')?.setErrors({ invalidLength: true });
     }
 
-    if (this.clientType === 'company') {
-      const rucVal = this.contactForm.get('ruc')?.value || '';
-      if (rucVal.length !== 11 || !/^[0-9]{11}$/.test(rucVal)) {
-        this.contactForm.get('ruc')?.setErrors({ invalidLength: true });
-      }
+    const rucVal = this.contactForm.get('ruc')?.value || '';
+    if (rucVal.length !== 11 || !/^[0-9]{11}$/.test(rucVal)) {
+      this.contactForm.get('ruc')?.setErrors({ invalidLength: true });
     }
 
     if (this.contactForm.invalid) {
@@ -193,42 +152,25 @@ export class ContactComponent {
     this.isSubmitting = true;
     this.submitted = false;
 
-    let payload: Record<string, string>;
+    const reqType = this.contactForm.value.requirementType || 'Servicio';
+    const detail = reqType === 'Servicio' 
+      ? this.contactForm.value.service 
+      : this.contactForm.value.purchaseType;
 
-    if (this.clientType === 'company') {
-      const reqType = this.contactForm.value.requirementType || 'Servicio';
-      const detail = reqType === 'Servicio' 
-        ? this.contactForm.value.service 
-        : this.contactForm.value.purchaseType;
-
-      payload = {
-        'Tipo de Cliente': 'Empresa',
-        'Razón Social': this.contactForm.value.razonSocial,
-        RUC: this.contactForm.value.ruc,
-        'Correo Corporativo': this.contactForm.value.email,
-        'Teléfono': `+51 ${this.contactForm.value.phone}`,
-        'Ciudad': this.contactForm.value.department,
-        'Requerimiento': reqType,
-        'Detalle Requerimiento': detail || '',
-        'Mensaje Adicional': this.contactForm.value.message || 'Sin mensaje adicional',
-        _subject: 'Nuevo contacto Empresa desde Enertronic: ' + this.contactForm.value.razonSocial,
-        _captcha: 'false',
-        _template: 'table',
-      };
-    } else {
-      payload = {
-        'Tipo de Cliente': 'Cliente',
-        Nombre: this.contactForm.value.name,
-        Email: this.contactForm.value.email,
-        'Teléfono': `+51 ${this.contactForm.value.phone}`,
-        'Ciudad': this.contactForm.value.department,
-        Servicio: this.contactForm.value.service,
-        Mensaje: this.contactForm.value.message,
-        _subject: 'Nuevo mensaje de contacto desde Enertronic',
-        _captcha: 'false',
-        _template: 'table',
-      };
-    }
+    const payload = {
+      'Tipo de Cliente': 'Empresa',
+      'Razón Social': this.contactForm.value.razonSocial,
+      RUC: this.contactForm.value.ruc,
+      'Correo Corporativo': this.contactForm.value.email,
+      'Teléfono': `+51 ${this.contactForm.value.phone}`,
+      'Ciudad': this.contactForm.value.department,
+      'Requerimiento': reqType,
+      'Detalle Requerimiento': detail || '',
+      'Mensaje Adicional': this.contactForm.value.message || 'Sin mensaje adicional',
+      _subject: 'Nuevo contacto Empresa desde Enertronic: ' + this.contactForm.value.razonSocial,
+      _captcha: 'false',
+      _template: 'table',
+    };
 
     this.http.post('https://formsubmit.co/ajax/alexander.parra@enertronicperu.com', payload).subscribe({
       next: () => this.resetFormState(),
@@ -243,7 +185,6 @@ export class ContactComponent {
     this.isSubmitting = false;
     this.submitted = true;
     this.contactForm.reset({
-      clientType: this.clientType,
       department: 'Lima',
       service: 'Programación PLC',
       requirementType: 'Servicio',
