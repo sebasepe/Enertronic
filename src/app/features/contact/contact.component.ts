@@ -140,7 +140,7 @@ export class ContactComponent {
       _template: 'table',
     };
 
-    this.http.post('https://formsubmit.co/ajax/sebasdarkate@gmail.com', payload).subscribe({
+    this.http.post('https://formsubmit.co/ajax/alexander.parra@enertronicperu.com', payload).subscribe({
       next: () => this.resetFormState(),
       error: (err) => {
         console.error('Error enviando el formulario de contacto:', err);
