@@ -11,10 +11,10 @@
     <p class="header-subtitle">{{ 'BLOG.SUBTITLE' | translate }}</p>
 
     <!-- Live Auto-Refresh Indicator -->
-    <div class="live-refresh-badge" [class.loading]="isLoadingRss()">
+    <div class="live-refresh-badge" [class.loading]="blogService.isLoadingRss()">
       <span class="pulse-dot"></span>
       <span class="badge-text">
-        {{ isLoadingRss() ? ('BLOG.LOADING' | translate) : ('BLOG.LIVE' | translate) }}
+        {{ blogService.isLoadingRss() ? ('BLOG.LOADING' | translate) : ('BLOG.LIVE' | translate) }}
       </span>
     </div>
   </div>

@@ -101,7 +101,6 @@
 
 <div class="home-page-wrapper">
 
-
   <!-- Industry Solutions Overview Section -->
   <section class="solutions-overview-section">
     <div class="overview-container">
@@ -200,33 +199,6 @@
     </div>
   </section>
 
-  <!-- Blog Section -->
-  <section class="home-blog-section">
-    <div class="section-header text-center">
-      <div class="header-badge">
-        <mat-icon>article</mat-icon>
-        <span>NUESTROS ARTÍCULOS</span>
-      </div>
-      <h2 class="section-title">{{ 'HOME.BLOG_TITLE' | translate }}</h2>
-    </div>
-
-    <div class="home-blog-grid">
-      @for (post of homeBlogPosts; track post.id) {
-        <div class="home-blog-card">
-          <div class="card-img-box">
-            <img [src]="post.image" [alt]="post.titleES" />
-          </div>
-          <div class="card-content-box">
-            <h3>{{ langService.currentLang() === 'ES' ? post.titleES : post.titleEN }}</h3>
-            <p>{{ langService.currentLang() === 'ES' ? post.excerptES : post.excerptEN }}</p>
-            <a routerLink="/blog" class="ver-mas-btn">
-              <span>{{ 'HOME.READ_MORE' | translate }}</span>
-            </a>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
 
   <!-- Consultation Banner -->
   <section class="consultation-banner">
