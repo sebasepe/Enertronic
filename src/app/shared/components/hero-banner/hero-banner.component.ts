@@ -11,6 +11,7 @@ export interface HeroSlide {
   type?: 'image' | 'video';
   image?: string;
   videoUrl?: string;
+  objectFit?: 'cover' | 'contain' | 'fill';
   titleES: string;
   titleEN: string;
   subtitleES: string;
@@ -54,7 +55,19 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     },
     {
       id: 1,
-      image: 'assets/slides/slide-2.png',
+      image: 'assets/slides/slide-sedapal1.jpg',
+      titleES: 'SISTEMA TRASVASE HUASCACOCHA - RÍMAC',
+      titleEN: 'HUASCACOCHA - RÍMAC WATER TRANSFER SYSTEM',
+      subtitleES: 'Telemetría LoRa / Satelital Starlink y SCADA Enertronic para el Monitoreo en Tiempo Real de Niveles y Caudales en 10 puntos clave de SEDAPAL.',
+      subtitleEN: 'LoRa / Starlink Satellite Telemetry and Enertronic SCADA for Real-Time Level and Flow Monitoring in 10 Key SEDAPAL Points.',
+      ctaTextES: 'VER CASO DE ÉXITO',
+      ctaTextEN: 'VIEW CASE STUDY',
+      ctaRoute: '/casos-de-exito',
+    },
+    {
+      id: 2,
+      image: 'assets/slides/slide-sedapal1.png',
+      objectFit: 'fill',
       titleES: 'AUTOMATIZACIÓN Y MONITOREO EN TIEMPO REAL',
       titleEN: 'REAL-TIME AUTOMATION & MONITORING FOR YOUR INDUSTRY',
       subtitleES: 'Software SCADA y soluciones de telemetría que optimizan tus procesos, mejoran la eficiencia y garantizan el control total.',
@@ -64,7 +77,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       ctaRoute: '/soluciones',
     },
     {
-      id: 2,
+      id: 3,
       image: 'assets/slides/slide-3.png',
       titleES: 'ENERGÍA INTELIGENTE Y SOSTENIBLE',
       titleEN: 'SMART & SUSTAINABLE ENERGY WITH LITHIUM BATTERIES',

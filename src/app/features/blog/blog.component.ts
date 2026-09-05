@@ -4,7 +4,6 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDialogModule } from '@angular/material/dialog';
 import { LanguageService } from '../../core/services/language.service';
 import { BlogService, BlogPost } from '../../core/services/blog.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
@@ -19,7 +18,6 @@ import { Subscription, timer } from 'rxjs';
     MatIconModule,
     MatButtonModule,
     MatChipsModule,
-    MatDialogModule,
     TranslatePipe,
   ],
   templateUrl: './blog.component.html',

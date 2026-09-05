@@ -22,6 +22,7 @@
             [src]="slide.image"
             [alt]="langService.currentLang() === 'ES' ? slide.titleES : slide.titleEN"
             class="banner-img"
+            [style.object-fit]="slide.objectFit ?? 'cover'"
             loading="eager"
           />
           <!-- Clickable Overlay Link to CTA Route -->
