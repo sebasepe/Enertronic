@@ -55,17 +55,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     },
     {
       id: 1,
-      image: 'assets/slides/slide-sedapal1.jpg',
-      titleES: 'SISTEMA TRASVASE HUASCACOCHA - RÍMAC',
-      titleEN: 'HUASCACOCHA - RÍMAC WATER TRANSFER SYSTEM',
-      subtitleES: 'Telemetría LoRa / Satelital Starlink y SCADA Enertronic para el Monitoreo en Tiempo Real de Niveles y Caudales en 10 puntos clave de SEDAPAL.',
-      subtitleEN: 'LoRa / Starlink Satellite Telemetry and Enertronic SCADA for Real-Time Level and Flow Monitoring in 10 Key SEDAPAL Points.',
-      ctaTextES: 'VER CASO DE ÉXITO',
-      ctaTextEN: 'VIEW CASE STUDY',
-      ctaRoute: '/casos-de-exito',
-    },
-    {
-      id: 2,
       image: 'assets/slides/slide-sedapal1.png',
       objectFit: 'fill',
       titleES: 'AUTOMATIZACIÓN Y MONITOREO EN TIEMPO REAL',
@@ -77,8 +66,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       ctaRoute: '/soluciones',
     },
     {
-      id: 3,
-      image: 'assets/slides/slide-3.png',
+      id: 2,
+      image: 'assets/slides/sedapal-cloracion-iiot.jpg',
+      objectFit: 'fill',
       titleES: 'ENERGÍA INTELIGENTE Y SOSTENIBLE',
       titleEN: 'SMART & SUSTAINABLE ENERGY WITH LITHIUM BATTERIES',
       subtitleES: 'Soluciones energéticas confiables con tecnología en baterías de litio que impulsan tu industria con mayor autonomía y eficiencia.',
@@ -103,7 +93,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   public exitFullscreenIfActive(): void {
     if (document.fullscreenElement || (document as any).webkitFullscreenElement || (document as any).msFullscreenElement) {
       if (document.exitFullscreen) {
-        document.exitFullscreen().catch(() => {});
+        document.exitFullscreen().catch(() => { });
       } else if ((document as any).webkitExitFullscreen) {
         (document as any).webkitExitFullscreen();
       } else if ((document as any).msExitFullscreen) {
@@ -132,7 +122,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
           activeVideo.currentTime = 0;
           activeVideo.play().then(() => {
             this.isPlaying.set(true);
-          }).catch(() => {});
+          }).catch(() => { });
         }
       }, 50);
     }
@@ -162,7 +152,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     if (video.paused) {
       video.play().then(() => {
         this.isPlaying.set(true);
-      }).catch(() => {});
+      }).catch(() => { });
     } else {
       video.pause();
       this.isPlaying.set(false);
@@ -185,10 +175,10 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     if (!video) return;
 
     if (document.fullscreenElement) {
-      document.exitFullscreen().catch(() => {});
+      document.exitFullscreen().catch(() => { });
     } else {
       if (video.requestFullscreen) {
-        video.requestFullscreen().catch(() => {});
+        video.requestFullscreen().catch(() => { });
       } else if ((video as any).webkitRequestFullscreen) {
         (video as any).webkitRequestFullscreen();
       } else if ((video as any).msRequestFullscreen) {
@@ -204,7 +194,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   private startAutoPlay(): void {
     this.stopAutoPlay();
     const currentSlide = this.slides[this.activeSlide()];
-    
+
     // Si la diapositiva actual es un video, avanza automáticamente al finalizar el video (evento ended)
     if (currentSlide?.type === 'video') {
       return;
