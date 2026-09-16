@@ -89,6 +89,8 @@
     "SERVICE_SCADA": "SCADA Software",
     "SERVICE_MAINTENANCE": "Plant Maintenance",
     "SERVICE_PANELS": "Instrument Panels",
+    "SERVICE_MAPS_GEOLOCATION": "Map Platform & Geolocation Service (APIs)",
+    "SERVICE_AI_TOKENS": "Artificial Intelligence Processing Token Service for AI Decision Support Tool",
     "PURCHASE_TELEMETRY": "Telemetry Equipment & Solutions",
     "PURCHASE_PANELS": "Instrumentation & Control Panels",
     "PURCHASE_SOFTWARE": "SCADA Software Licenses",
