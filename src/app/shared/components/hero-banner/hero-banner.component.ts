@@ -44,7 +44,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     {
       id: 0,
       type: 'video',
-      videoUrl: 'assets/slides/enertronic.mp4',
+      videoUrl: 'assets/slides/video-enertronic.mp4',
       titleES: 'CONTROL TOTAL DE SU OPERACIÓN INDUSTRIAL',
       titleEN: 'TOTAL CONTROL OF YOUR INDUSTRIAL OPERATION',
       subtitleES: 'SCADA · TELEMETRÍA · IIoT CON IA · LoRaWAN · VISIÓN REMOTA',
@@ -55,18 +55,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     },
     {
       id: 1,
-      image: 'assets/slides/slide-sedapal-huascacocha.jpg',
-      objectFit: 'contain',
-      titleES: 'SISTEMA DE TELEMETRÍA LORA / SATELITAL STARLINK',
-      titleEN: 'LORA / STARLINK SATELLITE TELEMETRY SYSTEM',
-      subtitleES: 'Sistema Trasvase Huascacocha - Rímac: Monitoreo en tiempo real de niveles y caudales en 10 puntos clave a más de 4,000 m.s.n.m.',
-      subtitleEN: 'Huascacocha-Rímac Transfer System: Real-time monitoring of levels and flows at 10 key points above 4,000 m.a.s.l.',
-      ctaTextES: 'VER CASO DE ÉXITO',
-      ctaTextEN: 'VIEW CASE STUDY',
-      ctaRoute: '/casos-de-exito',
-    },
-    {
-      id: 2,
       image: 'assets/slides/slide-dosificacion-cloro.png',
       objectFit: 'contain',
       titleES: 'DOSIFICACIÓN DE CLORO CON INTELIGENCIA ARTIFICIAL',
