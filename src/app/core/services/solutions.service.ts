@@ -854,6 +854,86 @@ export class SolutionsService {
         { icon: 'vpn_lock', titleES: 'Túneles P2P + ZTNA', titleEN: 'P2P Tunnels + ZTNA', descES: 'Atraviesa firewalls complejos con encriptación de Confianza Cero. Sin exposición de puertos al exterior.', descEN: 'Traverses complex firewalls with Zero Trust encryption. No exposed ports to the outside.' },
         { icon: 'display_settings', titleES: 'Control Físico a Distancia', titleEN: 'Physical Remote Control', descES: 'Controle a nivel de BIOS (KVM) y acceda a puertos de consola (OOB) como si estuviera frente al tablero.', descEN: 'Control at BIOS level (KVM) and access console ports (OOB) as if standing at the panel.' }
       ]
+    },
+    {
+      id: 'sol-13',
+      slug: 'telemetria-monitoreo-automotor-mineria',
+      icon: 'directions_bus',
+      categoryES: 'TELEMETRÍA AUTOMOTOR',
+      categoryEN: 'AUTOMOTIVE TELEMETRY',
+      titleES: 'Solución Integrada de Telemetría y Monitoreo Automotor',
+      titleEN: 'Integrated Automotive Telemetry and Monitoring Solution',
+      shortTitleES: 'Telemetría Automotor Minería',
+      shortTitleEN: 'Mining Automotive Telemetry',
+      taglineES: 'Conciencia situacional total y trazabilidad del 100% para el vehículo Volare V8L en operaciones subterráneas, sin importar si hay señal GPS o cobertura celular.',
+      taglineEN: '100% situational awareness and traceability for the Volare V8L in underground operations, regardless of GPS signal or cellular coverage.',
+      descES:
+        'Ecosistema tecnológico híbrido de circuito cerrado para flotas mineras: integra telemetría, video HD y radar Doppler. Registra y sincroniza datos automáticamente entre el interior de la mina y la nube cuando el vehículo recupera cobertura.',
+      descEN:
+        'Hybrid closed-loop technology ecosystem for mining fleets: integrates telemetry, HD video, and Doppler radar. Automatically records and syncs data between the mine interior and the cloud when the vehicle regains coverage.',
+      referentialImage: 'assets/solutions/telemetria-monitoreo-automotor-mineria.jpg',
+      imageBadgeES: 'Sistema PROVIX + ENERTRONIC – Volare V8L Minería',
+      imageBadgeEN: 'PROVIX + ENERTRONIC System – Volare V8L Mining',
+      overviewES:
+        'El problema central en operaciones subterráneas es la pérdida de señal GPS, que genera "ceguera de datos" e imposibilita la gestión de flota. Esta solución llave en mano — fruto de la alianza entre PROVIX y ENERTRONIC — resuelve ese problema con tres nodos de hardware que trabajan en conjunto: una cámara HD IP69K para grabación continua, un MDVR industrial 4G/WiFi/GPS como cerebro del sistema, y un radar Doppler de microondas (24.125 GHz) montado bajo el chasis que mide la velocidad real sobre el terreno sin depender de ruedas ni señal. Al salir a superficie y recuperar cobertura 4G, el sistema sincroniza automáticamente toda la telemetría y el video acumulado al servidor CMS en la nube.',
+      overviewEN:
+        'The core problem in underground operations is GPS signal loss, creating "data blindness" that makes fleet management impossible. This turnkey solution — a product of the PROVIX and ENERTRONIC alliance — solves it with three hardware nodes working together: an IP69K HD camera for continuous recording, a 4G/WiFi/GPS industrial MDVR as the system brain, and a microwave Doppler radar (24.125 GHz) mounted under the chassis measuring true ground speed independent of wheels or signal. When the vehicle returns to the surface and regains 4G coverage, the system automatically syncs all accumulated telemetry and video to the cloud CMS server.',
+      highlightsES: [
+        'Radar Doppler de microondas bajo el chasis: velocidad real inmune al lodo y pérdida de tracción',
+        'Conmutación automática GPS → Radar al entrar a la mina, sin intervención del conductor',
+        'MDVR 4G/WiFi con almacenamiento híbrido hasta 2TB SSD + 512GB SD a prueba de vibraciones',
+        'Sincronización automática mina-nube: los datos se vuelcan al CMS al recuperar cobertura'
+      ],
+      highlightsEN: [
+        'Microwave Doppler radar under chassis: true ground speed immune to mud and wheel slip',
+        'Automatic GPS → Radar switchover when entering the mine, no driver intervention required',
+        '4G/WiFi MDVR with hybrid storage up to 2TB SSD + 512GB SD, vibration-proof',
+        'Automatic mine-to-cloud sync: data uploaded to CMS server upon regaining coverage'
+      ],
+      models: [
+        {
+          name: 'Provix OVHD086-110',
+          specsES: 'Cámara HD frontal 1080P Full HD, lente amplio ángulo, protección IP69K, operación en baja luminosidad.',
+          specsEN: '1080P Full HD front camera, wide-angle lens, IP69K protection, low-light operation.'
+        },
+        {
+          name: 'Provix SHV-DV456AGPSIWIFI4G',
+          specsES: 'MDVR Industrial 4G LTE + WiFi + GPS. 4 canales, SD hasta 512GB + SSD hasta 2TB, a prueba de vibraciones.',
+          specsEN: 'Industrial 4G LTE + WiFi + GPS MDVR. 4 channels, SD up to 512GB + SSD up to 2TB, vibration-proof.'
+        },
+        {
+          name: 'Provix RADAR III',
+          specsES: 'Sensor de velocidad Doppler de microondas 24.125 GHz. Montaje bajo chasis. Inmune a lodo y falsa rotación de ruedas.',
+          specsEN: '24.125 GHz microwave Doppler speed sensor. Undercarriage mount. Immune to mud and wheel spin.'
+        }
+      ],
+      specs: [
+        { labelES: 'Vehículo Objetivo', labelEN: 'Target Vehicle', valueES: 'Automotor Volare V8L (Minería Subterránea)', valueEN: 'Volare V8L Automotive (Underground Mining)' },
+        { labelES: 'Sensor de Velocidad', labelEN: 'Speed Sensor', valueES: 'Radar Doppler Microondas 24.125 GHz (bajo chasis)', valueEN: 'Microwave Doppler Radar 24.125 GHz (undercarriage)' },
+        { labelES: 'Alerta Superficie', labelEN: 'Surface Alert', valueES: 'Límite GPS: 25 km/h con alarma configurable', valueEN: 'GPS limit: 25 km/h with configurable alert' },
+        { labelES: 'Alerta Interior Mina', labelEN: 'Underground Alert', valueES: 'Límite Radar: 17.5 km/h (conmutación automática)', valueEN: 'Radar limit: 17.5 km/h (automatic switchover)' },
+        { labelES: 'Almacenamiento', labelEN: 'Storage', valueES: 'SSD hasta 2TB + SD hasta 512GB (híbrido, antivibraciones)', valueEN: 'SSD up to 2TB + SD up to 512GB (hybrid, vibration-proof)' },
+        { labelES: 'Dashboard CMS', labelEN: 'CMS Dashboard', valueES: 'Web, PC y móvil: mapa en vivo, alertas, video sincronizado', valueEN: 'Web, PC & mobile: live map, alerts, synchronized video playback' }
+      ],
+      applicationsES: [
+        'Control de velocidad GPS en superficie y radar Doppler en interior de mina',
+        'Grabación continua 1080P HD de rutas y eventos críticos en operaciones subterráneas',
+        'Seguimiento multi-equipo en tiempo real desde dashboard web, PC y móvil',
+        'Investigación de incidentes con video sincronizado a telemetría de velocidad',
+        'Exportación de reportes y gráficos automatizados para auditorías de seguridad'
+      ],
+      applicationsEN: [
+        'GPS speed control on surface and Doppler radar speed control underground',
+        'Continuous 1080P HD recording of routes and critical events in underground operations',
+        'Real-time multi-vehicle tracking from web, PC, and mobile dashboard',
+        'Incident investigation with video synchronized to speed telemetry data',
+        'Automated report and chart export for safety audits'
+      ],
+      benefits: [
+        { icon: 'radar', titleES: 'Velocidad Real con Radar Doppler', titleEN: 'True Speed via Doppler Radar', descES: 'Mide la velocidad sobre el terreno de forma precisa, inmune al lodo y a la falsa rotación de ruedas.', descEN: 'Measures true ground speed accurately, immune to mud and wheel spin.' },
+        { icon: 'sync', titleES: 'Sincronización Automática Mina-Nube', titleEN: 'Automatic Mine-to-Cloud Sync', descES: 'Toda la telemetría y video grabados offline se vuelcan al CMS en cuanto el vehículo recupera señal.', descEN: 'All offline-recorded telemetry and video are uploaded to the CMS as soon as the vehicle regains signal.' },
+        { icon: 'handshake', titleES: 'Alianza PROVIX + ENERTRONIC', titleEN: 'PROVIX + ENERTRONIC Alliance', descES: 'Hardware industrial de grado militar integrado y configurado por especialistas en telemetría minera.', descEN: 'Military-grade industrial hardware integrated and configured by mining telemetry specialists.' }
+      ]
     }
   ]);
 

@@ -55,6 +55,18 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     },
     {
       id: 1,
+      image: 'assets/slides/slide-sedapal-huascacocha.jpg',
+      objectFit: 'contain',
+      titleES: 'SISTEMA DE TELEMETRÍA LORA / SATELITAL STARLINK',
+      titleEN: 'LORA / STARLINK SATELLITE TELEMETRY SYSTEM',
+      subtitleES: 'Sistema Trasvase Huascacocha - Rímac: Monitoreo en tiempo real de niveles y caudales en 10 puntos clave a más de 4,000 m.s.n.m.',
+      subtitleEN: 'Huascacocha-Rímac Transfer System: Real-time monitoring of levels and flows at 10 key points above 4,000 m.a.s.l.',
+      ctaTextES: 'VER CASO DE ÉXITO',
+      ctaTextEN: 'VIEW CASE STUDY',
+      ctaRoute: '/casos-de-exito',
+    },
+    {
+      id: 2,
       image: 'assets/slides/slide-sedapal1.png',
       objectFit: 'fill',
       titleES: 'AUTOMATIZACIÓN Y MONITOREO EN TIEMPO REAL',
@@ -66,7 +78,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       ctaRoute: '/soluciones',
     },
     {
-      id: 2,
+      id: 3,
       image: 'assets/slides/sedapal-cloracion-iiot.jpg',
       objectFit: 'fill',
       titleES: 'ENERGÍA INTELIGENTE Y SOSTENIBLE',
