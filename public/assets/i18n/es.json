@@ -95,7 +95,6 @@
     "SERVICE_TELEMETRY_CONTROL": "Telemetría / Telecontrol / Telemando",
     "SERVICE_REMOTE_VISION": "Visión remota para sector minería y maquinaria",
     "SERVICE_VIDEO_INDUSTRIAL": "Videovigilancia para procesos industriales críticos",
-    "SERVICE_GOOGLE": "Servicio Google",
     "SERVICE_MAPS_GEOLOCATION": "Servicio de plataforma de mapas y geolocalización (APIs)",
     "SERVICE_AI_TOKENS": "Servicio de tokens de procesamiento de inteligencia artificial para herramienta de apoyo a la toma de decisiones con IA",
     "PURCHASE_TELEMETRY": "Equipos y Soluciones de Telemetría",
