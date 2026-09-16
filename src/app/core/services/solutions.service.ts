@@ -791,6 +791,69 @@ export class SolutionsService {
         { icon: 'handshake', titleES: 'Alianza Líder PROVIX', titleEN: 'PROVIX Leading Alliance', descES: 'Tecnología canadiense de visión remota probada en la minería más exigente.', descEN: 'Canadian remote vision technology proven in demanding mining ops.' },
         { icon: 'verified_user', titleES: 'Seguridad Operacional', titleEN: 'Operational Safety', descES: 'Optimiza la toma de decisiones y protege al personal mediante supervisión a distancia.', descEN: 'Optimizes decision-making and protects personnel through remote control.' }
       ]
+    },
+    {
+      id: 'sol-12',
+      slug: 'solucion-remota-maquinas-industriales',
+      icon: 'computer',
+      categoryES: 'ACCESO REMOTO INDUSTRIAL',
+      categoryEN: 'INDUSTRIAL REMOTE ACCESS',
+      titleES: 'Solución Remota a Máquinas y Entornos Industriales',
+      titleEN: 'Remote Solution for Machines and Industrial Environments',
+      shortTitleES: 'Acceso Remoto Industrial',
+      shortTitleEN: 'Industrial Remote Access',
+      taglineES: 'Establezca una conexión segura y directa con sus equipos de campo desde cualquier lugar. Nuestra puerta de enlace actúa como una línea de vida independiente (vía 4G, Wi-Fi o LAN dual) que le permite controlar, diagnosticar y recuperar maquinaria industrial y PLCs, sin necesidad de instalar software en el equipo destino.',
+      taglineEN: 'Establish a secure, direct connection to your field equipment from anywhere. Our gateway acts as an independent lifeline (via 4G, Wi-Fi, or dual LAN) that lets you control, diagnose, and recover industrial machinery and PLCs — no software installation required on the target device.',
+      descES:
+        'Lleve el mantenimiento a la máquina sin pisar la planta. Nuestro hardware crea un puente de red directo hacia sus computadoras industriales y flujos de trabajo PLC, con conectividad plug-and-play que no depende del sistema operativo local ni requiere controladores.',
+      descEN:
+        'Bring maintenance to the machine without entering the plant. Our hardware creates a direct network bridge to your industrial computers and PLC workflows, with plug-and-play connectivity independent of the local OS and requiring no drivers.',
+      referentialImage: 'assets/solutions/solucion-remota-maquinas-industriales.jpg',
+      imageBadgeES: 'Puerta de Enlace Industrial – Acceso Remoto Seguro',
+      imageBadgeEN: 'Industrial Gateway – Secure Remote Access',
+      overviewES:
+        'Conectividad Remota de Extremo a Extremo. Lleve el mantenimiento a la máquina sin pisar la planta. Nuestro hardware crea un puente de red directo hacia sus computadoras industriales y flujos de trabajo PLC. La puerta de enlace actúa como línea de vida independiente: se conecta mediante 4G, Wi-Fi o LAN dual, sin depender del sistema operativo ni requerir controladores en el equipo local. Los túneles P2P y ZTNA atraviesan firewalls complejos garantizando acceso seguro con encriptación de confianza cero. El control físico a distancia permite manejar equipos a nivel de BIOS (KVM) y acceder a puertos de consola caídos (OOB) exactamente como si estuviera frente al tablero.',
+      overviewEN:
+        'End-to-End Remote Connectivity. Bring maintenance to the machine without entering the plant. Our hardware creates a direct network bridge to your industrial computers and PLC workflows. The gateway acts as an independent lifeline: it connects via 4G, Wi-Fi, or dual LAN, without relying on the local OS or requiring drivers. P2P and ZTNA tunnels traverse complex firewalls, ensuring secure access with Zero Trust encryption. Physical remote control lets you manage equipment at the BIOS level (KVM) and access downed console ports (OOB) exactly as if you were standing at the panel.',
+      highlightsES: [
+        'Línea de Vida Independiente: conexión hardware plug-and-play que no depende del sistema operativo local ni requiere controladores',
+        'Túneles P2P y ZTNA: atraviese firewalls complejos con acceso directo y encriptación de confianza cero',
+        'Control Físico a Distancia: maneje equipos a nivel de BIOS (KVM) y acceda a puertos de consola caídos (OOB)',
+        'Conectividad redundante vía 4G, Wi-Fi o LAN dual sin punto único de falla'
+      ],
+      highlightsEN: [
+        'Independent Lifeline: plug-and-play hardware connection with no local OS dependency and no drivers required',
+        'P2P & ZTNA Tunnels: traverse complex firewalls with direct, Zero Trust encrypted access',
+        'Physical Remote Control: manage equipment at BIOS level (KVM) and access downed console ports (OOB)',
+        'Redundant connectivity via 4G, Wi-Fi, or dual LAN with no single point of failure'
+      ],
+      specs: [
+        { labelES: 'Conectividad', labelEN: 'Connectivity', valueES: '4G LTE / Wi-Fi / LAN Dual con SD-WAN', valueEN: '4G LTE / Wi-Fi / Dual LAN with SD-WAN' },
+        { labelES: 'Control KVM', labelEN: 'KVM Control', valueES: 'HDMI + USB: escritorio y BIOS por navegador web', valueEN: 'HDMI + USB: desktop and BIOS via web browser' },
+        { labelES: 'Seguridad', labelEN: 'Security', valueES: 'ZTNA – Confianza Cero, autenticación previa a conexión', valueEN: 'ZTNA – Zero Trust, authentication before connection' },
+        { labelES: 'Túneles de Red', labelEN: 'Network Tunnels', valueES: 'P2P NAT traversal, atraviesa firewalls sin configuración compleja', valueEN: 'P2P NAT traversal, crosses firewalls without complex configuration' },
+        { labelES: 'Gestión OOB', labelEN: 'OOB Management', valueES: 'RDP, VNC, SSH y puertos de consola (puerta trasera de emergencia)', valueEN: 'RDP, VNC, SSH and console ports (emergency backdoor)' },
+        { labelES: 'Instalación', labelEN: 'Installation', valueES: 'Plug-and-play: sin software en el equipo destino, sin controladores', valueEN: 'Plug-and-play: no software on target device, no drivers needed' }
+      ],
+      applicationsES: [
+        'Recuperación remota de servidores y maquinaria CNC a nivel de BIOS sin técnicos en sitio',
+        'Programación y diagnóstico remoto de PLCs en plantas industriales, minería y energía',
+        'Acceso de emergencia OOB cuando la red principal del cliente está caída',
+        'Mantenimiento preventivo y correctivo remoto sin interrumpir la producción',
+        'Gestión centralizada de múltiples sitios industriales desde una sola estación'
+      ],
+      applicationsEN: [
+        'Remote BIOS-level recovery of servers and CNC machinery without on-site technicians',
+        'Remote PLC programming and diagnostics in industrial plants, mining, and energy',
+        'Emergency OOB access when the client\'s main network is down',
+        'Preventive and corrective remote maintenance without disrupting production',
+        'Centralized management of multiple industrial sites from a single workstation'
+      ],
+      benefits: [
+        { icon: 'electrical_services', titleES: 'Línea de Vida Independiente', titleEN: 'Independent Lifeline', descES: 'Plug-and-play sin software en el equipo destino. Funciona aunque el sistema operativo esté caído.', descEN: 'Plug-and-play with no software on the target device. Works even if the OS has crashed.' },
+        { icon: 'vpn_lock', titleES: 'Túneles P2P + ZTNA', titleEN: 'P2P Tunnels + ZTNA', descES: 'Atraviesa firewalls complejos con encriptación de Confianza Cero. Sin exposición de puertos al exterior.', descEN: 'Traverses complex firewalls with Zero Trust encryption. No exposed ports to the outside.' },
+        { icon: 'display_settings', titleES: 'Control Físico a Distancia', titleEN: 'Physical Remote Control', descES: 'Controle a nivel de BIOS (KVM) y acceda a puertos de consola (OOB) como si estuviera frente al tablero.', descEN: 'Control at BIOS level (KVM) and access console ports (OOB) as if standing at the panel.' }
+      ]
     }
   ]);
 
