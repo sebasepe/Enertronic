@@ -409,12 +409,26 @@
     transition: all 0.25s ease;
     text-decoration: none;
 
-    &:hover {
-      background: #0284c7;
+    /* Colores de marca originales */
+    &.facebook {
+      color: #1877F2;
+      border-color: rgba(24, 119, 242, 0.3);
+      &:hover { background: #1877F2; color: #fff; border-color: #1877F2; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(24,119,242,0.45); }
+    }
+    &.youtube {
+      color: #FF0000;
+      border-color: rgba(255, 0, 0, 0.3);
+      &:hover { background: #FF0000; color: #fff; border-color: #FF0000; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(255,0,0,0.45); }
+    }
+    &.instagram {
+      color: #E1306C;
+      border-color: rgba(225, 48, 108, 0.3);
+      &:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; border-color: #E1306C; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(225,48,108,0.45); }
+    }
+    &.tiktok {
       color: #ffffff;
-      border-color: #0284c7;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
+      &:hover { background: #010101; color: #69C9D0; border-color: #69C9D0; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(105,201,208,0.45); }
     }
   }
 }
