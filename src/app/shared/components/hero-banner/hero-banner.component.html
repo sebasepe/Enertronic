@@ -32,7 +32,22 @@
     }
   </div>
 
+  <!-- Slogan Overlay — aparece sobre el slide activo -->
+  @if (slides[activeSlide()]; as slide) {
+    <div class="hero-text-overlay">
+      <div class="hero-text-inner">
+        <p class="hero-subtitle">
+          {{ langService.currentLang() === 'ES' ? slide.subtitleES : slide.subtitleEN }}
+        </p>
+        <h1 class="hero-title">
+          {{ langService.currentLang() === 'ES' ? slide.titleES : slide.titleEN }}
+        </h1>
+      </div>
+    </div>
+  }
+
   <!-- Video Floating Controls (Visible when current slide is a video) -->
+
   @if (slides[activeSlide()]?.type === 'video') {
     <div class="video-controls-overlay">
       <button
