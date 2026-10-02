@@ -1,0 +1,59 @@
+
+# ── Activar mod_headers (requerido para los headers de seguridad) ──
+<IfModule mod_headers.c>
+
+    # Previene Clickjacking: nadie puede embeber el sitio en un iframe externo
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Previene MIME-type sniffing (el navegador no adivina el tipo de archivo)
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Activa el filtro XSS del navegador y bloquea la página si detecta ataque
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Fuerza HTTPS por 1 año — ACTIVAR solo después de confirmar SSL en cPanel
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Controla qué información de referencia se envía al navegar
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Deshabilita funcionalidades del navegador que no se usan
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+    # Elimina el header que revela que usas Apache/versión del servidor
+    Header always unset X-Powered-By
+    Header always unset Server
+
+</IfModule>
+
+# ── Angular SPA: redirige todas las rutas al index.html ──
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # No redirigir archivos o carpetas que existen físicamente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # No redirigir el proxy PHP del formulario
+    RewriteCond %{REQUEST_URI} !^/send-contact\.php$
+
+    # Todo lo demás → Angular
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# ── Proteger el PHP proxy: solo aceptar POST con JSON ──
+<Files "send-contact.php">
+    # Bloquear acceso directo desde navegador (GET requests)
+    <LimitExcept POST>
+        Require all denied
+    </LimitExcept>
+</Files>
+
+# ── Deshabilitar directory listing (no mostrar listado de archivos) ──
+Options -Indexes
+
+# ── Proteger archivos sensibles ──
+<FilesMatch "\.(env|log|json|lock|ts|scss|git)$">
+    Require all denied
+</FilesMatch>

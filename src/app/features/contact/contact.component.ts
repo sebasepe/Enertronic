@@ -44,6 +44,7 @@ export class ContactComponent {
 
   public submitted = false;
   public isSubmitting = false;
+  public rateLimitError = false;
 
   public departments: string[] = [
     'Lima',
@@ -152,6 +153,7 @@ export class ContactComponent {
 
     this.isSubmitting = true;
     this.submitted = false;
+    this.rateLimitError = false;
 
     const reqType = this.contactForm.value.requirementType || 'Servicio';
     const detail = reqType === 'Servicio' 
@@ -176,8 +178,14 @@ export class ContactComponent {
     this.http.post(environment.contactEndpoint, payload).subscribe({
       next: () => this.resetFormState(),
       error: (err) => {
-        console.error('Error enviando el formulario de contacto:', err);
-        this.resetFormState();
+        this.isSubmitting = false;
+        if (err?.status === 429) {
+          // Rate limit: el PHP rechazó por envíos demasiado frecuentes
+          this.rateLimitError = true;
+        } else {
+          // Error genérico — reinicia el formulario
+          this.resetFormState();
+        }
       },
     });
   }
