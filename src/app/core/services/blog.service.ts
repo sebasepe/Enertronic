@@ -36,6 +36,34 @@ export class BlogService {
   // Artículos locales técnicos y de ingeniería para Enertronic Perú
   public readonly staticPosts: BlogPost[] = [
     {
+      id: 'quickdesk-ipkvm-industrial-remote',
+      image: 'assets/blog/quickdesk-ipkvm.png',
+      categoryES: 'Hardware & IoT',
+      categoryEN: 'Hardware & IoT',
+      titleES: 'QuickDesk: KVM Industrial Out-of-Band para Mantenimiento Remoto de PLCs y Servidores',
+      titleEN: 'QuickDesk: Out-of-Band Industrial KVM for Remote PLC and Server Maintenance',
+      excerptES: 'Acceso remoto a nivel de hardware (BIOS/consola) para PCs industriales, PLCs y switches de red. Reinicia, recupera y restaura equipos críticos sin necesidad de desplazamiento físico al sitio.',
+      excerptEN: 'Hardware-level remote access (BIOS/console) for industrial PCs, PLCs, and network switches. Reboot, recover, and restore critical equipment without on-site travel.',
+      contentES: [
+        'QuickDesk es una plataforma de acceso remoto out-of-band diseñada específicamente para entornos industriales y de infraestructura crítica. A diferencia de las soluciones tradicionales de escritorio remoto que dependen del sistema operativo, QuickDesk opera a nivel de hardware, permitiendo acceso completo incluso cuando el equipo está bloqueado por una pantalla azul (BSOD), en proceso de arranque o con el sistema operativo dañado.',
+        'La plataforma ofrece tres soluciones integradas: acceso a escritorio remoto para equipos de trabajo y soporte IT, acceso KVM sobre IP (IPKVM) para control más allá del sistema operativo, y operaciones PLC/OT para mantenimiento de entornos industriales. Esto incluye conexión a computadoras industriales (HMI), PLCs de línea de producción, máquinas CNC, cámaras industriales, sensores y switches de red.',
+        'Para industrias críticas como minería, manufactura, energía, petróleo y gas, la capacidad de recuperar remotamente un PLC bloqueado o reiniciar un servidor desde nivel BIOS elimina tiempos de inactividad costosos y desplazamientos de técnicos a sitios remotos. QuickDesk se integra con plataformas en la nube mediante enlace seguro y soporta entornos Windows, macOS y Android.',
+        'Descubre todas las soluciones y capacidades técnicas de QuickDesk en su sitio oficial: quickdesk.com/en/'
+      ],
+      contentEN: [
+        'QuickDesk is an out-of-band remote access platform specifically designed for industrial and critical infrastructure environments. Unlike traditional remote desktop solutions that depend on the operating system, QuickDesk operates at the hardware level, allowing full access even when the machine is stuck on a Blue Screen of Death (BSOD), in the boot process, or has a damaged OS.',
+        'The platform offers three integrated solutions: remote desktop software for workstations and IT support teams, IPKVM remote access for beyond-OS hardware control, and PLC/OT operations for industrial environment maintenance. This covers industrial computers (HMI), production line PLCs, CNC machines, industrial cameras, sensors, and network switches.',
+        'For critical industries such as mining, manufacturing, energy, and oil & gas, the ability to remotely recover a locked PLC or reboot a server from BIOS level eliminates costly downtime and on-site technician travel to remote locations. QuickDesk integrates with cloud platforms via secure uplink and supports Windows, macOS, and Android environments.',
+        'Discover all QuickDesk solutions and technical capabilities at their official site: quickdesk.com/en/'
+      ],
+      date: '02 Oct 2026',
+      readTime: '5 min',
+      author: 'Equipo Técnico Enertronic',
+      featured: true,
+      externalUrl: 'https://quickdesk.com/en/',
+      sourceCategoryId: 'HARDWARE_IOT'
+    },
+    {
       id: 'mesh-telemetry-24ghz',
       image: 'assets/blog/blog-1.png',
       categoryES: 'Hardware & IoT',
