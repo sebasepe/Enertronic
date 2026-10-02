@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { HttpClient } from '@angular/common/http';
 import { LanguageService } from '../../core/services/language.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { environment } from '../../../environments/environment';
 
 export interface CountryCode {
   code: string;
@@ -172,7 +173,7 @@ export class ContactComponent {
       _template: 'table',
     };
 
-    this.http.post('https://formsubmit.co/ajax/alexander.parra@enertronicperu.com', payload).subscribe({
+    this.http.post(environment.contactEndpoint, payload).subscribe({
       next: () => this.resetFormState(),
       error: (err) => {
         console.error('Error enviando el formulario de contacto:', err);
