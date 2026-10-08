@@ -4,6 +4,7 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { WhatsAppBtnComponent } from './shared/components/whatsapp-btn/whatsapp-btn.component';
 import { ThemeService } from './core/services/theme.service';
+import { SeoService } from './core/services/seo.service';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,5 @@ import { ThemeService } from './core/services/theme.service';
 })
 export class App {
   public themeService = inject(ThemeService);
+  private seoService = inject(SeoService); // Inicializar SeoService
 }
