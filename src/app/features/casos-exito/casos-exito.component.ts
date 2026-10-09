@@ -165,6 +165,38 @@ export class CasosDeExitoComponent {
       ],
       technologies: ['HMI Industrial', 'Algoritmos Predictivos', 'Dosificación de Cloro', 'Sensores pH / ORP / Turbiedad', 'IIoT Potabilización', 'Control PLC'],
     },
+    {
+      id: 'caso-7',
+      client: 'Williams Gas Pipeline West',
+      categoryId: 'OIL_GAS',
+      categoryES: 'Oil & Gas',
+      categoryEN: 'Oil & Gas',
+      titleES: 'Monitoreo de Gasoducto y Mitigación de Deslizamientos (Douglas Pass)',
+      titleEN: 'Pipeline Monitoring & Landslide Mitigation (Douglas Pass)',
+      location: 'Douglas Pass, Colorado, USA',
+      image: 'assets/slides/douglaspass-stress-relief.png',
+      icon: 'propane',
+      accentColor: '#f59e0b',
+      metricsES: 'Protección de gasoducto | Detección Temprana de Fallas',
+      metricsEN: 'Pipeline Protection | Early Failure Detection',
+      summaryES: 'Implementación de un programa pionero de instrumentación y monitoreo para predecir fallas tempranas y proteger la infraestructura del gasoducto frente a deslizamientos de tierra recurrentes.',
+      summaryEN: 'Implementation of a pioneering instrumentation and monitoring program to predict early failures and protect the pipeline infrastructure from recurrent landslides.',
+      challengeES: 'El gasoducto en Douglas Pass experimentaba repetidas interrupciones por deslizamientos de tierra, requiriendo reubicaciones constantes y costosas de miles de metros de tubería bajo condiciones geológicas y climáticas extremas.',
+      challengeEN: 'The Douglas Pass pipeline experienced repeated disruptions due to landslides, requiring constant and costly relocations of thousands of feet of pipe under extreme geological and climatic conditions.',
+      solutionES: 'Instalación de inclinómetros, piezómetros y extensómetros de hilo vibratorio, combinado con estrategias de mitigación avanzadas como la apertura de zanjas en sentido transversal para el alivio rápido de tensión en la estructura.',
+      solutionEN: 'Installation of inclinometers, piezometers, and vibrating-wire strain gauges, combined with advanced mitigation strategies such as transverse trenching for rapid structural stress relief.',
+      resultsES: [
+        'Prevención exitosa de nuevas fallas de tubería bajo condiciones geológicas y lluvias torrenciales.',
+        'Alivio rápido y verificado de la tensión mecánica estructural a través del monitoreo por extensómetros.',
+        'Establecimiento de un programa de monitoreo continuo para la identificación y mitigación de peligros geológicos.',
+      ],
+      resultsEN: [
+        'Successful prevention of further pipeline failures under difficult geologic conditions and heavy rains.',
+        'Rapid and verified structural stress relief measured by strain gauge monitoring.',
+        'Establishment of an ongoing monitoring program for comprehensive geologic hazard identification and mitigation.',
+      ],
+      technologies: ['Inclinómetros', 'Piezómetros', 'Extensómetros (Strain Gauges)', 'Telemetría Geotécnica'],
+    },
   ];
 
   public filterCategory(catId: string): void {
