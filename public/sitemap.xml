@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Páginas Principales -->
     <url>
         <loc>https://enertronic.com.pe/</loc>
-        <lastmod>2023-10-07</lastmod>
+        <lastmod>2026-10-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -22,8 +23,80 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://enertronic.com.pe/blog</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://enertronic.com.pe/contactos</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+
+    <!-- Soluciones Técnicas Específicas (/soluciones/...) -->
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-celular-2g-3g-4g</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-satelital-iridium</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-satelital-starlink</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-radio-mesh-2-4ghz</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-mqtt</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-ethernet</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-wifi</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-satelital-inmarsat-bgan-m2m</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-lorawan</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-tunel-inalambrico-2-4ghz</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/soluciones-integrales-de-telemetria-scada-y-vision-remota-industrial</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/solucion-remota-maquinas-industriales</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://enertronic.com.pe/soluciones/telemetria-monitoreo-automotor-mineria</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 </urlset>

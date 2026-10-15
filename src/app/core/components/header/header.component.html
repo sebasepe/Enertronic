@@ -39,7 +39,7 @@
 
             <div class="mega-menu-grid">
               @for (sol of solutionsList; track sol.slug) {
-              <a [routerLink]="['/soluciones-enertronic', sol.slug]" class="mega-card">
+              <a [routerLink]="['/soluciones', sol.slug]" class="mega-card">
                 <div class="mega-icon-box">
                   <mat-icon>{{ sol.icon }}</mat-icon>
                 </div>
@@ -86,7 +86,8 @@
 
       <!-- Custom Dark / Light Theme Pill Toggle -->
       <button type="button" class="theme-toggle-pill" [class.dark-active]="themeService.isDarkMode()"
-        (click)="themeService.toggleTheme()" [matTooltip]="themeService.isDarkMode() ? ('HEADER.LIGHT_MODE' | translate) : ('HEADER.DARK_MODE' | translate)"
+        (click)="themeService.toggleTheme()"
+        [matTooltip]="themeService.isDarkMode() ? ('HEADER.LIGHT_MODE' | translate) : ('HEADER.DARK_MODE' | translate)"
         aria-label="Cambiar tema">
         <div class="pill-thumb">
           <mat-icon class="thumb-icon">
