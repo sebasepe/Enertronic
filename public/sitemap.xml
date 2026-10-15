@@ -33,7 +33,7 @@
         <priority>0.7</priority>
     </url>
 
-    <!-- Soluciones Técnicas Específicas (/soluciones/...) -->
+    <!-- Soluciones Técnicas Específicas -->
     <url>
         <loc>https://enertronic.com.pe/soluciones/solucion-de-telemetria-celular-2g-3g-4g</loc>
         <changefreq>monthly</changefreq>

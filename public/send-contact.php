@@ -2,8 +2,8 @@
 
 // ── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 define('CONTACT_EMAIL',   'se8918306@gmail.com');
-define('ALLOWED_ORIGIN',  'https://enertronic.com.pe');   // Dominio 
-define('RATE_LIMIT_SECS', 60);                            // Segundos entre envíos por IP
+define('ALLOWED_ORIGIN',  'https://enertronic.com.pe');   
+define('RATE_LIMIT_SECS', 60);                            
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ── 1. VALIDAR MÉTODO HTTP ───────────────────────────────────────────────────
