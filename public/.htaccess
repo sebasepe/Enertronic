@@ -11,9 +11,6 @@
     # Activa el filtro XSS del navegador y bloquea la página si detecta ataque
     Header always set X-XSS-Protection "1; mode=block"
 
-    # Fuerza HTTPS por 1 año — ACTIVAR solo después de confirmar SSL en cPanel
-    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-
     # Controla qué información de referencia se envía al navegar
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
