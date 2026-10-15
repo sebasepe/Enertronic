@@ -34,7 +34,7 @@ export class HeaderComponent {
   public solutionsService = inject(SolutionsService);
 
   public navItems = [
-    { labelES: 'INICIO', labelEN: 'HOME', route: '/home' },
+    { labelES: 'INICIO', labelEN: 'HOME', route: '/' },
     { labelES: 'NOSOTROS', labelEN: 'ABOUT US', route: '/nosotros' },
     { labelES: 'SOLUCIONES', labelEN: 'SOLUTIONS', route: '/soluciones-enertronic' },
     { labelES: 'CASOS DE ÉXITO', labelEN: 'CASE STUDIES', route: '/casos-de-exito' },

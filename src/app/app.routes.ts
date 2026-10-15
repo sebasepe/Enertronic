@@ -3,20 +3,20 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'home',
     loadComponent: () =>
       import('./features/home/home.component').then((m) => m.HomeComponent),
     data: {
-      title: 'Enertronic | Telemetría IIoT y SCADA en Perú | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
+      title: 'Enertronic | Telemetría IIoT y SCADA en Perú',
       description: 'Expertos en telemetría industrial, sistemas SCADA e IIoT en Perú. Automatización de procesos críticos y arquitectura cibersegura. ¡Cotiza tu proyecto hoy!',
       keywords: 'Telemetría industrial Perú, Sistemas SCADA e IIoT, Automatización industrial Lima, Integración de datos industriales, Arquitectura SCADA cibersegura',
       canonical: 'https://enertronic.com.pe/',
       robots: 'index, follow'
     }
+  },
+  {
+    path: 'home',
+    redirectTo: '',
+    pathMatch: 'full',
   },
   {
     path: 'nosotros',
@@ -127,6 +127,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: '',
   },
 ];

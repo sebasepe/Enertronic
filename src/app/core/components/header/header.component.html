@@ -8,7 +8,7 @@
 
     <!-- Desktop Navigation Links -->
     <nav class="desktop-nav">
-      <a routerLink="/home" routerLinkActive="active-link" class="nav-link">
+      <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}" class="nav-link">
         {{ 'HEADER.HOME' | translate }}
         <span class="nav-indicator"></span>
       </a>
