@@ -17,7 +17,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'la-empresa',
+    path: 'nosotros',
     loadComponent: () =>
       import('./features/company/company.component').then((m) => m.CompanyComponent),
     data: {
@@ -25,6 +25,11 @@ export const routes: Routes = [
       description: 'Especialistas en automatización, control y telemetría industrial en Perú. Ingenieros integradores autorizados SCADA para potenciar tu eficiencia.',
       keywords: 'Empresa de ingeniería integradora Perú, Especialistas en automatización y control, Integradores autorizados SCADA, Empresa de telemetría industrial, Ingenieros en automatización de procesos'
     }
+  },
+  {
+    path: 'la-empresa',
+    redirectTo: 'nosotros',
+    pathMatch: 'full',
   },
   {
     path: 'soluciones',
