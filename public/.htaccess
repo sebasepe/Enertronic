@@ -26,19 +26,25 @@
 
 </IfModule>
 
-# ── Angular SPA: redirige todas las rutas al index.html ──
+# ── Angular SPA & Redirecciones SEO ──
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-    # No redirigir archivos o carpetas que existen físicamente
+    # 1. SEO: Redirección 301 para URLs con barra final a sin barra (heredar posicionamiento de WordPress)
+    # (Se excluyen directorios físicos reales para no interferir con index.html)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [R=301,L]
+
+    # 2. No redirigir archivos o carpetas que existen físicamente
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
-    # No redirigir el proxy PHP del formulario
+    # 3. No redirigir el proxy PHP del formulario
     RewriteCond %{REQUEST_URI} !^/send-contact\.php$
 
-    # Todo lo demás → Angular
+    # 4. Todo lo demás → Angular SPA
     RewriteRule ^ index.html [L]
 </IfModule>
 
