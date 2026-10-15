@@ -32,7 +32,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'soluciones',
+    path: 'soluciones-enertronic',
     loadComponent: () =>
       import('./features/solutions/solutions.component').then((m) => m.SolutionsComponent),
     data: {
@@ -42,11 +42,25 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'soluciones/:slug',
+    path: 'soluciones-enertronic/:slug',
     loadComponent: () =>
       import('./features/solutions/solution-detail/solution-detail.component').then(
         (m) => m.SolutionDetailComponent
       ),
+  },
+  {
+    path: 'soluciones',
+    redirectTo: 'soluciones-enertronic',
+    pathMatch: 'full',
+  },
+  {
+    path: 'soluciones/:slug',
+    redirectTo: (route) => `/soluciones-enertronic/${route.params['slug']}`,
+  },
+  {
+    path: 'servicios',
+    redirectTo: 'soluciones-enertronic',
+    pathMatch: 'full',
   },
   {
     path: 'casos-de-exito',

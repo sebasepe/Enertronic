@@ -21,7 +21,7 @@
 
       <!-- Soluciones with Mega Menu Hover Dropdown -->
       <div class="nav-item-dropdown">
-        <a routerLink="/soluciones" routerLinkActive="active-link" class="nav-link nav-dropdown-trigger">
+        <a routerLink="/soluciones-enertronic" routerLinkActive="active-link" class="nav-link nav-dropdown-trigger">
           <span>{{ 'HEADER.SOLUTIONS' | translate }}</span>
           <mat-icon class="dropdown-chevron">expand_more</mat-icon>
           <span class="nav-indicator"></span>
@@ -39,7 +39,7 @@
 
             <div class="mega-menu-grid">
               @for (sol of solutionsList; track sol.slug) {
-              <a [routerLink]="['/soluciones', sol.slug]" class="mega-card">
+              <a [routerLink]="['/soluciones-enertronic', sol.slug]" class="mega-card">
                 <div class="mega-icon-box">
                   <mat-icon>{{ sol.icon }}</mat-icon>
                 </div>

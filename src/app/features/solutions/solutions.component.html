@@ -13,14 +13,14 @@
           <mat-icon>{{ sol.icon }}</mat-icon>
         </div>
         <h3 class="sol-title">
-          <a [routerLink]="['/soluciones', sol.slug]" class="title-link">
+          <a [routerLink]="['/soluciones-enertronic', sol.slug]" class="title-link">
             {{ langService.currentLang() === 'ES' ? sol.titleES : sol.titleEN }}
           </a>
         </h3>
       </div>
       <p class="sol-desc">{{ langService.currentLang() === 'ES' ? sol.descES : sol.descEN }}</p>
       <div class="card-footer">
-        <a [routerLink]="['/soluciones', sol.slug]" class="read-more-btn">
+        <a [routerLink]="['/soluciones-enertronic', sol.slug]" class="read-more-btn">
           <span>{{ 'SOLUTIONS.READ_MORE' | translate }}</span>
           <mat-icon>arrow_forward</mat-icon>
         </a>

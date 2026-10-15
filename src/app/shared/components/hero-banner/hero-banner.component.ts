@@ -51,7 +51,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       subtitleEN: 'From the sensor installed in the field to artificial intelligence in the cloud.',
       ctaTextES: 'VER SOLUCIONES',
       ctaTextEN: 'VIEW SOLUTIONS',
-      ctaRoute: '/soluciones',
+      ctaRoute: '/soluciones-enertronic',
     },
     {
       id: 1,
@@ -63,7 +63,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       subtitleEN: 'Live monitoring of 6 variables from the recommendation algorithm. Santa Rosa Plant N°01 – SEDAPAL.',
       ctaTextES: 'VER SOLUCIONES',
       ctaTextEN: 'VIEW SOLUTIONS',
-      ctaRoute: '/soluciones',
+      ctaRoute: '/soluciones-enertronic',
     },
   ];
 

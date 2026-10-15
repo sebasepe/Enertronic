@@ -2,7 +2,7 @@ import { RenderMode, ServerRoute } from '@angular/ssr';
 
 export const serverRoutes: ServerRoute[] = [
   {
-    path: 'soluciones/:slug',
+    path: 'soluciones-enertronic/:slug',
     renderMode: RenderMode.Server,
   },
   {

@@ -36,7 +36,7 @@ export class HeaderComponent {
   public navItems = [
     { labelES: 'INICIO', labelEN: 'HOME', route: '/home' },
     { labelES: 'NOSOTROS', labelEN: 'ABOUT US', route: '/nosotros' },
-    { labelES: 'SOLUCIONES', labelEN: 'SOLUTIONS', route: '/soluciones' },
+    { labelES: 'SOLUCIONES', labelEN: 'SOLUTIONS', route: '/soluciones-enertronic' },
     { labelES: 'CASOS DE ÉXITO', labelEN: 'CASE STUDIES', route: '/casos-de-exito' },
     { labelES: 'BLOG', labelEN: 'BLOG', route: '/blog' },
     { labelES: 'CONTACTOS', labelEN: 'CONTACT', route: '/contactos' },

@@ -45,7 +45,7 @@ export class SolutionDetailComponent implements OnInit {
   private loadSolution(slug: string): void {
     const found = this.solutionsService.getSolutionBySlug(slug);
     if (!found) {
-      this.router.navigate(['/soluciones']);
+      this.router.navigate(['/soluciones-enertronic']);
       return;
     }
     this.solution = found;
