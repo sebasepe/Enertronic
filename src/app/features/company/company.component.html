@@ -1,47 +1,122 @@
 <div class="company-page-container">
-  <div class="page-header">
+  <!-- Page Header -->
+  <header class="page-header">
     <span class="badge">{{ 'COMPANY.BADGE' | translate }}</span>
     <h1>{{ 'COMPANY.TITLE' | translate }}</h1>
     <p>{{ 'COMPANY.SUBTITLE' | translate }}</p>
-  </div>
+  </header>
 
-  <div class="company-cards-grid">
-    <!-- Misión Card -->
-    <div class="info-card mission-card">
-      <div class="card-top-icon">
-        <mat-icon>flag</mat-icon>
+  <!-- Historia y Trayectoria Section (E-E-A-T & SEO) -->
+  <section class="company-story-section">
+    <div class="story-content">
+      <div class="story-badge">
+        <mat-icon>history_edu</mat-icon>
+        <span>{{ 'COMPANY.STORY_BADGE' | translate }}</span>
       </div>
-      <div class="card-body">
-        <h2 class="card-title">{{ 'COMPANY.MISSION_TITLE' | translate }}</h2>
-        <p class="card-text">{{ 'COMPANY.MISSION_TEXT' | translate }}</p>
+      <h2>{{ 'COMPANY.STORY_TITLE' | translate }}</h2>
+      <p class="story-p">{{ 'COMPANY.STORY_DESC_1' | translate }}</p>
+      <p class="story-p">{{ 'COMPANY.STORY_DESC_2' | translate }}</p>
+
+      <div class="story-highlights">
+        <div class="highlight-item">
+          <span class="highlight-num">{{ 'COMPANY.EXP_YEARS' | translate }}</span>
+          <span class="highlight-lbl">{{ 'COMPANY.EXP_YEARS_LBL' | translate }}</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-num">{{ 'COMPANY.EXP_CERTS' | translate }}</span>
+          <span class="highlight-lbl">{{ 'COMPANY.EXP_CERTS_LBL' | translate }}</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-num">{{ 'COMPANY.EXP_AVAIL' | translate }}</span>
+          <span class="highlight-lbl">{{ 'COMPANY.EXP_AVAIL_LBL' | translate }}</span>
+        </div>
       </div>
     </div>
 
-    <!-- Visión Card -->
-    <div class="info-card vision-card">
-      <div class="card-top-icon vision-icon-bg">
-        <mat-icon>visibility</mat-icon>
-      </div>
-      <div class="card-body">
-        <h2 class="card-title vision-title">{{ 'COMPANY.VISION_TITLE' | translate }}</h2>
-        <p class="card-text">{{ 'COMPANY.VISION_TEXT' | translate }}</p>
-      </div>
+    <div class="story-media">
+      <img
+        src="assets/slides/slide-2.png"
+        alt="Ingeniería e integración de sistemas SCADA y telemetría industrial por Enertronic en Perú"
+        class="story-img"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- Misión, Visión, Valores Section -->
+  <section class="company-cards-section">
+    <div class="company-cards-grid">
+      <!-- Misión Card -->
+      <article class="info-card mission-card">
+        <div class="card-top-icon">
+          <mat-icon>flag</mat-icon>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">{{ 'COMPANY.MISSION_TITLE' | translate }}</h2>
+          <p class="card-text">{{ 'COMPANY.MISSION_TEXT' | translate }}</p>
+        </div>
+      </article>
+
+      <!-- Visión Card -->
+      <article class="info-card vision-card">
+        <div class="card-top-icon vision-icon-bg">
+          <mat-icon>visibility</mat-icon>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title vision-title">{{ 'COMPANY.VISION_TITLE' | translate }}</h2>
+          <p class="card-text">{{ 'COMPANY.VISION_TEXT' | translate }}</p>
+        </div>
+      </article>
+
+      <!-- Valores Card -->
+      <article class="info-card values-card">
+        <div class="card-top-icon values-icon-bg">
+          <mat-icon>verified</mat-icon>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title values-title">{{ 'COMPANY.VALUES_TITLE' | translate }}</h2>
+          <ul class="values-list">
+            <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_1' | translate }}</span></li>
+            <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_2' | translate }}</span></li>
+            <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_3' | translate }}</span></li>
+            <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_4' | translate }}</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Pilares de Ingeniería Especializada (H3 Hierarchy) -->
+  <section class="company-pillars-section">
+    <div class="pillars-header text-center">
+      <h2>{{ 'COMPANY.PILLARS_TITLE' | translate }}</h2>
     </div>
 
-    <!-- Valores Card -->
-    <div class="info-card values-card">
-      <div class="card-top-icon values-icon-bg">
-        <mat-icon>verified</mat-icon>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <mat-icon>lan</mat-icon>
+        </div>
+        <h3>{{ 'COMPANY.PILLAR_1_TITLE' | translate }}</h3>
+        <p>{{ 'COMPANY.PILLAR_1_DESC' | translate }}</p>
       </div>
-      <div class="card-body">
-        <h2 class="card-title values-title">{{ 'COMPANY.VALUES_TITLE' | translate }}</h2>
-        <ul class="values-list">
-          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_1' | translate }}</span></li>
-          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_2' | translate }}</span></li>
-          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_3' | translate }}</span></li>
-          <li><mat-icon>check_circle</mat-icon><span>{{ 'COMPANY.VALUE_4' | translate }}</span></li>
-        </ul>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <mat-icon>satellite_alt</mat-icon>
+        </div>
+        <h3>{{ 'COMPANY.PILLAR_2_TITLE' | translate }}</h3>
+        <p>{{ 'COMPANY.PILLAR_2_DESC' | translate }}</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <mat-icon>security</mat-icon>
+        </div>
+        <h3>{{ 'COMPANY.PILLAR_3_TITLE' | translate }}</h3>
+        <p>{{ 'COMPANY.PILLAR_3_DESC' | translate }}</p>
       </div>
     </div>
-  </div>
+  </section>
 </div>
+

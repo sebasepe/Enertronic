@@ -23,9 +23,28 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/company/company.component').then((m) => m.CompanyComponent),
     data: {
-      title: 'Empresa Integradora de Automatización y Control | Enertronic',
-      description: 'Especialistas en automatización, control y telemetría industrial en Perú. Ingenieros integradores autorizados SCADA para potenciar tu eficiencia.',
-      keywords: 'Empresa de ingeniería integradora Perú, Especialistas en automatización y control, Integradores autorizados SCADA, Empresa de telemetría industrial, Ingenieros en automatización de procesos'
+      title: 'Nosotros | Enertronic: Integración SCADA y Telemetría Perú',
+      description: 'Conoce a Enertronic Ingeniería S.A.C., líderes en integración SCADA, telemetría industrial y automatización en Perú desde 2012. ¡Descubre nuestra experiencia!',
+      keywords: 'Empresa de ingeniería integradora Perú, Especialistas en automatización y control, Integradores autorizados SCADA, Empresa de telemetría industrial, Ingenieros en automatización de procesos, Enertronic Ingeniería',
+      canonical: 'https://enertronic.com.pe/nosotros',
+      robots: 'index, follow',
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        'name': 'Nosotros - Enertronic Ingeniería S.A.C.',
+        'url': 'https://enertronic.com.pe/nosotros',
+        'description': 'Empresa peruana integradora de sistemas tecnológicos, especializada en telemetría industrial, automatización y sistemas SCADA.',
+        'mainEntity': {
+          '@type': 'Organization',
+          'name': 'Enertronic Ingeniería S.A.C.',
+          'foundingDate': '2012',
+          'url': 'https://enertronic.com.pe/',
+          'logo': 'https://enertronic.com.pe/assets/favicon-icon.png',
+          'sameAs': [
+            'https://www.linkedin.com/in/enertronic-perú-964219444'
+          ]
+        }
+      }
     }
   },
   {

@@ -59,6 +59,13 @@ export class SeoService {
 
       this.updateCanonicalUrl(canonicalUrl);
       this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
+
+      // Actualizar Schema JSON-LD
+      if (event['schema']) {
+        this.updateSchemaJsonLd(event['schema']);
+      } else {
+        this.removeSchemaJsonLd();
+      }
     });
   }
 
@@ -71,6 +78,26 @@ export class SeoService {
       this.document.head.appendChild(link);
     }
     link.setAttribute('href', url);
+  }
+
+  private updateSchemaJsonLd(schema: any) {
+    if (!this.document) return;
+    let script: HTMLScriptElement | null = this.document.querySelector("script[id='route-schema']");
+    if (!script) {
+      script = this.document.createElement('script');
+      script.setAttribute('id', 'route-schema');
+      script.setAttribute('type', 'application/ld+json');
+      this.document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(schema);
+  }
+
+  private removeSchemaJsonLd() {
+    if (!this.document) return;
+    const script = this.document.querySelector("script[id='route-schema']");
+    if (script && script.parentNode) {
+      script.parentNode.removeChild(script);
+    }
   }
 }
 
