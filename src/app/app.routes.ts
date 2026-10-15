@@ -95,6 +95,16 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'proyectos',
+    redirectTo: 'casos-de-exito',
+    pathMatch: 'full',
+  },
+  {
+    path: 'contacto',
+    redirectTo: 'contactos',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },
