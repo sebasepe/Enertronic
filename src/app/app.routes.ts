@@ -11,9 +11,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/home/home.component').then((m) => m.HomeComponent),
     data: {
-      title: 'Telemetría Industrial y Sistemas SCADA en Perú | Enertronic',
-      description: 'Expertos en telemetría industrial, sistemas SCADA e IIoT en Perú. Automatización industrial y arquitectura cibersegura. ¡Optimiza tus procesos!',
-      keywords: 'Telemetría industrial Perú, Sistemas SCADA e IIoT, Automatización industrial Lima, Integración de datos industriales, Arquitectura SCADA cibersegura'
+      title: 'Enertronic | Telemetría IIoT y SCADA en Perú | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
+      description: 'Expertos en telemetría industrial, sistemas SCADA e IIoT en Perú. Automatización de procesos críticos y arquitectura cibersegura. ¡Cotiza tu proyecto hoy!',
+      keywords: 'Telemetría industrial Perú, Sistemas SCADA e IIoT, Automatización industrial Lima, Integración de datos industriales, Arquitectura SCADA cibersegura',
+      canonical: 'https://enertronic.com.pe/',
+      robots: 'index, follow'
     }
   },
   {

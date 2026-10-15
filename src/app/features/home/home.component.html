@@ -83,17 +83,17 @@
 
       <div class="logos-group">
         <!-- PROVIX Logo -->
-        <img src="assets/provix-logo.png" alt="PROVIX" class="brand-logo-img provix-img" />
+        <img src="assets/provix-logo.png" alt="PROVIX - Integrador Autorizado Enertronic en Visión y Telemetría Industrial" class="brand-logo-img provix-img" />
 
         <div class="logo-sep"></div>
 
         <!-- EXEMYS Logo -->
-        <img src="assets/exemys-logo.png" alt="EXEMYS" class="brand-logo-img exemys-img" />
+        <img src="assets/exemys-logo.png" alt="EXEMYS - Telemetría Industrial e IIoT" class="brand-logo-img exemys-img" />
 
         <div class="logo-sep"></div>
 
         <!-- WINTEC Logo -->
-        <img src="assets/wintec-logo.png" alt="WINTEC" class="brand-logo-img wintec-img" />
+        <img src="assets/wintec-logo.png" alt="WINTEC - Equipos de Conectividad Industrial" class="brand-logo-img wintec-img" />
       </div>
     </div>
   </div>
@@ -171,7 +171,7 @@
         @for (client of clientList; track client.id) {
           <div class="client-marquee-card">
             <div class="logo-box">
-              <img [src]="client.logo" [alt]="client.name" class="client-logo-img" />
+              <img [src]="client.logo" [alt]="client.name + ' - Cliente de Telemetría Industrial y SCADA Enertronic'" class="client-logo-img" />
             </div>
             <div class="client-details">
               <span class="client-name">{{ client.name }}</span>
@@ -185,7 +185,7 @@
         @for (client of clientList; track 'dup-' + client.id) {
           <div class="client-marquee-card">
             <div class="logo-box">
-              <img [src]="client.logo" [alt]="client.name" class="client-logo-img" />
+              <img [src]="client.logo" [alt]="client.name + ' - Cliente de Telemetría Industrial y SCADA Enertronic'" class="client-logo-img" />
             </div>
             <div class="client-details">
               <span class="client-name">{{ client.name }}</span>
