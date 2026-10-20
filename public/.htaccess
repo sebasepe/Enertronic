@@ -66,7 +66,6 @@ Options -Indexes
     RewriteRule ^ https://enertronic.com.pe%{REQUEST_URI} [L,R=301]
 
     # C. Redirección 301 para URLs con barra final a sin barra 
-    # Excluye directorios reales para que index.html funcione
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [R=301,L]
