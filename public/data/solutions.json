@@ -1,7 +1,7 @@
 [
   {
     "id": "sol-1",
-    "slug": "telemetria-celular-2g-3g-4g",
+    "slug": "solucion-de-telemetria-celular-2g-3g-4g",
     "icon": "cell_tower",
     "categoryES": "TELEMETRÍA CELULAR",
     "categoryEN": "CELLULAR TELEMETRY",
@@ -125,7 +125,7 @@
   },
   {
     "id": "sol-2",
-    "slug": "telemetria-satelital-iridium",
+    "slug": "solucion-de-telemetria-satelital-iridium",
     "icon": "satellite_alt",
     "categoryES": "TELEMETRÍA SATELITAL",
     "categoryEN": "SATELLITE TELEMETRY",
@@ -230,7 +230,7 @@
   },
   {
     "id": "sol-3",
-    "slug": "telemetria-satelital-starlink",
+    "slug": "solucion-de-telemetria-satelital-starlink",
     "icon": "satellite",
     "categoryES": "TELEMETRÍA SATELITAL",
     "categoryEN": "SATELLITE TELEMETRY",
@@ -335,7 +335,7 @@
   },
   {
     "id": "sol-4",
-    "slug": "telemetria-radio-mesh-2-4ghz",
+    "slug": "solucion-de-telemetria-radio-mesh-2-4ghz",
     "icon": "rss_feed",
     "categoryES": "REDES INALÁMBRICAS",
     "categoryEN": "WIRELESS NETWORKS",
@@ -434,7 +434,7 @@
   },
   {
     "id": "sol-5",
-    "slug": "telemetria-mqtt",
+    "slug": "solucion-de-telemetria-mqtt",
     "icon": "swap_calls",
     "categoryES": "IIoT & PROTOCOLOS",
     "categoryEN": "IIoT & PROTOCOLS",
@@ -551,7 +551,7 @@
   },
   {
     "id": "sol-6",
-    "slug": "telemetria-ethernet",
+    "slug": "solucion-de-telemetria-ethernet",
     "icon": "lan",
     "categoryES": "CONECTIVIDAD INDUSTRIAL",
     "categoryEN": "INDUSTRIAL CONNECTIVITY",
@@ -668,7 +668,7 @@
   },
   {
     "id": "sol-7",
-    "slug": "telemetria-wifi",
+    "slug": "solucion-de-telemetria-wifi",
     "icon": "wifi",
     "categoryES": "CONECTIVIDAD INALÁMBRICA",
     "categoryEN": "WIRELESS CONNECTIVITY",
@@ -767,7 +767,7 @@
   },
   {
     "id": "sol-8",
-    "slug": "satelital-inmarsat-bgan-m2m",
+    "slug": "solucion-de-telemetria-satelital-inmarsat-bgan-m2m",
     "icon": "public",
     "categoryES": "TELEMETRÍA SATELITAL",
     "categoryEN": "SATELLITE TELEMETRY",
@@ -866,7 +866,7 @@
   },
   {
     "id": "sol-9",
-    "slug": "telemetria-lorawan",
+    "slug": "solucion-de-telemetria-lorawan",
     "icon": "sensors",
     "categoryES": "REDES IoT LPWAN",
     "categoryEN": "LPWAN IoT NETWORKS",
@@ -983,7 +983,7 @@
   },
   {
     "id": "sol-10",
-    "slug": "tunel-inalambrico-2-4ghz",
+    "slug": "solucion-de-telemetria-tunel-inalambrico-2-4ghz",
     "icon": "transform",
     "categoryES": "TÚNELES INALÁMBRICOS",
     "categoryEN": "WIRELESS TUNNELS",
@@ -1099,7 +1099,7 @@
   },
   {
     "id": "sol-11",
-    "slug": "vision-remota-scada-industrial",
+    "slug": "soluciones-integrales-de-telemetria-scada-y-vision-remota-industrial",
     "icon": "visibility",
     "categoryES": "SCADA & VISIÓN REMOTA",
     "categoryEN": "SCADA & REMOTE VISION",
@@ -1305,7 +1305,7 @@
   },
   {
     "id": "sol-13",
-    "slug": "telemetria-monitoreo-automotor-mineria",
+    "slug": "soluciones-telemetria-monitoreo-automotor-mineria",
     "icon": "directions_bus",
     "categoryES": "TELEMETRÍA AUTOMOTOR",
     "categoryEN": "AUTOMOTIVE TELEMETRY",
