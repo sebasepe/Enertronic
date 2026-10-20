@@ -45,13 +45,20 @@ export class SeoService {
   }
 
   private applyRouteData(event: any): void {
+    if (event['dynamicSeo']) {
+
+      const robots = event['robots'] || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+      this.metaService.updateTag({ name: 'robots', content: robots });
+      return;
+    }
+
     // Page Title & Social Cards
     if (event['title']) {
       this.titleService.setTitle(event['title']);
       this.metaService.updateTag({ property: 'og:title', content: event['title'] });
       this.metaService.updateTag({ name: 'twitter:title', content: event['title'] });
     }
-    
+
     // Meta Description
     if (event['description']) {
       this.metaService.updateTag({ name: 'description', content: event['description'] });
@@ -70,8 +77,8 @@ export class SeoService {
 
     // Canonical & OG URL
     const cleanPath = this.router.url.split('?')[0];
-    const defaultCanonical = cleanPath === '/home' || cleanPath === '/' 
-      ? 'https://enertronic.com.pe/' 
+    const defaultCanonical = cleanPath === '/home' || cleanPath === '/'
+      ? 'https://enertronic.com.pe/'
       : `https://enertronic.com.pe${cleanPath}`;
     const canonicalUrl = event['canonical'] || defaultCanonical;
 

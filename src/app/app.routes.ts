@@ -83,9 +83,7 @@ export const routes: Routes = [
         (m) => m.SolutionDetailComponent
       ),
     data: {
-      title: 'Solución de Telemetría Industrial | Enertronic',
-      description: 'Detalle técnico, especificaciones y modelos de hardware de telemetría y SCADA en Perú.',
-      keywords: 'Telemetría industrial, hardware SCADA, automatización procesos críticos Perú',
+      dynamicSeo: true,
       robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     }
   },
@@ -135,9 +133,7 @@ export const routes: Routes = [
         (m) => m.CasosDeExitoComponent
       ),
     data: {
-      title: 'Caso de Éxito en Telemetría y SCADA Industrial | Enertronic',
-      description: 'Proyecto real de automatización, telemetría y supervisión SCADA implementado en Perú.',
-      keywords: 'Proyecto SCADA Perú, telemetría minería, telemetría agua potable, telemetría energía',
+      dynamicSeo: true,
       robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     }
   },
@@ -169,9 +165,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/blog/blog.component').then((m) => m.BlogComponent),
     data: {
-      title: 'Artículo Técnico | Blog de Telemetría Enertronic',
-      description: 'Artículos especializados en telemetría industrial, IIoT, protocolos Modbus/MQTT y automatización.',
-      keywords: 'Blog telemetría, artículos SCADA, IIoT Perú, automatización industrial',
+      dynamicSeo: true,
       robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     }
   },

@@ -37,7 +37,6 @@ export class SolutionDetailComponent implements OnInit {
 
   constructor() {
     effect(() => {
-      // Re-aplica SEO si cambia el idioma
       this.langService.currentLang();
       if (this.solution) {
         this.applySolutionSeo(this.solution);
@@ -76,8 +75,12 @@ export class SolutionDetailComponent implements OnInit {
     const imageUrl = `https://enertronic.com.pe/${sol.referentialImage}`;
     const canonical = `https://enertronic.com.pe/soluciones/${sol.slug}`;
 
+    const pageTitle = isEs
+      ? `${title} - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA`
+      : `${title} - Enertronic Engineering | Enertronic - IIoT & SCADA Telemetry Solutions`;
+
     this.seoService.updateMetaTags({
-      title: `${title} | Enertronic`,
+      title: pageTitle,
       description: desc,
       keywords: `${title}, ${category}, hardware telemetría, SCADA Perú, soluciones industriales IIoT`,
       image: imageUrl,
