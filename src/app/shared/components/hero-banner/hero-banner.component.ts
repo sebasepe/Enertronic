@@ -53,18 +53,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       ctaTextEN: 'VIEW SOLUTIONS',
       ctaRoute: '/soluciones-enertronic',
     },
-    {
-      id: 1,
-      image: 'assets/slides/slide-dosificacion-cloro.png',
-      objectFit: 'contain',
-      titleES: 'DOSIFICACIÓN DE CLORO CON INTELIGENCIA ARTIFICIAL',
-      titleEN: 'AI-POWERED CHLORINE DOSING MONITORING',
-      subtitleES: 'Monitoreo en vivo de las 6 variables del algoritmo de recomendación. Planta Santa Rosa N°01 – SEDAPAL.',
-      subtitleEN: 'Live monitoring of 6 variables from the recommendation algorithm. Santa Rosa Plant N°01 – SEDAPAL.',
-      ctaTextES: 'VER SOLUCIONES',
-      ctaTextEN: 'VIEW SOLUTIONS',
-      ctaRoute: '/soluciones-enertronic',
-    },
   ];
 
   public readonly isPlaying = signal<boolean>(true);
