@@ -74,8 +74,12 @@ export class CasosDeExitoComponent implements OnInit {
     const desc = isEs ? study.summaryES : study.summaryEN;
     const imageUrl = `https://enertronic.com.pe/${study.image}`;
 
+    const pageTitle = isEs
+      ? `${title} - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA`
+      : `${title} - Enertronic Engineering | Enertronic - IIoT & SCADA Telemetry Solutions`;
+
     this.seoService.updateMetaTags({
-      title: `${title} | Casos de Éxito Enertronic`,
+      title: pageTitle,
       description: desc,
       keywords: `${study.client}, ${isEs ? study.categoryES : study.categoryEN}, telemetría industrial Perú, SCADA, ${study.technologies.join(', ')}`,
       image: imageUrl,
@@ -111,8 +115,13 @@ export class CasosDeExitoComponent implements OnInit {
   }
 
   private resetCasosSeo(): void {
+    const isEs = this.langService.currentLang() === 'ES';
+    const mainTitle = isEs
+      ? 'Casos de Éxito - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA'
+      : 'Case Studies - Enertronic Engineering | Enertronic - IIoT & SCADA Telemetry Solutions';
+
     this.seoService.updateMetaTags({
-      title: 'Casos de Éxito en Telemetría y SCADA Industrial | Enertronic',
+      title: mainTitle,
       description: 'Conoce nuestros proyectos de telemetría, implementación IIoT en minería y casos de éxito SCADA industrial en Perú. Soluciones reales y comprobadas.',
       keywords: 'Proyectos de telemetría en Perú, Casos de éxito SCADA industrial, Implementación IIoT en minería, Proyectos de automatización energía y agua',
       canonical: 'https://enertronic.com.pe/casos-de-exito',

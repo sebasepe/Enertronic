@@ -108,7 +108,7 @@ export const routes: Routes = [
         (m) => m.CasosDeExitoComponent
       ),
     data: {
-      title: 'Casos de Éxito en Telemetría y SCADA Industrial | Enertronic',
+      title: 'Casos de Éxito - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
       description: 'Conoce nuestros proyectos de telemetría, implementación IIoT en minería y casos de éxito SCADA industrial en Perú. Soluciones reales y comprobadas.',
       keywords: 'Proyectos de telemetría en Perú, Casos de éxito SCADA industrial, Implementación IIoT en minería, Proyectos de automatización energía y agua',
       robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
@@ -142,7 +142,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/blog/blog.component').then((m) => m.BlogComponent),
     data: {
-      title: 'Blog de Telemetría, SCADA y Automatización | Enertronic',
+      title: 'Blog - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
       description: 'Descubre tendencias en automatización industrial 2026, qué es la telemetría IIoT, protocolos Modbus/MQTT y ventajas de integrar SCADA con IA.',
       keywords: '¿Qué es la telemetría IIoT?, Ventajas de integrar SCADA con Inteligencia Artificial, Protocolos industriales Modbus, DNP3 y MQTT, telemetría con energía solar, Tendencias automatización industrial 2026',
       robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',

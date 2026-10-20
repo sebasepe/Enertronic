@@ -100,8 +100,12 @@ export class BlogComponent implements OnInit, OnDestroy {
       ? post.image
       : `https://enertronic.com.pe/${post.image}`;
 
+    const pageTitle = isEs
+      ? `${title} - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA`
+      : `${title} - Enertronic Engineering | Enertronic - IIoT & SCADA Telemetry Solutions`;
+
     this.seoService.updateMetaTags({
-      title: `${title} | Blog Enertronic`,
+      title: pageTitle,
       description: desc,
       keywords: `${isEs ? post.categoryES : post.categoryEN}, telemetría, SCADA, automatización industrial, IIoT Perú`,
       image: imageUrl,
@@ -136,8 +140,13 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
 
   private resetBlogSeo(): void {
+    const isEs = this.langService.currentLang() === 'ES';
+    const mainTitle = isEs
+      ? 'Blog - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA'
+      : 'Blog - Enertronic Engineering | Enertronic - IIoT & SCADA Telemetry Solutions';
+
     this.seoService.updateMetaTags({
-      title: 'Blog de Telemetría, SCADA y Automatización | Enertronic',
+      title: mainTitle,
       description: 'Descubre tendencias en automatización industrial 2026, qué es la telemetría IIoT, protocolos Modbus/MQTT y ventajas de integrar SCADA con IA.',
       keywords: '¿Qué es la telemetría IIoT?, Ventajas de integrar SCADA con Inteligencia Artificial, Protocolos industriales Modbus, DNP3 y MQTT, telemetría con energía solar, Tendencias automatización industrial 2026',
       canonical: 'https://enertronic.com.pe/blog',
