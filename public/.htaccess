@@ -1,62 +1,97 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# ENERTRONIC — CONFIGURACIÓN APACHE / CPANEL PARA ANGULAR SSR & SEO
+# ═══════════════════════════════════════════════════════════════════════════════
 
-# ── Activar mod_headers (requerido para los headers de seguridad) ──
+# 1. Asegurar que Apache sirva index.html antes que index.php (vital en migración desde WordPress)
+DirectoryIndex index.html index.php
+
+# Deshabilitar listado de directorios
+Options -Indexes
+
+# ── 2. Headers de Seguridad (mod_headers) ──
 <IfModule mod_headers.c>
-
-    # Previene Clickjacking: nadie puede embeber el sitio en un iframe externo
+    # Previene Clickjacking
     Header always set X-Frame-Options "SAMEORIGIN"
 
-    # Previene MIME-type sniffing (el navegador no adivina el tipo de archivo)
+    # Previene MIME-type sniffing
     Header always set X-Content-Type-Options "nosniff"
 
-    # Activa el filtro XSS del navegador y bloquea la página si detecta ataque
+    # Activa filtro XSS
     Header always set X-XSS-Protection "1; mode=block"
 
-    # Controla qué información de referencia se envía al navegar
+    # Referrer policy para SEO y privacidad
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 
-    # Deshabilita funcionalidades del navegador que no se usan
+    # Permissions policy
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
 
-    # Elimina el header que revela que usas Apache/versión del servidor
+    # Ocultar cabeceras del servidor
     Header always unset X-Powered-By
     Header always unset Server
-
 </IfModule>
 
-# ── Angular SPA & Redirecciones SEO ──
+# ── 3. Compresión GZIP / Deflate  ──
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── 4. Caché de Navegador  ──
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType application/json "access plus 1 hour"
+</IfModule>
+
+# ── 5. Reglas de Reescritura, HTTPS y Enrutamiento Angular ──
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-    # 1. SEO: Redirección 301 para URLs con barra final a sin barra (heredar posicionamiento de WordPress)
-    # (Se excluyen directorios físicos reales para no interferir con index.html)
+    # A. Forzar HTTPS (301 permanente para SEO)
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # B. Forzar dominio canónico sin "www" (enertronic.com.pe)
+    RewriteCond %{HTTP_HOST} ^www\.enertronic\.com\.pe$ [NC]
+    RewriteRule ^ https://enertronic.com.pe%{REQUEST_URI} [L,R=301]
+
+    # C. Redirección 301 para URLs con barra final a sin barra 
+    # Excluye directorios reales para que index.html funcione
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [R=301,L]
 
-    # 2. No redirigir archivos o carpetas que existen físicamente
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # E. Permitir archivos y carpetas que existen físicamente 
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 
-    # 3. No redirigir el proxy PHP del formulario
-    RewriteCond %{REQUEST_URI} !^/send-contact\.php$
+    # F. Permitir el proxy PHP del formulario de contacto
+    RewriteCond %{REQUEST_URI} ^/send-contact\.php$
+    RewriteRule ^ - [L]
 
-    # 4. Todo lo demás → Angular SPA
+    # G. SPA Fallback: Todo lo no encontrado se entrega al index.html de Angular
     RewriteRule ^ index.html [L]
 </IfModule>
 
-# ── Proteger el PHP proxy: solo aceptar POST con JSON ──
+# ── 6. Protección del Proxy PHP del formulario ──
 <Files "send-contact.php">
-    # Bloquear acceso directo desde navegador (GET requests)
     <LimitExcept POST>
         Require all denied
     </LimitExcept>
 </Files>
 
-# ── Deshabilitar directory listing (no mostrar listado de archivos) ──
-Options -Indexes
-
-# ── Proteger archivos sensibles ──
-<FilesMatch "\.(env|log|json|lock|ts|scss|git)$">
+# ── 7. Proteger archivos sensibles ──
+<FilesMatch "\.(env|log|lock|ts|scss|git|md|yml|yaml|bak|config)$">
     Require all denied
 </FilesMatch>

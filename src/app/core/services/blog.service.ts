@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import blogPostsData from '../../../../public/data/blog-posts.json';
 
 export interface BlogPost {
   id: string;
@@ -33,137 +34,8 @@ export class BlogService {
   public lastUpdated = signal<Date | null>(null);
   public rssPosts = signal<BlogPost[]>([]);
 
-  // Artículos locales técnicos y de ingeniería para Enertronic Perú
-  public readonly staticPosts: BlogPost[] = [
-    {
-      id: 'quickdesk-ipkvm-industrial-remote',
-      image: 'assets/blog/quickdesk-ipkvm.png',
-      categoryES: 'Hardware & IoT',
-      categoryEN: 'Hardware & IoT',
-      titleES: 'QuickDesk: KVM Industrial Out-of-Band para Mantenimiento Remoto de PLCs y Servidores',
-      titleEN: 'QuickDesk: Out-of-Band Industrial KVM for Remote PLC and Server Maintenance',
-      excerptES: 'Acceso remoto a nivel de hardware (BIOS/consola) para PCs industriales, PLCs y switches de red. Reinicia, recupera y restaura equipos críticos sin necesidad de desplazamiento físico al sitio.',
-      excerptEN: 'Hardware-level remote access (BIOS/console) for industrial PCs, PLCs, and network switches. Reboot, recover, and restore critical equipment without on-site travel.',
-      contentES: [
-        'QuickDesk es una plataforma de acceso remoto out-of-band diseñada específicamente para entornos industriales y de infraestructura crítica. A diferencia de las soluciones tradicionales de escritorio remoto que dependen del sistema operativo, QuickDesk opera a nivel de hardware, permitiendo acceso completo incluso cuando el equipo está bloqueado por una pantalla azul (BSOD), en proceso de arranque o con el sistema operativo dañado.',
-        'La plataforma ofrece tres soluciones integradas: acceso a escritorio remoto para equipos de trabajo y soporte IT, acceso KVM sobre IP (IPKVM) para control más allá del sistema operativo, y operaciones PLC/OT para mantenimiento de entornos industriales. Esto incluye conexión a computadoras industriales (HMI), PLCs de línea de producción, máquinas CNC, cámaras industriales, sensores y switches de red.',
-        'Para industrias críticas como minería, manufactura, energía, petróleo y gas, la capacidad de recuperar remotamente un PLC bloqueado o reiniciar un servidor desde nivel BIOS elimina tiempos de inactividad costosos y desplazamientos de técnicos a sitios remotos. QuickDesk se integra con plataformas en la nube mediante enlace seguro y soporta entornos Windows, macOS y Android.',
-        'Descubre todas las soluciones y capacidades técnicas de QuickDesk en su sitio oficial: quickdesk.com/en/'
-      ],
-      contentEN: [
-        'QuickDesk is an out-of-band remote access platform specifically designed for industrial and critical infrastructure environments. Unlike traditional remote desktop solutions that depend on the operating system, QuickDesk operates at the hardware level, allowing full access even when the machine is stuck on a Blue Screen of Death (BSOD), in the boot process, or has a damaged OS.',
-        'The platform offers three integrated solutions: remote desktop software for workstations and IT support teams, IPKVM remote access for beyond-OS hardware control, and PLC/OT operations for industrial environment maintenance. This covers industrial computers (HMI), production line PLCs, CNC machines, industrial cameras, sensors, and network switches.',
-        'For critical industries such as mining, manufacturing, energy, and oil & gas, the ability to remotely recover a locked PLC or reboot a server from BIOS level eliminates costly downtime and on-site technician travel to remote locations. QuickDesk integrates with cloud platforms via secure uplink and supports Windows, macOS, and Android environments.',
-        'Discover all QuickDesk solutions and technical capabilities at their official site: quickdesk.com/en/'
-      ],
-      date: '02 Oct 2026',
-      readTime: '5 min',
-      author: 'Equipo Técnico Enertronic',
-      featured: true,
-      externalUrl: 'https://quickdesk.com/en/',
-      sourceCategoryId: 'HARDWARE_IOT'
-    },
-    {
-      id: 'mesh-telemetry-24ghz',
-      image: 'assets/blog/blog-1.png',
-      categoryES: 'Hardware & IoT',
-      categoryEN: 'Hardware & IoT',
-      titleES: 'Telemetría por Radio Mesh 2.4GHz para Plantas Industriales en Perú',
-      titleEN: '2.4GHz Mesh Radio Telemetry for Industrial Plants in Peru',
-      excerptES: 'Integra sensores dispersos en minería e industria sin depender de redes celulares o cableados costosos mediante topologías de red en malla autorrecuperables.',
-      excerptEN: 'Integrate scattered sensors in mining and industry without relying on cellular networks or costly wiring using self-healing mesh topology.',
-      contentES: [
-        'En entornos industriales y mineros de difícil acceso en el Perú, el cableado de señales de instrumentación suele representar hasta el 60% del costo total de un proyecto de automatización.',
-        'La telemetría por Radio Mesh a 2.4GHz implementa topologías de red en malla donde cada nodo transmisor actúa como un repetidor inteligente. Esto permite cubrir grandes extensiones geográficas como depósitos de relaves, tajos abiertos o plantas de procesamiento.',
-        'Entre las principales ventajas destacan la autorrecuperación de la red ante fallos de línea de vista, el consumo de ultra baja potencia adecuado para alimentarse por paneles solares, y la integración directa mediante protocolos RS-485 Modbus RTU a sistemas SCADA centralizados.'
-      ],
-      contentEN: [
-        'In hard-to-reach industrial and mining environments in Peru, instrumentation cabling typically accounts for up to 60% of total automation project costs.',
-        '2.4GHz Mesh Radio Telemetry implements mesh network topologies where each transmitter node acts as a smart repeater, enabling coverage across vast areas such as tailing dams, open pits, or processing plants.',
-        'Key benefits include self-healing network routing upon line-of-sight obstructions, ultra-low power consumption for solar power compatibility, and direct RS-485 Modbus RTU integration into centralized SCADA systems.'
-      ],
-      date: '28 Ago 2026',
-      readTime: '5 min',
-      author: 'Ing. Carlos Mendoza - Enertronic',
-      featured: true,
-      sourceCategoryId: 'HARDWARE_IOT'
-    },
-    {
-      id: 'mqtt-iiot-telemetry',
-      image: 'assets/blog/blog-2.png',
-      categoryES: 'Routers & 4G/5G',
-      categoryEN: 'Routers & 4G/5G',
-      titleES: 'Arquitectura de Telemetría vía MQTT y VPN Industrial para Proyectos IIoT',
-      titleEN: 'MQTT Telemetry Architecture and Industrial VPN for IIoT Projects',
-      excerptES: 'Conexiones seguras y ligeras de baja latencia entre routers celulares industriales 4G/5G y plataformas SCADA en la nube para monitoreo remoto.',
-      excerptEN: 'Secure, lightweight, low-latency connections between 4G/5G industrial cellular routers and cloud SCADA platforms for remote monitoring.',
-      contentES: [
-        'El protocolo MQTT se ha consolidado como el estándar de comunicación de facto para el Internet de las Cosas Industrial (IIoT) gracias a su arquitectura de publicación/suscripción de mínima sobrecarga de ancho de banda.',
-        'Para proyectos en estaciones meteorológicas, monitoreo hídrico y pozos petroleros en Talara o la selva peruana, combinamos routers 4G/5G grado industrial con túneles VPN cifrados IPsec/OpenVPN.',
-        'Esta arquitectura garantiza transmisiones en tiempo real con reconexión automática ante caídas de señal de los operadores móviles locales, manteniendo los datos históricos a salvo mediante almacenamiento buffer en la tarjeta SD interna del gateway.'
-      ],
-      contentEN: [
-        'The MQTT protocol has become the de facto communication standard for IIoT due to its lightweight publish/subscribe architecture and minimal bandwidth consumption.',
-        'For weather stations, water telemetry (SEDAPAL / SENAMHI), and oil wells in Talara or the Peruvian rainforest, we pair industrial-grade 4G/5G routers with encrypted IPsec/OpenVPN tunnels.',
-        'This architecture guarantees real-time telemetry with automatic reconnection during cellular dropouts, preserving historical logs via internal SD buffer storage.'
-      ],
-      date: '15 Ago 2026',
-      readTime: '6 min',
-      author: 'Ing. Roberto Silva - Enertronic',
-      featured: true,
-      sourceCategoryId: 'ROUTERS_4G_5G'
-    },
-    {
-      id: 'scada-automation-peru',
-      image: 'assets/blog/blog-3.png',
-      categoryES: 'SCADA',
-      categoryEN: 'SCADA',
-      titleES: 'Automatización y Modernización de Sistemas SCADA en Sectores Críticos',
-      titleEN: 'Automation and Modernization of SCADA Systems in Critical Sectors',
-      excerptES: 'Guía técnica sobre la migración de sistemas SCADA legacy a entornos modernos Web-based con analítica predictiva y monitoreo remoto 24/7.',
-      excerptEN: 'Technical guide on migrating legacy SCADA systems to modern web-based environments with predictive analytics and 24/7 remote monitoring.',
-      contentES: [
-        'La supervisión y adquisición de datos en tiempo real (SCADA) es el pilar de la eficiencia operativa en centrales hidroeléctricas, plantas potabilizadoras y estaciones transmisoras.',
-        'En Enertronic diseñamos HMI/SCADA de última generación con soporte para protocolos industriales estándar como IEC 60870-5-104, DNP3, Modbus TCP y OPC UA.',
-        'Al integrar dashboards HTML5 responsive y alertas multicanal (Email/SMS/WhatsApp), los operadores y gerentes de planta pueden supervisar variables clave en tiempo real desde cualquier dispositivo autorizado con total ciberseguridad.'
-      ],
-      contentEN: [
-        'Supervisory Control and Data Acquisition (SCADA) is the backbone of operational efficiency in hydroelectric plants, water treatment facilities, and transmission stations.',
-        'At Enertronic we design next-generation HMI/SCADA systems supporting standard industrial protocols including IEC 60870-5-104, DNP3, Modbus TCP, and OPC UA.',
-        'By integrating responsive HTML5 dashboards and multi-channel alerts (Email/SMS/WhatsApp), plant operators can monitor key variables live from any authorized device with top-tier cybersecurity.'
-      ],
-      date: '02 Ago 2026',
-      readTime: '7 min',
-      author: 'Ing. Ana Gutiérrez - Enertronic',
-      featured: true,
-      sourceCategoryId: 'SCADA'
-    },
-    {
-      id: 'sat-hybrid-telemetry',
-      image: 'assets/slides/slide-4.png',
-      categoryES: 'Routers & 4G/5G',
-      categoryEN: 'Routers & 4G/5G',
-      titleES: 'Telemetría Híbrida Celular + Satelital en Zonas Sin Cobertura en Perú',
-      titleEN: 'Hybrid Cellular + Satellite Telemetry in Zero-Coverage Zones in Peru',
-      excerptES: 'Cómo garantizar la transmisión ininterrumpida de datos críticos en la cordillera y selva peruana mediante redundancia satelital Iridium / Inmarsat.',
-      excerptEN: 'How to ensure uninterrupted critical data transmission in the Peruvian Andes and Amazon using Iridium / Inmarsat satellite failover.',
-      contentES: [
-        'En ubicaciones geográficas extremas donde la cobertura celular es inexistente o inestable, la telemetría satelital ofrece una garantía de conectividad constante del 99.9%.',
-        'Utilizando gateways con failover inteligente, el sistema transmite por red 4G/5G como enlace principal y commuta automáticamente a canal satelital comprimido en caso de interrupción.',
-        'Esta tecnología es ideal para estaciones hidrometeorológicas del SENAMHI, ductos de transporte de hidrocarburos y estaciones remotas de minería.'
-      ],
-      contentEN: [
-        'In extreme geographical locations where cellular coverage is absent or unreliable, satellite telemetry offers a 99.9% uptime guarantee.',
-        'Using smart failover gateways, the system transmits via 4G/5G primary link and switches to compressed satellite channels automatically during outages.',
-        'This technology is ideal for SENAMHI hydrometeorological stations, hydrocarbon pipelines, and remote mining sites.'
-      ],
-      date: '20 Jul 2026',
-      readTime: '4 min',
-      author: 'Equipo Técnico Enertronic',
-      featured: false,
-      sourceCategoryId: 'ROUTERS_4G_5G'
-    }
-  ];
+  // Artículos locales técnicos y de ingeniería para Enertronic Perú cargados desde public/data/blog-posts.json
+  public readonly staticPosts: BlogPost[] = blogPostsData as BlogPost[];
 
   public getAllPosts(): BlogPost[] {
     return [...this.staticPosts, ...this.rssPosts()];
