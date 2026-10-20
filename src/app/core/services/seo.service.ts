@@ -65,7 +65,7 @@ export class SeoService {
     }
 
     // Robots Directive
-    const robots = event['robots'] || 'index, follow';
+    const robots = event['robots'] || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
     this.metaService.updateTag({ name: 'robots', content: robots });
 
     // Canonical & OG URL
@@ -92,6 +92,7 @@ export class SeoService {
     keywords?: string;
     image?: string;
     canonical?: string;
+    robots?: string;
     schema?: any;
   }): void {
     if (data.title) {
@@ -107,6 +108,8 @@ export class SeoService {
     if (data.keywords) {
       this.metaService.updateTag({ name: 'keywords', content: data.keywords });
     }
+    const robots = data.robots || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+    this.metaService.updateTag({ name: 'robots', content: robots });
     if (data.image) {
       this.metaService.updateTag({ property: 'og:image', content: data.image });
       this.metaService.updateTag({ name: 'twitter:image', content: data.image });

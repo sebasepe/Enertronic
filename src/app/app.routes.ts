@@ -85,7 +85,8 @@ export const routes: Routes = [
     data: {
       title: 'Solución de Telemetría Industrial | Enertronic',
       description: 'Detalle técnico, especificaciones y modelos de hardware de telemetría y SCADA en Perú.',
-      keywords: 'Telemetría industrial, hardware SCADA, automatización procesos críticos Perú'
+      keywords: 'Telemetría industrial, hardware SCADA, automatización procesos críticos Perú',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     }
   },
   {
@@ -112,6 +113,7 @@ export const routes: Routes = [
       title: 'Casos de Éxito en Telemetría y SCADA Industrial | Enertronic',
       description: 'Conoce nuestros proyectos de telemetría, implementación IIoT en minería y casos de éxito SCADA industrial en Perú. Soluciones reales y comprobadas.',
       keywords: 'Proyectos de telemetría en Perú, Casos de éxito SCADA industrial, Implementación IIoT en minería, Proyectos de automatización energía y agua',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
@@ -135,7 +137,8 @@ export const routes: Routes = [
     data: {
       title: 'Caso de Éxito en Telemetría y SCADA Industrial | Enertronic',
       description: 'Proyecto real de automatización, telemetría y supervisión SCADA implementado en Perú.',
-      keywords: 'Proyecto SCADA Perú, telemetría minería, telemetría agua potable, telemetría energía'
+      keywords: 'Proyecto SCADA Perú, telemetría minería, telemetría agua potable, telemetría energía',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     }
   },
   {
@@ -146,6 +149,7 @@ export const routes: Routes = [
       title: 'Blog de Telemetría, SCADA y Automatización | Enertronic',
       description: 'Descubre tendencias en automatización industrial 2026, qué es la telemetría IIoT, protocolos Modbus/MQTT y ventajas de integrar SCADA con IA.',
       keywords: '¿Qué es la telemetría IIoT?, Ventajas de integrar SCADA con Inteligencia Artificial, Protocolos industriales Modbus, DNP3 y MQTT, telemetría con energía solar, Tendencias automatización industrial 2026',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Blog',
@@ -167,7 +171,8 @@ export const routes: Routes = [
     data: {
       title: 'Artículo Técnico | Blog de Telemetría Enertronic',
       description: 'Artículos especializados en telemetría industrial, IIoT, protocolos Modbus/MQTT y automatización.',
-      keywords: 'Blog telemetría, artículos SCADA, IIoT Perú, automatización industrial'
+      keywords: 'Blog telemetría, artículos SCADA, IIoT Perú, automatización industrial',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
     }
   },
   {
