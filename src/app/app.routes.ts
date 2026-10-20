@@ -23,11 +23,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/company/company.component').then((m) => m.CompanyComponent),
     data: {
-      title: 'Nosotros | Enertronic: Integración SCADA y Telemetría Perú',
-      description: 'Conoce a Enertronic Ingeniería S.A.C., líderes en integración SCADA, telemetría industrial y automatización en Perú desde 2012. ¡Descubre nuestra experiencia!',
+      title: 'Nosotros | Enertronic Ingeniería S.A.C. - Telemetría y SCADA | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
+      description: 'Conoce a Enertronic Ingeniería, empresa peruana especializada en telemetría IIoT y sistemas SCADA con más de 10 años de experiencia en el sector industrial.',
       keywords: 'Empresa de ingeniería integradora Perú, Especialistas en automatización y control, Integradores autorizados SCADA, Empresa de telemetría industrial, Ingenieros en automatización de procesos, Enertronic Ingeniería',
       canonical: 'https://enertronic.com.pe/nosotros',
-      robots: 'index, follow',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'AboutPage',
@@ -57,9 +57,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/solutions/solutions.component').then((m) => m.SolutionsComponent),
     data: {
-      title: 'Soluciones de Telemetría y Hardware Industrial | Enertronic',
+      title: 'Soluciones Enertronic - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
       description: 'Proveemos soluciones de telemetría a medida para minería, SCADA para oil & gas y hardware extremo. Conectividad satelital, celular, Mesh y MQTT.',
       keywords: 'Soluciones de telemetría a medida, hardware de telemetría extrema, Telemetría satelital Starlink / Iridium, telemetría celular 4G, telemetría Radio Mesh 2.4GHz, soluciones telemetría MQTT, telemetría Ethernet',
+      canonical: 'https://enertronic.com.pe/soluciones-enertronic',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
@@ -173,9 +175,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/contact/contact.component').then((m) => m.ContactComponent),
     data: {
-      title: 'Contacto y Asesoría Técnica en Telemetría | Enertronic',
-      description: 'Contáctenos para cotizar sistemas SCADA en Perú. Somos proveedores de automatización en Lima y brindamos asesoría técnica en telemetría industrial.',
+      title: 'Contacto | Enertronic Ingeniería S.A.C. - Lima, Perú | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA',
+      description: 'Contáctanos para soluciones de telemetría IIoT y SCADA en Perú. Escríbenos o llámanos y te asesoramos en tu proyecto de monitoreo remoto industrial.',
       keywords: 'Cotizar sistema SCADA Perú, Asesoría técnica en telemetría, Proveedores de automatización en Lima, Enertronic Perú contacto',
+      canonical: 'https://enertronic.com.pe/contactos',
+      robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'ContactPage',
