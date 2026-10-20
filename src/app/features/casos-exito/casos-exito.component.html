@@ -111,28 +111,34 @@
   @if (selectedStudy(); as study) {
     <div class="modal-backdrop" (click)="closeModal()">
       <div class="modal-dialog" (click)="$event.stopPropagation()">
-        <header class="modal-header" [style.border-top-color]="study.accentColor">
-          <div class="modal-title-group">
-            <span class="modal-client" [style.color]="study.accentColor">
+
+        <!-- Hero Image Zone -->
+        <div class="modal-hero-img" [style.--accent]="study.accentColor">
+          <img [src]="study.image" [alt]="study.titleES" class="modal-hero-photo" />
+          <div class="modal-hero-gradient"></div>
+
+          <!-- Close button floating -->
+          <button type="button" class="close-btn" (click)="closeModal()" aria-label="Cerrar">
+            <mat-icon>close</mat-icon>
+          </button>
+
+          <!-- Title overlay on image -->
+          <div class="modal-hero-info">
+            <span class="modal-client" [style.border-color]="study.accentColor">
               <mat-icon>{{ study.icon }}</mat-icon>
               {{ study.client }} • {{ study.location }}
             </span>
             <h2>{{ langService.currentLang() === 'ES' ? study.titleES : study.titleEN }}</h2>
-          </div>
-          <button type="button" class="close-btn" (click)="closeModal()" aria-label="Cerrar">
-            <mat-icon>close</mat-icon>
-          </button>
-        </header>
-
-        <div class="modal-body">
-          <div class="modal-img-wrap">
-            <img [src]="study.image" [alt]="study.titleES" />
+            <!-- Metrics badge -->
             <div class="modal-metrics-badge" [style.background]="study.accentColor">
               <mat-icon>star</mat-icon>
               <span>{{ langService.currentLang() === 'ES' ? study.metricsES : study.metricsEN }}</span>
             </div>
           </div>
+        </div>
 
+        <!-- Scrollable content -->
+        <div class="modal-body">
           <div class="section-block">
             <h4 class="block-heading challenge-heading">
               <mat-icon>warning_amber</mat-icon>

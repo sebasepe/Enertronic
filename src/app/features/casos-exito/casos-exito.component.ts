@@ -1,14 +1,16 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { LanguageService } from '../../core/services/language.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 export interface CaseStudy {
   id: string;
+  slug: string;
   titleES: string;
   titleEN: string;
   categoryES: string;
@@ -37,6 +39,7 @@ export interface CaseStudy {
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     MatIconModule,
     MatButtonModule,
     MatChipsModule,
@@ -46,11 +49,14 @@ export interface CaseStudy {
   templateUrl: './casos-exito.component.html',
   styleUrl: './casos-exito.component.scss',
 })
-export class CasosDeExitoComponent {
+export class CasosDeExitoComponent implements OnInit {
   public langService = inject(LanguageService);
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   public selectedCategory = signal<string>('ALL');
   public selectedStudy = signal<CaseStudy | null>(null);
+
 
   public categories = [
     { id: 'ALL', labelES: 'Todos', labelEN: 'All' },
@@ -64,6 +70,7 @@ export class CasosDeExitoComponent {
   public caseStudies: CaseStudy[] = [
     {
       id: 'caso-1',
+      slug: 'caso-huascacocha-rimac',
       client: 'SEDAPAL',
       categoryId: 'AGUA',
       categoryES: 'Agua Potable y Trasvase Hídrico',
@@ -99,6 +106,7 @@ export class CasosDeExitoComponent {
 
     {
       id: 'caso-5',
+      slug: 'caso-electroperu-tunel-mantaro',
       client: 'ELECTROPERÚ',
       categoryId: 'ENERGIA',
       categoryES: 'Generación Eléctrica e Infraestructura Hidráulica',
@@ -133,6 +141,7 @@ export class CasosDeExitoComponent {
     },
     {
       id: 'caso-6',
+      slug: 'caso-sedapal-dosificacion-cloro',
       client: 'SEDAPAL',
       categoryId: 'AGUA',
       categoryES: 'Agua Potable y Potabilización IIoT',
@@ -167,6 +176,7 @@ export class CasosDeExitoComponent {
     },
     {
       id: 'caso-7',
+      slug: 'caso-williams-douglas-pass',
       client: 'Williams Gas Pipeline West',
       categoryId: 'OIL_GAS',
       categoryES: 'Oil & Gas',
@@ -199,6 +209,18 @@ export class CasosDeExitoComponent {
     },
   ];
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const slug = params.get('slug');
+      if (slug) {
+        const study = this.caseStudies.find((s) => s.slug === slug) ?? null;
+        this.selectedStudy.set(study);
+      } else {
+        this.selectedStudy.set(null);
+      }
+    });
+  }
+
   public filterCategory(catId: string): void {
     this.selectedCategory.set(catId);
   }
@@ -210,10 +232,10 @@ export class CasosDeExitoComponent {
   }
 
   public openModal(study: CaseStudy): void {
-    this.selectedStudy.set(study);
+    this.router.navigate(['/casos-de-exito', study.slug]);
   }
 
   public closeModal(): void {
-    this.selectedStudy.set(null);
+    this.router.navigate(['/casos-de-exito']);
   }
 }
