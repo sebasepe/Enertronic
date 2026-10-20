@@ -119,7 +119,7 @@ export class BlogComponent implements OnInit, OnDestroy {
         inLanguage: isEs ? 'es-PE' : 'en-US',
         image: [imageUrl],
         author: {
-          '@type': 'Person',
+          '@type': 'Organization',
           name: post.author || 'Equipo Técnico Enertronic',
         },
         publisher: {
