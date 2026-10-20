@@ -68,6 +68,39 @@ export class SeoService {
       }
     });
   }
+  public updateMetaTags(data: {
+    title?: string;
+    description?: string;
+    keywords?: string;
+    image?: string;
+    canonical?: string;
+    schema?: any;
+  }): void {
+    if (data.title) {
+      this.titleService.setTitle(data.title);
+      this.metaService.updateTag({ property: 'og:title', content: data.title });
+      this.metaService.updateTag({ name: 'twitter:title', content: data.title });
+    }
+    if (data.description) {
+      this.metaService.updateTag({ name: 'description', content: data.description });
+      this.metaService.updateTag({ property: 'og:description', content: data.description });
+      this.metaService.updateTag({ name: 'twitter:description', content: data.description });
+    }
+    if (data.keywords) {
+      this.metaService.updateTag({ name: 'keywords', content: data.keywords });
+    }
+    if (data.image) {
+      this.metaService.updateTag({ property: 'og:image', content: data.image });
+      this.metaService.updateTag({ name: 'twitter:image', content: data.image });
+    }
+    if (data.canonical) {
+      this.updateCanonicalUrl(data.canonical);
+      this.metaService.updateTag({ property: 'og:url', content: data.canonical });
+    }
+    if (data.schema) {
+      this.updateSchemaJsonLd(data.schema);
+    }
+  }
 
   private updateCanonicalUrl(url: string) {
     if (!this.document) return;

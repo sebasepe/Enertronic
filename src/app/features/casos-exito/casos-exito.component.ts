@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, OnInit, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,6 +8,7 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { LanguageService } from '../../core/services/language.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { CasosExitoService, CaseStudy, CaseCategory } from '../../core/services/casos-exito.service';
+import { SeoService } from '../../core/services/seo.service';
 
 export type { CaseStudy, CaseCategory };
 
@@ -29,6 +30,7 @@ export type { CaseStudy, CaseCategory };
 export class CasosDeExitoComponent implements OnInit {
   public langService = inject(LanguageService);
   public casosService = inject(CasosExitoService);
+  private seoService = inject(SeoService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
@@ -43,6 +45,17 @@ export class CasosDeExitoComponent implements OnInit {
     return this.casosService.getCaseStudies();
   }
 
+  constructor() {
+    effect(() => {
+      const study = this.selectedStudy();
+      if (study) {
+        this.applyStudySeo(study);
+      } else {
+        this.resetCasosSeo();
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const slug = params.get('slug');
@@ -52,6 +65,50 @@ export class CasosDeExitoComponent implements OnInit {
       } else {
         this.selectedStudy.set(null);
       }
+    });
+  }
+
+  private applyStudySeo(study: CaseStudy): void {
+    const isEs = this.langService.currentLang() === 'ES';
+    const title = isEs ? study.titleES : study.titleEN;
+    const desc = isEs ? study.summaryES : study.summaryEN;
+    const imageUrl = `https://enertronic.com.pe/${study.image}`;
+
+    this.seoService.updateMetaTags({
+      title: `${title} | Casos de Éxito Enertronic`,
+      description: desc,
+      keywords: `${study.client}, ${isEs ? study.categoryES : study.categoryEN}, telemetría industrial Perú, SCADA`,
+      image: imageUrl,
+      canonical: `https://enertronic.com.pe/casos-de-exito/${study.slug}`,
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: title,
+        description: desc,
+        image: [imageUrl],
+        author: {
+          '@type': 'Organization',
+          name: 'Enertronic Ingeniería S.A.C.',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Enertronic Ingeniería S.A.C.',
+          logo: 'https://enertronic.com.pe/assets/favicon-icon.png',
+        },
+        about: {
+          '@type': 'Organization',
+          name: study.client,
+        },
+      },
+    });
+  }
+
+  private resetCasosSeo(): void {
+    this.seoService.updateMetaTags({
+      title: 'Casos de Éxito en Telemetría y SCADA Industrial | Enertronic',
+      description: 'Conoce nuestros proyectos de telemetría, implementación IIoT en minería y casos de éxito SCADA industrial en Perú. Soluciones reales y comprobadas.',
+      keywords: 'Proyectos de telemetría en Perú, Casos de éxito SCADA industrial, Implementación IIoT en minería, Proyectos de automatización energía y agua',
+      canonical: 'https://enertronic.com.pe/casos-de-exito',
     });
   }
 

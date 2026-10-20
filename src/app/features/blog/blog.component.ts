@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { LanguageService } from '../../core/services/language.service';
 import { BlogService, BlogPost } from '../../core/services/blog.service';
+import { SeoService } from '../../core/services/seo.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { Subscription, timer } from 'rxjs';
 
@@ -14,7 +15,7 @@ import { Subscription, timer } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
+    RouterModule,
     MatIconModule,
     MatButtonModule,
     MatChipsModule,
@@ -26,6 +27,8 @@ import { Subscription, timer } from 'rxjs';
 export class BlogComponent implements OnInit, OnDestroy {
   public blogService = inject(BlogService);
   public langService = inject(LanguageService);
+  private seoService = inject(SeoService);
+  private router = inject(Router);
   private route = inject(ActivatedRoute);
 
   private timerSubscription?: Subscription;
@@ -41,20 +44,97 @@ export class BlogComponent implements OnInit, OnDestroy {
     { id: 'SCADA', labelES: 'SCADA', labelEN: 'SCADA' },
   ];
 
+  constructor() {
+    // Si cambia el idioma o el post seleccionado, actualizamos dinámicamente el SEO
+    effect(() => {
+      const post = this.selectedPost();
+      if (post) {
+        this.applyPostSeo(post);
+      } else {
+        this.resetBlogSeo();
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.blogService.loadRssFeeds();
     this.timerSubscription = timer(15 * 60 * 1000, 15 * 60 * 1000).subscribe(() => {
       this.blogService.loadRssFeeds();
     });
 
-    this.routeSubscription = this.route.queryParams.subscribe((params) => {
-      const postId = params['post'];
-      if (postId) {
-        const post = this.blogService.getPostById(postId);
-        if (post) {
-          this.selectedPost.set(post);
-        }
+    // Detectar slug en la ruta (/blog/:slug) o parámetro query (?post=...)
+    this.routeSubscription = this.route.paramMap.subscribe((params) => {
+      const slug = params.get('slug') || this.route.snapshot.queryParams['post'];
+      if (slug) {
+        this.resolvePost(slug);
+      } else {
+        this.selectedPost.set(null);
       }
+    });
+  }
+
+  private resolvePost(slug: string): void {
+    const post = this.blogService.getPostById(slug);
+    if (post) {
+      this.selectedPost.set(post);
+      return;
+    }
+
+    // Si aún no está cargado (feed RSS en proceso de descarga), esperamos su resolución
+    const checkTimer = setInterval(() => {
+      const delayedPost = this.blogService.getPostById(slug);
+      if (delayedPost) {
+        this.selectedPost.set(delayedPost);
+        clearInterval(checkTimer);
+      }
+    }, 400);
+
+    setTimeout(() => clearInterval(checkTimer), 5000);
+  }
+
+  private applyPostSeo(post: BlogPost): void {
+    const isEs = this.langService.currentLang() === 'ES';
+    const title = isEs ? post.titleES : post.titleEN;
+    const desc = isEs ? post.excerptES : post.excerptEN;
+    const imageUrl = post.image?.startsWith('http')
+      ? post.image
+      : `https://enertronic.com.pe/${post.image}`;
+
+    this.seoService.updateMetaTags({
+      title: `${title} | Blog Enertronic`,
+      description: desc,
+      keywords: `${isEs ? post.categoryES : post.categoryEN}, telemetría, SCADA, automatización industrial, IIoT Perú`,
+      image: imageUrl,
+      canonical: `https://enertronic.com.pe/blog/${post.id}`,
+      schema: {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: title,
+        description: desc,
+        image: [imageUrl],
+        author: {
+          '@type': 'Person',
+          name: post.author || 'Equipo Técnico Enertronic',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Enertronic Ingeniería S.A.C.',
+          logo: 'https://enertronic.com.pe/assets/favicon-icon.png',
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `https://enertronic.com.pe/blog/${post.id}`,
+        },
+      },
+    });
+  }
+
+  private resetBlogSeo(): void {
+    this.seoService.updateMetaTags({
+      title: 'Blog de Telemetría, SCADA y Automatización | Enertronic',
+      description: 'Descubre tendencias en automatización industrial 2026, qué es la telemetría IIoT, protocolos Modbus/MQTT y ventajas de integrar SCADA con IA.',
+      keywords: '¿Qué es la telemetría IIoT?, Ventajas de integrar SCADA con Inteligencia Artificial, Protocolos industriales Modbus, DNP3 y MQTT, telemetría con energía solar, Tendencias automatización industrial 2026',
+      canonical: 'https://enertronic.com.pe/blog',
     });
   }
 
@@ -84,11 +164,10 @@ export class BlogComponent implements OnInit, OnDestroy {
   }
 
   public openArticle(post: BlogPost): void {
-    this.selectedPost.set(post);
+    this.router.navigate(['/blog', post.id]);
   }
 
   public closeArticle(): void {
-    this.selectedPost.set(null);
+    this.router.navigate(['/blog']);
   }
 }
-

@@ -4,10 +4,12 @@ const path = require('path');
 const rootDir = path.resolve(__dirname, '..');
 const solutionsPath = path.join(rootDir, 'public', 'data', 'solutions.json');
 const casosPath = path.join(rootDir, 'public', 'data', 'casos-exito.json');
+const blogPath = path.join(rootDir, 'public', 'data', 'blog-posts.json');
 const sitemapPath = path.join(rootDir, 'public', 'sitemap.xml');
 
 const solutions = JSON.parse(fs.readFileSync(solutionsPath, 'utf8'));
 const casos = JSON.parse(fs.readFileSync(casosPath, 'utf8'));
+const blogs = JSON.parse(fs.readFileSync(blogPath, 'utf8'));
 
 const today = new Date().toISOString().split('T')[0];
 
@@ -63,7 +65,22 @@ for (const caso of casos) {
 `;
 }
 
+xml += `
+    <!-- Artículos Técnicos del Blog -->
+`;
+
+for (const post of blogs) {
+  xml += `    <url>
+        <loc>https://enertronic.com.pe/blog/${post.id}</loc>
+        <lastmod>${today}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+`;
+}
+
 xml += `</urlset>\n`;
 
 fs.writeFileSync(sitemapPath, xml, 'utf8');
-console.log(`✅ sitemap.xml actualizado con éxito (${staticPages.length} páginas fijas + ${solutions.length} soluciones + ${casos.length} casos de éxito = ${staticPages.length + solutions.length + casos.length} URLs totales).`);
+const total = staticPages.length + solutions.length + casos.length + blogs.length;
+console.log(`✅ sitemap.xml actualizado con éxito (${staticPages.length} fijas + ${solutions.length} soluciones + ${casos.length} casos + ${blogs.length} blogs = ${total} URLs totales).`);
