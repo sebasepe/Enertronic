@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "node scripts/generate-sitemap.js && ng build",
     "sitemap": "node scripts/generate-sitemap.js",
+    "zip": "powershell -Command \"Get-ChildItem -Path 'dist/enertronic/browser' -Force | Compress-Archive -DestinationPath 'public_html_enertronic.zip' -Force\"",
+    "deploy:prep": "npm run build && npm run zip",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:enertronic": "node dist/enertronic/server/server.mjs"
