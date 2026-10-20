@@ -52,9 +52,9 @@
             <span class="meta-item"><mat-icon>person</mat-icon> {{ post.author }}</span>
           </div>
 
-          <h3 class="card-title" [title]="langService.currentLang() === 'ES' ? post.titleES : post.titleEN">
+          <h2 class="card-title" [title]="langService.currentLang() === 'ES' ? post.titleES : post.titleEN">
             {{ langService.currentLang() === 'ES' ? post.titleES : post.titleEN }}
-          </h3>
+          </h2>
 
           <p class="card-excerpt">
             {{ langService.currentLang() === 'ES' ? post.excerptES : post.excerptEN }}

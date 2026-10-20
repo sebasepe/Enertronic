@@ -77,18 +77,21 @@ export class CasosDeExitoComponent implements OnInit {
     this.seoService.updateMetaTags({
       title: `${title} | Casos de Éxito Enertronic`,
       description: desc,
-      keywords: `${study.client}, ${isEs ? study.categoryES : study.categoryEN}, telemetría industrial Perú, SCADA`,
+      keywords: `${study.client}, ${isEs ? study.categoryES : study.categoryEN}, telemetría industrial Perú, SCADA, ${study.technologies.join(', ')}`,
       image: imageUrl,
       canonical: `https://enertronic.com.pe/casos-de-exito/${study.slug}`,
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
         headline: title,
-        description: desc,
+        description: `${desc} Solución técnica: ${isEs ? study.solutionES : study.solutionEN}`,
         image: [imageUrl],
+        articleSection: isEs ? study.categoryES : study.categoryEN,
+        keywords: study.technologies.join(', '),
         author: {
           '@type': 'Organization',
           name: 'Enertronic Ingeniería S.A.C.',
+          url: 'https://enertronic.com.pe/',
         },
         publisher: {
           '@type': 'Organization',
@@ -98,6 +101,10 @@ export class CasosDeExitoComponent implements OnInit {
         about: {
           '@type': 'Organization',
           name: study.client,
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `https://enertronic.com.pe/casos-de-exito/${study.slug}`,
         },
       },
     });

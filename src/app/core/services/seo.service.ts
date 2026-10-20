@@ -15,59 +15,77 @@ export class SeoService {
   private document = inject(DOCUMENT);
 
   constructor() {
+    // 1. Escuchar futuras navegaciones en el cliente
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
-      map(() => this.activatedRoute),
-      map(route => {
-        while (route.firstChild) {
-          route = route.firstChild;
-        }
-        return route;
-      }),
+      map(() => this.getDeepestRoute(this.activatedRoute)),
       filter(route => route.outlet === 'primary'),
       mergeMap(route => route.data)
-    ).subscribe((event: any) => {
-      // Actualizar Título
-      if (event['title']) {
-        this.titleService.setTitle(event['title']);
-        this.metaService.updateTag({ property: 'og:title', content: event['title'] });
-        this.metaService.updateTag({ name: 'twitter:title', content: event['title'] });
-      }
-      
-      // Actualizar Meta Description
-      if (event['description']) {
-        this.metaService.updateTag({ name: 'description', content: event['description'] });
-        this.metaService.updateTag({ property: 'og:description', content: event['description'] });
-        this.metaService.updateTag({ name: 'twitter:description', content: event['description'] });
-      }
-
-      // Actualizar Meta Keywords
-      if (event['keywords']) {
-        this.metaService.updateTag({ name: 'keywords', content: event['keywords'] });
-      }
-
-      // Actualizar Robots
-      const robots = event['robots'] || 'index, follow';
-      this.metaService.updateTag({ name: 'robots', content: robots });
-
-      // Actualizar Canonical
-      const cleanPath = this.router.url.split('?')[0];
-      const defaultCanonical = cleanPath === '/home' || cleanPath === '/' 
-        ? 'https://enertronic.com.pe/' 
-        : `https://enertronic.com.pe${cleanPath}`;
-      const canonicalUrl = event['canonical'] || defaultCanonical;
-
-      this.updateCanonicalUrl(canonicalUrl);
-      this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
-
-      // Actualizar Schema JSON-LD
-      if (event['schema']) {
-        this.updateSchemaJsonLd(event['schema']);
-      } else {
-        this.removeSchemaJsonLd();
-      }
+    ).subscribe((data: any) => {
+      this.applyRouteData(data);
     });
+
+    // 2. Procesar ruta actual inmediatamente (vital para SSR Prerendering)
+    this.processInitialRoute();
   }
+
+  private getDeepestRoute(route: ActivatedRoute): ActivatedRoute {
+    let current = route;
+    while (current.firstChild) {
+      current = current.firstChild;
+    }
+    return current;
+  }
+
+  private processInitialRoute(): void {
+    const deepest = this.getDeepestRoute(this.activatedRoute);
+    if (deepest.snapshot?.data) {
+      this.applyRouteData(deepest.snapshot.data);
+    }
+  }
+
+  private applyRouteData(event: any): void {
+    // Actualizar Título
+    if (event['title']) {
+      this.titleService.setTitle(event['title']);
+      this.metaService.updateTag({ property: 'og:title', content: event['title'] });
+      this.metaService.updateTag({ name: 'twitter:title', content: event['title'] });
+    }
+    
+    // Actualizar Meta Description
+    if (event['description']) {
+      this.metaService.updateTag({ name: 'description', content: event['description'] });
+      this.metaService.updateTag({ property: 'og:description', content: event['description'] });
+      this.metaService.updateTag({ name: 'twitter:description', content: event['description'] });
+    }
+
+    // Actualizar Meta Keywords
+    if (event['keywords']) {
+      this.metaService.updateTag({ name: 'keywords', content: event['keywords'] });
+    }
+
+    // Actualizar Robots
+    const robots = event['robots'] || 'index, follow';
+    this.metaService.updateTag({ name: 'robots', content: robots });
+
+    // Actualizar Canonical
+    const cleanPath = this.router.url.split('?')[0];
+    const defaultCanonical = cleanPath === '/home' || cleanPath === '/' 
+      ? 'https://enertronic.com.pe/' 
+      : `https://enertronic.com.pe${cleanPath}`;
+    const canonicalUrl = event['canonical'] || defaultCanonical;
+
+    this.updateCanonicalUrl(canonicalUrl);
+    this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
+
+    // Actualizar Schema JSON-LD
+    if (event['schema']) {
+      this.updateSchemaJsonLd(event['schema']);
+    } else {
+      this.removeSchemaJsonLd();
+    }
+  }
+
   public updateMetaTags(data: {
     title?: string;
     description?: string;
@@ -122,15 +140,17 @@ export class SeoService {
       script.setAttribute('type', 'application/ld+json');
       this.document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify(schema);
+    const jsonStr = typeof schema === 'string' ? schema : JSON.stringify(schema);
+    script.textContent = jsonStr;
+    (script as any).text = jsonStr;
   }
 
   private removeSchemaJsonLd() {
     if (!this.document) return;
     const script = this.document.querySelector("script[id='route-schema']");
-    if (script && script.parentNode) {
-      script.parentNode.removeChild(script);
+    if (script) {
+      script.textContent = '{}';
+      (script as any).text = '{}';
     }
   }
 }
-

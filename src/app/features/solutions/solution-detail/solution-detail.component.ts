@@ -71,24 +71,40 @@ export class SolutionDetailComponent implements OnInit {
     const isEs = this.langService.currentLang() === 'ES';
     const title = isEs ? sol.titleES : sol.titleEN;
     const desc = isEs ? sol.taglineES : sol.taglineEN;
+    const overview = isEs ? sol.overviewES : sol.overviewEN;
+    const category = isEs ? sol.categoryES : sol.categoryEN;
     const imageUrl = `https://enertronic.com.pe/${sol.referentialImage}`;
     const canonical = `https://enertronic.com.pe/soluciones/${sol.slug}`;
 
     this.seoService.updateMetaTags({
       title: `${title} | Enertronic`,
       description: desc,
-      keywords: `${title}, ${isEs ? sol.categoryES : sol.categoryEN}, hardware telemetría, SCADA Perú`,
+      keywords: `${title}, ${category}, hardware telemetría, SCADA Perú, soluciones industriales IIoT`,
       image: imageUrl,
       canonical: canonical,
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: title,
-        description: desc,
-        image: imageUrl,
+        description: `${desc}. ${overview}`,
+        category: category,
+        image: [imageUrl],
         brand: {
           '@type': 'Brand',
           name: 'Enertronic',
+        },
+        offers: {
+          '@type': 'Offer',
+          url: canonical,
+          priceCurrency: 'USD',
+          price: '0.00',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          seller: {
+            '@type': 'Organization',
+            name: 'Enertronic Ingeniería S.A.C.',
+            url: 'https://enertronic.com.pe/',
+          },
         },
       },
     });

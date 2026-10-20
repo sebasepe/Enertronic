@@ -38,20 +38,86 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Enertronic Ingeniería S.A.C.",
-      "url": "https://enertronic.com.pe/",
-      "logo": "https://enertronic.com.pe/assets/favicon-icon.png",
-      "description": "Soluciones integrales de telemetría industrial, IIoT y sistemas SCADA en Perú.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "PE"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/enertronic-perú-964219444"
+      "@graph": [
+        {
+          "@type": ["Organization", "EngineeringService"],
+          "@id": "https://enertronic.com.pe/#organization",
+          "name": "Enertronic Ingeniería S.A.C.",
+          "alternateName": ["Enertronic", "Enertronic Perú", "Enertronic IoT"],
+          "url": "https://enertronic.com.pe/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://enertronic.com.pe/assets/favicon-icon.png",
+            "width": "512",
+            "height": "512"
+          },
+          "image": "https://enertronic.com.pe/assets/favicon-icon.png",
+          "description": "Empresa peruana de ingeniería e integración tecnológica, especializada en telemetría industrial satelital y celular, sistemas SCADA ciberseguros (ISA/IEC 62443), automatización de procesos críticos e IIoT para minería, agua potable (SEDAPAL), energía y petróleo.",
+          "telephone": "+51 941 700 464",
+          "email": "ventas@enertronicperu.com",
+          "foundingDate": "2012",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Calle Buganvilias Mz. C Lte. 26",
+            "addressLocality": "Ate",
+            "addressRegion": "Lima",
+            "postalCode": "15011",
+            "addressCountry": "PE"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "Peru"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+51-941-700-464",
+              "contactType": "sales",
+              "areaServed": "PE",
+              "availableLanguage": ["Spanish", "English"]
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+51-941-700-464",
+              "contactType": "technical support",
+              "areaServed": "PE",
+              "availableLanguage": ["Spanish", "English"]
+            }
+          ],
+          "knowsAbout": [
+            "Telemetría Industrial Satelital y Celular",
+            "Sistemas SCADA de Alta Disponibilidad",
+            "Internet de las Cosas Industrial (IIoT)",
+            "Automatización y Control de Procesos Críticos",
+            "Ciberseguridad Industrial bajo norma ISA/IEC 62443",
+            "Protocolos Modbus RTU/TCP, DNP3 y MQTT Sparkplug B",
+            "Monitoreo Hidrogeológico y de Recursos Hídricos",
+            "Dataloggers Ultra Low Power y Energía Solar"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/enertronic-perú-964219444",
+            "https://www.facebook.com/profile.php?id=61595316304977",
+            "https://www.instagram.com/enertroniciotsac/?hl=es-la",
+            "https://www.tiktok.com/@enertronic?lang=es-419"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://enertronic.com.pe/#website",
+          "url": "https://enertronic.com.pe/",
+          "name": "Enertronic | Telemetría IIoT y SCADA en Perú",
+          "description": "Especialistas en telemetría industrial, sistemas SCADA e IIoT en Perú.",
+          "publisher": {
+            "@id": "https://enertronic.com.pe/#organization"
+          },
+          "inLanguage": "es"
+        }
       ]
     }
     </script>
+
+    <!-- Esquema Dinámico por Ruta Schema.org -->
+    <script id="route-schema" type="application/ld+json">{}</script>
 
     <!-- ───────────────────────────────────────────────────────────────── -->
     <!-- GOOGLE SEARCH CONSOLE: Descomenta y reemplaza TU_CODIGO cuando te lo den: -->

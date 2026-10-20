@@ -58,9 +58,9 @@
               </span>
             </div>
 
-            <h3 class="study-title">
+            <h2 class="study-title">
               {{ langService.currentLang() === 'ES' ? study.titleES : study.titleEN }}
-            </h3>
+            </h2>
 
             <p class="study-summary">
               {{ langService.currentLang() === 'ES' ? study.summaryES : study.summaryEN }}
@@ -140,26 +140,26 @@
         <!-- Scrollable content -->
         <div class="modal-body">
           <div class="section-block">
-            <h4 class="block-heading challenge-heading">
+            <h3 class="block-heading challenge-heading">
               <mat-icon>warning_amber</mat-icon>
               {{ 'CASOS.CHALLENGE' | translate }}
-            </h4>
+            </h3>
             <p>{{ langService.currentLang() === 'ES' ? study.challengeES : study.challengeEN }}</p>
           </div>
 
           <div class="section-block">
-            <h4 class="block-heading solution-heading">
+            <h3 class="block-heading solution-heading">
               <mat-icon>build_circle</mat-icon>
               {{ 'CASOS.SOLUTION' | translate }}
-            </h4>
+            </h3>
             <p>{{ langService.currentLang() === 'ES' ? study.solutionES : study.solutionEN }}</p>
           </div>
 
           <div class="section-block">
-            <h4 class="block-heading results-heading">
+            <h3 class="block-heading results-heading">
               <mat-icon>check_circle</mat-icon>
               {{ 'CASOS.RESULTS' | translate }}
-            </h4>
+            </h3>
             <ul class="results-list">
               @for (item of (langService.currentLang() === 'ES' ? study.resultsES : study.resultsEN); track item) {
                 <li>
@@ -171,10 +171,10 @@
           </div>
 
           <div class="section-block">
-            <h4 class="block-heading tech-heading">
+            <h3 class="block-heading tech-heading">
               <mat-icon>memory</mat-icon>
               {{ 'CASOS.TECHNOLOGIES' | translate }}
-            </h4>
+            </h3>
             <div class="modal-tech-stack">
               @for (t of study.technologies; track t) {
                 <span class="modal-tech-chip">{{ t }}</span>

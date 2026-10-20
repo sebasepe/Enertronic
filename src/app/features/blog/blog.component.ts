@@ -111,6 +111,8 @@ export class BlogComponent implements OnInit, OnDestroy {
         '@type': 'BlogPosting',
         headline: title,
         description: desc,
+        articleSection: isEs ? post.categoryES : post.categoryEN,
+        inLanguage: isEs ? 'es-PE' : 'en-US',
         image: [imageUrl],
         author: {
           '@type': 'Person',
@@ -119,7 +121,11 @@ export class BlogComponent implements OnInit, OnDestroy {
         publisher: {
           '@type': 'Organization',
           name: 'Enertronic Ingeniería S.A.C.',
-          logo: 'https://enertronic.com.pe/assets/favicon-icon.png',
+          url: 'https://enertronic.com.pe/',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://enertronic.com.pe/assets/favicon-icon.png',
+          },
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
