@@ -1,13 +1,13 @@
 @if (solution) {
 <div class="solution-detail-page">
   
-  <!-- HERO SPLIT SECTION (Structure from Sketch: Left = Nombre de solución | Right = Imagen referencial) -->
+  <!-- Hero Split Section -->
   <section class="solution-hero-section">
     <div class="hero-container">
       
-      <!-- HERO LEFT COLUMN: Nombre de Solución -->
+      <!-- Left Column: Solution Info -->
       <div class="hero-left-col">
-        <!-- Breadcrumb Navigation -->
+        <!-- Breadcrumbs -->
         <nav class="breadcrumb-nav" aria-label="breadcrumb">
           <a routerLink="/home" class="crumb-link">
             <mat-icon>home</mat-icon>
@@ -27,7 +27,7 @@
           <span>{{ langService.currentLang() === 'ES' ? solution.categoryES : solution.categoryEN }}</span>
         </div>
 
-        <!-- Nombre de Solución (Main Title) -->
+        <!-- Main Title -->
         <h1 class="solution-title">
           {{ langService.currentLang() === 'ES' ? solution.titleES : solution.titleEN }}
         </h1>
@@ -47,7 +47,7 @@
           }
         </div>
 
-        <!-- Action CTA Buttons -->
+        <!-- CTA Buttons -->
         <div class="hero-actions">
           <a routerLink="/contactos" mat-raised-button color="primary" class="primary-btn">
             <mat-icon>support_agent</mat-icon>
@@ -60,7 +60,7 @@
         </div>
       </div>
 
-      <!-- HERO RIGHT COLUMN: Imagen Referencial de la Solución -->
+      <!-- Right Column: Referential Image -->
       <div class="hero-right-col">
         <div class="referential-image-card">
           <div class="image-wrapper">
@@ -72,7 +72,7 @@
     </div>
   </section>
 
-  <!-- MIDDLE SECTION (Structure from Sketch: Texto de qué trata la solución) -->
+  <!-- Technical Overview Section -->
   <section class="solution-content-section">
     <div class="content-container">
       

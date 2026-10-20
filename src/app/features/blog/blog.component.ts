@@ -45,7 +45,7 @@ export class BlogComponent implements OnInit, OnDestroy {
   ];
 
   constructor() {
-    // Si cambia el idioma o el post seleccionado, actualizamos dinámicamente el SEO
+    // Sync SEO metadata on post or language change
     effect(() => {
       const post = this.selectedPost();
       if (post) {
@@ -62,7 +62,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       this.blogService.loadRssFeeds();
     });
 
-    // Detectar slug en la ruta (/blog/:slug) o parámetro query (?post=...)
+    // Resolve post by route slug (/blog/:slug) or query param
     this.routeSubscription = this.route.paramMap.subscribe((params) => {
       const slug = params.get('slug') || this.route.snapshot.queryParams['post'];
       if (slug) {
@@ -80,7 +80,7 @@ export class BlogComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Si aún no está cargado (feed RSS en proceso de descarga), esperamos su resolución
+    // Wait for async RSS feed resolution
     const checkTimer = setInterval(() => {
       const delayedPost = this.blogService.getPostById(slug);
       if (delayedPost) {

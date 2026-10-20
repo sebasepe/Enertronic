@@ -15,7 +15,7 @@ export class SeoService {
   private document = inject(DOCUMENT);
 
   constructor() {
-    // 1. Escuchar futuras navegaciones en el cliente
+    // 1. Listen for client-side route changes
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => this.getDeepestRoute(this.activatedRoute)),
@@ -25,7 +25,7 @@ export class SeoService {
       this.applyRouteData(data);
     });
 
-    // 2. Procesar ruta actual inmediatamente (vital para SSR Prerendering)
+    // 2. Process initial route immediately (SSR Prerendering)
     this.processInitialRoute();
   }
 
@@ -45,30 +45,30 @@ export class SeoService {
   }
 
   private applyRouteData(event: any): void {
-    // Actualizar Título
+    // Page Title & Social Cards
     if (event['title']) {
       this.titleService.setTitle(event['title']);
       this.metaService.updateTag({ property: 'og:title', content: event['title'] });
       this.metaService.updateTag({ name: 'twitter:title', content: event['title'] });
     }
     
-    // Actualizar Meta Description
+    // Meta Description
     if (event['description']) {
       this.metaService.updateTag({ name: 'description', content: event['description'] });
       this.metaService.updateTag({ property: 'og:description', content: event['description'] });
       this.metaService.updateTag({ name: 'twitter:description', content: event['description'] });
     }
 
-    // Actualizar Meta Keywords
+    // Meta Keywords
     if (event['keywords']) {
       this.metaService.updateTag({ name: 'keywords', content: event['keywords'] });
     }
 
-    // Actualizar Robots
+    // Robots Directive
     const robots = event['robots'] || 'index, follow';
     this.metaService.updateTag({ name: 'robots', content: robots });
 
-    // Actualizar Canonical
+    // Canonical & OG URL
     const cleanPath = this.router.url.split('?')[0];
     const defaultCanonical = cleanPath === '/home' || cleanPath === '/' 
       ? 'https://enertronic.com.pe/' 
@@ -78,7 +78,7 @@ export class SeoService {
     this.updateCanonicalUrl(canonicalUrl);
     this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
 
-    // Actualizar Schema JSON-LD
+    // Dynamic Route Schema.org JSON-LD
     if (event['schema']) {
       this.updateSchemaJsonLd(event['schema']);
     } else {
