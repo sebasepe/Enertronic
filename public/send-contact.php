@@ -1,12 +1,10 @@
 <?php
 
-// ── CONFIGURACIÓN ────────────────────────────────────────────────────────────
 define('CONTACT_EMAIL',   'se8918306@gmail.com');
 define('ALLOWED_ORIGIN',  'https://enertronic.com.pe');   
 define('RATE_LIMIT_SECS', 60);                            
-// ─────────────────────────────────────────────────────────────────────────────
 
-// ── 1. VALIDAR MÉTODO HTTP ───────────────────────────────────────────────────
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     header('Content-Type: application/json');
@@ -14,10 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ── 2. VALIDAR ORIGEN CORS (anti-uso desde webs externas) ───────────────────
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 
-// Permitir también sin origen 
+
 if (!empty($origin) && $origin !== ALLOWED_ORIGIN) {
     http_response_code(403);
     header('Content-Type: application/json');
@@ -25,12 +22,12 @@ if (!empty($origin) && $origin !== ALLOWED_ORIGIN) {
     exit;
 }
 
-// Devolver el header CORS correcto al cliente Angular
+
 header('Access-Control-Allow-Origin: ' . ALLOWED_ORIGIN);
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// ── 3. RATE LIMITING POR IP (anti-spam / anti-flood) 
+
 $ip        = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
 $limitFile = sys_get_temp_dir() . '/enertronic_contact_' . md5($ip) . '.txt';
 $now       = time();
@@ -51,7 +48,6 @@ if (file_exists($limitFile)) {
     }
 }
 
-// ── 4. LEER Y VALIDAR CUERPO JSON 
 $rawBody = file_get_contents('php://input');
 $data    = json_decode($rawBody, true);
 
@@ -62,10 +58,10 @@ if (!$data || !is_array($data)) {
     exit;
 }
 
-// ── 5. REGISTRAR TIMESTAMP (para rate limiting futuro) 
+
 file_put_contents($limitFile, $now);
 
-// ── 6. REENVIAR A FORMSUBMIT VÍA cURL (email nunca sale al cliente) 
+
 $formsubmitUrl = 'https://formsubmit.co/ajax/' . CONTACT_EMAIL;
 
 $ch = curl_init($formsubmitUrl);
