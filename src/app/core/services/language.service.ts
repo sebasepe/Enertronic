@@ -41,11 +41,7 @@ export class LanguageService {
     this.currentLang.update((prev) => (prev === 'ES' ? 'EN' : 'ES'));
   }
 
-  /**
-   * Resuelve una clave i18n con notación de punto (e.g. 'HEADER.HOME').
-   * Reactivo: el TranslatePipe (pure:false) lo re-ejecuta al cambiar el idioma.
-   * Las traducciones están disponibles de forma sincrónica desde el inicio.
-   */
+
   public translate(key: string): string {
     const map = this.currentLang() === 'ES' ? this.translationsES : this.translationsEN;
     const keys = key.split('.');
