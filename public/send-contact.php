@@ -1,6 +1,6 @@
 <?php
 
-define('CONTACT_EMAIL',   'se8918306@gmail.com');
+define('CONTACT_EMAIL',   'alexander.parra@enertronicperu.com');
 define('RATE_LIMIT_SECS', 60);                            
 
 $allowedOrigins = [
