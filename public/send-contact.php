@@ -1,9 +1,25 @@
 <?php
 
 define('CONTACT_EMAIL',   'se8918306@gmail.com');
-define('ALLOWED_ORIGIN',  'https://enertronic.com.pe');   
 define('RATE_LIMIT_SECS', 60);                            
 
+$allowedOrigins = [
+    'https://enertronic.com.pe',
+    'https://www.enertronic.com.pe',
+    'http://localhost:4200'
+];
+
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    $corsOrigin = in_array($origin, $allowedOrigins, true) ? $origin : 'https://enertronic.com.pe';
+    header('Access-Control-Allow-Origin: ' . $corsOrigin);
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
+    http_response_code(200);
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -12,18 +28,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
-
-
-if (!empty($origin) && $origin !== ALLOWED_ORIGIN) {
+if (!empty($origin) && !in_array($origin, $allowedOrigins, true)) {
     http_response_code(403);
     header('Content-Type: application/json');
-    echo json_encode(['error' => 'Origen no permitido']);
+    echo json_encode(['error' => 'Origen no permitido: ' . htmlspecialchars($origin)]);
     exit;
 }
 
-
-header('Access-Control-Allow-Origin: ' . ALLOWED_ORIGIN);
+$corsOrigin = in_array($origin, $allowedOrigins, true) ? $origin : 'https://enertronic.com.pe';
+header('Access-Control-Allow-Origin: ' . $corsOrigin);
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
