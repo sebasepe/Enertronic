@@ -486,25 +486,17 @@
   }
 }
 
-.feature-bullets {
+.overview-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
+  gap: 1rem;
+  margin-top: 0.25rem;
 
-.bullet-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-  color: var(--text-primary, #e2e8f0);
-
-  mat-icon {
-    color: #0284c7;
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
+  .overview-body-p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--text-secondary, #cbd5e1);
+    margin: 0;
   }
 }
 
