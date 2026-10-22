@@ -37,7 +37,7 @@
     "AUTHORIZED_INTEGRATORS": "INTEGRADORES AUTORIZADOS",
     "OVERVIEW_SUBHEADING": "SOLUCIONES A MEDIDA",
     "OVERVIEW_TITLE": "Conectando el campo industrial con la toma de decisiones",
-    "OVERVIEW_DESC": "Desarrollamos e integramos hardware y software de telemetría robustos para condiciones extremas, garantizando interoperabilidad con protocolos industriales estándar (Modbus RTU/TCP, DNP3, IEC 60870-5-104, MQTT Industrial).",
+    "OVERVIEW_DESC": "Desarrollamos e integramos hardware y software de telemetría robustos para condiciones extremas, garantizando interoperabilidad con protocolos industriales estándar (Modbus RTU/TCP, DNP3, IEC 60870-5-104, MQTT Industrial, OPC UA, Hart, Ethernet/IP y CANbus).",
     "OVERVIEW_P1": "ENERTRONIC INGENIERÍA S.A.C. es una empresa peruana integradora de sistemas tecnológicos fundada en el año 2012. Con más de 12 años de trayectoria, ha evolucionado desde la automatización industrial hacia la transformación digital e inteligencia operacional, integrando tecnologías de operación (OT), tecnologías de la información (TI) e inteligencia artificial (IA).",
     "OVERVIEW_P2": "Bajo su enfoque integral (Capturar, Conectar, Visualizar, Analizar y Anticipar), implementa instrumentación de campo, telemetría robusta (satelital, celular y LoRaWAN), plataformas SCADA/IIoT y analítica con Machine Learning. Su solvencia técnica está respaldada por proyectos críticos ejecutados para clientes como Enerflex, Morken Perú SAC, Electroperú y SEDAPAL.",
     "CTA_SOLUTIONS": "Ver Soluciones de Telemetría",
