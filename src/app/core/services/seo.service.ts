@@ -77,10 +77,11 @@ export class SeoService {
 
     // Canonical & OG URL
     const cleanPath = this.router.url.split('?')[0];
-    const defaultCanonical = cleanPath === '/home' || cleanPath === '/'
+    const defaultCanonical = cleanPath === '/home' || cleanPath === '/' || cleanPath === ''
       ? 'https://enertronic.com.pe/'
-      : `https://enertronic.com.pe${cleanPath}`;
-    const canonicalUrl = event['canonical'] || defaultCanonical;
+      : `https://enertronic.com.pe${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+    const rawCanonical = event['canonical'] || defaultCanonical;
+    const canonicalUrl = rawCanonical.endsWith('/') ? rawCanonical : `${rawCanonical}/`;
 
     this.updateCanonicalUrl(canonicalUrl);
     this.metaService.updateTag({ property: 'og:url', content: canonicalUrl });
@@ -122,8 +123,9 @@ export class SeoService {
       this.metaService.updateTag({ name: 'twitter:image', content: data.image });
     }
     if (data.canonical) {
-      this.updateCanonicalUrl(data.canonical);
-      this.metaService.updateTag({ property: 'og:url', content: data.canonical });
+      const canonicalWithSlash = data.canonical.endsWith('/') ? data.canonical : `${data.canonical}/`;
+      this.updateCanonicalUrl(canonicalWithSlash);
+      this.metaService.updateTag({ property: 'og:url', content: canonicalWithSlash });
     }
     if (data.schema) {
       this.updateSchemaJsonLd(data.schema);
@@ -132,13 +134,14 @@ export class SeoService {
 
   private updateCanonicalUrl(url: string) {
     if (!this.document) return;
+    const normalizedUrl = url.endsWith('/') ? url : `${url}/`;
     let link: HTMLLinkElement | null = this.document.querySelector("link[rel='canonical']");
     if (!link) {
       link = this.document.createElement('link');
       link.setAttribute('rel', 'canonical');
       this.document.head.appendChild(link);
     }
-    link.setAttribute('href', url);
+    link.setAttribute('href', normalizedUrl);
   }
 
   private updateSchemaJsonLd(schema: any) {

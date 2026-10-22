@@ -15,11 +15,11 @@ const today = new Date().toISOString().split('T')[0];
 
 const staticPages = [
   { loc: 'https://enertronic.com.pe/', changefreq: 'weekly', priority: '1.0' },
-  { loc: 'https://enertronic.com.pe/nosotros', changefreq: 'monthly', priority: '0.8' },
-  { loc: 'https://enertronic.com.pe/soluciones-enertronic', changefreq: 'weekly', priority: '0.9' },
-  { loc: 'https://enertronic.com.pe/casos-de-exito', changefreq: 'monthly', priority: '0.8' },
-  { loc: 'https://enertronic.com.pe/blog', changefreq: 'weekly', priority: '0.8' },
-  { loc: 'https://enertronic.com.pe/contactos', changefreq: 'monthly', priority: '0.7' },
+  { loc: 'https://enertronic.com.pe/nosotros/', changefreq: 'monthly', priority: '0.8' },
+  { loc: 'https://enertronic.com.pe/soluciones-enertronic/', changefreq: 'weekly', priority: '0.9' },
+  { loc: 'https://enertronic.com.pe/casos-de-exito/', changefreq: 'monthly', priority: '0.8' },
+  { loc: 'https://enertronic.com.pe/blog/', changefreq: 'weekly', priority: '0.8' },
+  { loc: 'https://enertronic.com.pe/contactos/', changefreq: 'monthly', priority: '0.7' },
 ];
 
 let xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -43,7 +43,7 @@ xml += `
 
 for (const sol of solutions) {
   xml += `    <url>
-        <loc>https://enertronic.com.pe/soluciones/${sol.slug}</loc>
+        <loc>https://enertronic.com.pe/soluciones/${sol.slug}/</loc>
         <lastmod>${today}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -57,7 +57,7 @@ xml += `
 
 for (const caso of casos) {
   xml += `    <url>
-        <loc>https://enertronic.com.pe/casos-de-exito/${caso.slug}</loc>
+        <loc>https://enertronic.com.pe/casos-de-exito/${caso.slug}/</loc>
         <lastmod>${today}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -71,7 +71,7 @@ xml += `
 
 for (const post of blogs) {
   xml += `    <url>
-        <loc>https://enertronic.com.pe/blog/${post.id}</loc>
+        <loc>https://enertronic.com.pe/blog/${post.id}/</loc>
         <lastmod>${today}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>

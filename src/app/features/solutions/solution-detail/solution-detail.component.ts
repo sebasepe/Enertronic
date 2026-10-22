@@ -73,7 +73,7 @@ export class SolutionDetailComponent implements OnInit {
     const overview = isEs ? sol.overviewES : sol.overviewEN;
     const category = isEs ? sol.categoryES : sol.categoryEN;
     const imageUrl = `https://enertronic.com.pe/${sol.referentialImage}`;
-    const canonical = `https://enertronic.com.pe/soluciones/${sol.slug}`;
+    const canonical = `https://enertronic.com.pe/soluciones/${sol.slug}/`;
 
     const pageTitle = isEs
       ? `${title} - Enertronic Ingeniería S.A.C. | Enertronic Ingeniería S.A.C. - Soluciones de telemetría IIot & SCADA`

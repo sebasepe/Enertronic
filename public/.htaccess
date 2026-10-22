@@ -66,31 +66,31 @@ Options -Indexes
     RewriteRule ^ https://enertronic.com.pe%{REQUEST_URI} [L,R=301]
 
     # C. Redirecciones 301 desde WordPress (vital para no perder autoridad ni tráfico SEO)
-    RewriteRule ^contacto/?$ /contactos [R=301,L]
-    RewriteRule ^la-empresa/?$ /nosotros [R=301,L]
-    RewriteRule ^servicios/?$ /soluciones-enertronic [R=301,L]
-    RewriteRule ^proyectos/?$ /casos-de-exito [R=301,L]
-    RewriteRule ^soluciones/?$ /soluciones-enertronic [R=301,L]
-    RewriteRule ^soluciones-enertronic/(.+)$ /soluciones/$1 [R=301,L]
+    RewriteRule ^contacto/?$ /contactos/ [R=301,L]
+    RewriteRule ^la-empresa/?$ /nosotros/ [R=301,L]
+    RewriteRule ^servicios/?$ /soluciones-enertronic/ [R=301,L]
+    RewriteRule ^proyectos/?$ /casos-de-exito/ [R=301,L]
+    RewriteRule ^soluciones/?$ /soluciones-enertronic/ [R=301,L]
+    RewriteRule ^soluciones-enertronic/(.+)/?$ /soluciones/$1/ [R=301,L]
 
     # Redirecciones 301 de URLs legacy de soluciones
-    RewriteRule ^soluciones/telemetria-celular-2g-3g-4g/?$ /soluciones/solucion-de-telemetria-celular-2g-3g-4g [R=301,L]
-    RewriteRule ^soluciones/telemetria-satelital-iridium/?$ /soluciones/solucion-de-telemetria-satelital-iridium [R=301,L]
-    RewriteRule ^soluciones/telemetria-satelital-starlink/?$ /soluciones/solucion-de-telemetria-satelital-starlink [R=301,L]
-    RewriteRule ^soluciones/telemetria-radio-mesh-2-4ghz/?$ /soluciones/solucion-de-telemetria-radio-mesh-2-4ghz [R=301,L]
-    RewriteRule ^soluciones/telemetria-mqtt/?$ /soluciones/solucion-de-telemetria-mqtt [R=301,L]
-    RewriteRule ^soluciones/telemetria-ethernet/?$ /soluciones/solucion-de-telemetria-ethernet [R=301,L]
-    RewriteRule ^soluciones/telemetria-wifi/?$ /soluciones/solucion-de-telemetria-wifi [R=301,L]
-    RewriteRule ^soluciones/satelital-inmarsat-bgan-m2m/?$ /soluciones/solucion-de-telemetria-satelital-inmarsat-bgan-m2m [R=301,L]
-    RewriteRule ^soluciones/telemetria-lorawan/?$ /soluciones/solucion-de-telemetria-lorawan [R=301,L]
-    RewriteRule ^soluciones/tunel-inalambrico-2-4ghz/?$ /soluciones/solucion-de-telemetria-tunel-inalambrico-2-4ghz [R=301,L]
-    RewriteRule ^soluciones/vision-remota-scada-industrial/?$ /soluciones/soluciones-integrales-de-telemetria-scada-y-vision-remota-industrial [R=301,L]
-    RewriteRule ^soluciones/telemetria-monitoreo-automotor-mineria/?$ /soluciones/soluciones-telemetria-monitoreo-automotor-mineria [R=301,L]
+    RewriteRule ^soluciones/telemetria-celular-2g-3g-4g/?$ /soluciones/solucion-de-telemetria-celular-2g-3g-4g/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-satelital-iridium/?$ /soluciones/solucion-de-telemetria-satelital-iridium/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-satelital-starlink/?$ /soluciones/solucion-de-telemetria-satelital-starlink/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-radio-mesh-2-4ghz/?$ /soluciones/solucion-de-telemetria-radio-mesh-2-4ghz/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-mqtt/?$ /soluciones/solucion-de-telemetria-mqtt/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-ethernet/?$ /soluciones/solucion-de-telemetria-ethernet/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-wifi/?$ /soluciones/solucion-de-telemetria-wifi/ [R=301,L]
+    RewriteRule ^soluciones/satelital-inmarsat-bgan-m2m/?$ /soluciones/solucion-de-telemetria-satelital-inmarsat-bgan-m2m/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-lorawan/?$ /soluciones/solucion-de-telemetria-lorawan/ [R=301,L]
+    RewriteRule ^soluciones/tunel-inalambrico-2-4ghz/?$ /soluciones/solucion-de-telemetria-tunel-inalambrico-2-4ghz/ [R=301,L]
+    RewriteRule ^soluciones/vision-remota-scada-industrial/?$ /soluciones/soluciones-integrales-de-telemetria-scada-y-vision-remota-industrial/ [R=301,L]
+    RewriteRule ^soluciones/telemetria-monitoreo-automotor-mineria/?$ /soluciones/soluciones-telemetria-monitoreo-automotor-mineria/ [R=301,L]
 
-    # D. Redirección 301 para URLs con barra final a sin barra (excepto si es directorio real)
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [R=301,L]
+    # D. Forzar barra final en URLs de páginas para igualar exactamente el estándar de WordPress
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} !(.*)/$
+    RewriteRule ^(.*)$ https://enertronic.com.pe/$1/ [L,R=301]
 
     # E. Permitir archivos y carpetas que existen físicamente 
     RewriteCond %{REQUEST_FILENAME} -f [OR]

@@ -83,7 +83,7 @@ export class CasosDeExitoComponent implements OnInit {
       description: desc,
       keywords: `${study.client}, ${isEs ? study.categoryES : study.categoryEN}, telemetría industrial Perú, SCADA, ${study.technologies.join(', ')}`,
       image: imageUrl,
-      canonical: `https://enertronic.com.pe/casos-de-exito/${study.slug}`,
+      canonical: `https://enertronic.com.pe/casos-de-exito/${study.slug}/`,
       schema: {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -108,7 +108,7 @@ export class CasosDeExitoComponent implements OnInit {
         },
         mainEntityOfPage: {
           '@type': 'WebPage',
-          '@id': `https://enertronic.com.pe/casos-de-exito/${study.slug}`,
+          '@id': `https://enertronic.com.pe/casos-de-exito/${study.slug}/`,
         },
       },
     });
@@ -124,7 +124,7 @@ export class CasosDeExitoComponent implements OnInit {
       title: mainTitle,
       description: 'Conoce nuestros proyectos de telemetría, implementación IIoT en minería y casos de éxito SCADA industrial en Perú. Soluciones reales y comprobadas.',
       keywords: 'Proyectos de telemetría en Perú, Casos de éxito SCADA industrial, Implementación IIoT en minería, Proyectos de automatización energía y agua',
-      canonical: 'https://enertronic.com.pe/casos-de-exito',
+      canonical: 'https://enertronic.com.pe/casos-de-exito/',
     });
   }
 
