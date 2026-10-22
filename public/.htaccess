@@ -65,7 +65,7 @@ Options -Indexes
     RewriteCond %{HTTP_HOST} ^www\.enertronic\.com\.pe$ [NC]
     RewriteRule ^ https://enertronic.com.pe%{REQUEST_URI} [L,R=301]
 
-    # C. Redirecciones 301 desde WordPress (vital para no perder autoridad ni tráfico SEO)
+    # C. Redirecciones 301 desde WordPress 
     RewriteRule ^contacto/?$ /contactos/ [R=301,L]
     RewriteRule ^la-empresa/?$ /nosotros/ [R=301,L]
     RewriteRule ^servicios/?$ /soluciones-enertronic/ [R=301,L]
