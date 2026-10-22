@@ -313,54 +313,54 @@
 }
 
 .provix-img {
-  height: clamp(16px, 1.5vw, 22px);
+  height: clamp(19px, 1.8vw, 25px);
   width: auto;
-  max-width: 28%;
+  max-width: 25%;
 
   @media (max-width: 1024px) {
-    height: 52px;
+    height: 48px;
     max-width: 100%;
   }
 
   @media (max-width: 480px) {
-    height: 48px;
+    height: 42px;
   }
 }
 
 .exemys-img {
-  height: clamp(20px, 1.8vw, 28px);
+  height: clamp(25px, 2.4vw, 34px);
   width: auto;
-  max-width: 24%;
+  max-width: 25%;
 
   @media (max-width: 1024px) {
-    height: 52px;
+    height: 48px;
     max-width: 100%;
   }
 
   @media (max-width: 480px) {
-    height: 48px;
+    height: 42px;
   }
 }
 
 .wintec-img {
-  height: clamp(18px, 1.7vw, 26px);
+  height: clamp(24px, 2.3vw, 33px);
   width: auto;
-  max-width: 24%;
+  max-width: 25%;
 
   @media (max-width: 1024px) {
-    height: 52px;
+    height: 48px;
     max-width: 100%;
   }
 
   @media (max-width: 480px) {
-    height: 48px;
+    height: 42px;
   }
 }
 
 .dgsi-img {
-  height: clamp(26px, 2.3vw, 36px);
+  height: clamp(42px, 4vw, 58px);
   width: auto;
-  max-width: 20%;
+  max-width: 28%;
   mix-blend-mode: multiply;
 
   @media (max-width: 1024px) {
@@ -370,13 +370,13 @@
   }
 
   @media (max-width: 480px) {
-    height: 48px;
+    height: 46px;
   }
 }
 
 .logo-sep {
   width: 1.5px;
-  height: 24px;
+  height: 30px;
   background: #94a3b8;
   opacity: 0.6;
   flex-shrink: 0;
