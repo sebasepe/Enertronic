@@ -205,7 +205,7 @@ export const routes: Routes = [
           email: 'ventas@enertronicperu.com',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Calle Buganvilias Mz. C Lte. 26',
+            streetAddress: 'Calle Buganvilias Mz.C Lte.26 Urb. Santa Rosita de Ate Etapa I',
             addressLocality: 'Ate',
             addressRegion: 'Lima',
             addressCountry: 'PE'
